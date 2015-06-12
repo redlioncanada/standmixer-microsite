@@ -1,0 +1,471 @@
+@contentSideMargin: 40px;
+@contentTopMargin: 70px;
+@contentBottomMargin: 30px;
+@panel1Height: 700px;
+@panel1MixerHeight: @panel1Height;
+@socialWidth: 35px;
+
+@yellow: #fccd1f;
+@blue: #6897c3;
+
+@hoverTime: 0.3s;
+
+//start preloader
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+
+  z-index: 2000;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  width: 200px;
+  border-right: 1px solid #fff;
+
+  overflow: hidden;
+}
+
+.pace .pace-progress {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  max-width: 600px;
+  position: fixed;
+  z-index: 2000;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+
+.pace.pace-inactive {
+  display: none;
+}
+//end preloader
+
+//fix cuat css
+body {
+  min-width: 320px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 10px !important;
+}
+#header-main-nav {border-bottom: solid 2px white;}
+#page {width: 100%;}
+//end fix cuat css
+
+@font-face {
+  font-family: 'Avenir-Heavy';
+  src: url('/css/standmixer/font/Avenir-Heavy.eot?#iefix') format('embedded-opentype'),  url('/css/standmixer/font/Avenir-Heavy.woff') format('woff'), url('/css/standmixer/font/Avenir-Heavy.ttf')  format('truetype'), url('/css/standmixer/font/Avenir-Heavy.svg#Avenir-Heavy') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenir-Medium';
+  src: url('/css/standmixer/font/Avenir-Medium.eot?#iefix') format('embedded-opentype'),  url('/css/standmixer/font/Avenir-Medium.woff') format('woff'), url('/css/standmixer/font/Avenir-Medium.ttf')  format('truetype'), url('/css/standmixer/font/Avenir-Medium.svg#Avenir-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#main-container {
+  //reset
+  border: 0;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  color: white;
+   
+  div, span, object, iframe, img, table, caption, thead, tbody,
+  tfoot, tr, tr, td, article, aside, canvas, details, figure, hgroup, menu,
+  nav, footer, header, section, summary, mark, audio, video {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cit, code,
+  del, dfn, em, ins, q, samp, small, strong, sub, sup, b, i, hr, dl, dt, dd,
+  ol, ul, li, fieldset, legend, label {
+    border: 0;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    float: none;
+  }
+
+  h1 {font-size: 2em;}
+  h2 {font-size: 1.5em;}
+  h3 {font-size: 1.17em;}
+  h4 {font-size: 1em;}
+  h5 {font-size: .83em;}
+  h6 {font-size: .67em;}
+
+  article, aside, canvas, figure, figure img, figcaption, hgroup,
+  footer, header, nav, section, audio, video {
+    display: block;
+  }
+   
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    caption, th, td {
+      text-align: left;
+      vertical-align: middle;
+    }
+  }
+  
+  * {
+    color: white;
+  }
+
+  a img {
+    border: 0;
+  }
+   
+  :focus {
+    outline: 0;
+  }
+  //end reset
+
+  font-family: 'Avenir-Medium', 'Helvetica', Arial, sans-serif;
+  letter-spacing: -0.2px;
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  color: white;
+  overflow-x: hidden;
+  font-size: 13pt;
+
+  h1, h2, h3, h4 ,h5, h6 {
+    font-family: 'Avenir-Heavy', 'Helvetica', Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  #loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: @yellow;
+    z-index: 200;
+  }
+  .mixer-header {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+
+    > div {
+      position: relative;
+      height: 47px;
+      margin: 15px @contentSideMargin;
+      border-bottom: 3px solid white;
+    }
+
+    .title {
+      float: left;
+    }
+
+    .social {
+      float: right;
+
+      li {
+        float: left;
+        width: @socialWidth;
+        height: @socialWidth;
+        border-radius: @socialWidth;
+        border: 2px solid white;
+        margin-right: 8px;
+        background: url(/images/standmixer/social.png);
+        cursor: pointer;
+        -webkit-transition: all @hoverTime; /* Safari */
+        transition: all @hoverTime;
+
+        div {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      li:last-child {
+        margin-right: 0px;
+      }
+
+      .fb {
+        background-position: -1px 0px;
+      }
+
+      .fb:hover {
+        background: linear-gradient(
+          rgba(252, 205, 31, 0.45), 
+          rgba(252, 205, 31, 0.45)
+        ), url(/images/standmixer/social.png);
+        background-position: -1px 0px;
+      }
+
+      .tw {
+        background-position: 0px 105px;
+      }
+
+      .tw:hover {
+        background: linear-gradient(
+          rgba(252, 205, 31, 0.45), 
+          rgba(252, 205, 31, 0.45)
+        ), url(/images/standmixer/social.png);
+        background-position: 0px 105px;
+      }
+
+      .in {
+        background-position: 0px 70px;
+      }
+
+      .in:hover {
+        background: linear-gradient(
+          rgba(252, 205, 31, 0.45), 
+          rgba(252, 205, 31, 0.45)
+        ), url(/images/standmixer/social.png);
+        background-position: 0px 70px;
+      }
+
+      .pin {
+        background-position: 0px 35px;
+      }
+
+      .pin:hover {
+        background: linear-gradient(
+          rgba(252, 205, 31, 0.45), 
+          rgba(252, 205, 31, 0.45)
+        ), url(/images/standmixer/social.png);
+        background-position: 0px 35px;
+      }
+    }
+  }
+  .mixer-panel {
+    position: relative;
+    width: 100%;
+    height: @panel1Height;
+    z-index: 1;
+
+    > div {
+      margin: 0px @contentSideMargin;
+
+      > * {
+        z-index: 2;
+      }
+    }
+
+    .mixer-header {
+      position: relative;
+      margin: 0;
+      padding-top: 10px;
+
+      > div {
+        margin: 0px 40px;
+      }
+
+      .back-to-top {
+        position: absolute;
+        left: 0;
+        font-size: 0.7em;
+        cursor: pointer;
+
+        img {
+          margin-right: 6px;
+          width: 12px;
+          float: left;
+        }
+
+        div {
+          margin-top: -3px;
+          float: right;
+        }
+      }
+    }
+
+    h4.title {
+      position: absolute;
+      top: @contentTopMargin;
+      left: 0;
+      margin-left: @contentSideMargin;
+    }
+
+    .title {
+      position: relative;
+    }
+
+    .copy {
+      position: relative;
+      max-width: 350px;
+      margin: 117px 0 0 20px;
+    }
+
+    .available-in {
+      position: absolute;
+      width: 150px;
+      font-size: 0.8em;
+      margin-left: 20px;
+      bottom: @contentBottomMargin;
+
+      div {
+        width: 100%;
+        border-bottom: solid 1px white;
+      }
+
+      div:first-child {
+        margin-bottom: 2px;
+      }
+
+      div:last-child {
+        border-bottom: initial;
+      }
+    }
+
+    .categories {
+      position: absolute;
+      right: 0;
+      top: @contentTopMargin;
+      list-style: none;
+      margin-right: @contentSideMargin;
+
+      .selected {
+        border-radius: 5px;
+        background-color: white;
+        color: @yellow;
+        cursor: initial;
+      }
+
+      li:first-child {
+        padding: 0px;
+        cursor: initial;
+      }
+
+      li {
+        margin-bottom: 15px;
+        padding: 0 10px;
+        cursor: pointer;
+        -webkit-transition: all @hoverTime; /* Safari */
+        transition: all @hoverTime;
+      }
+
+      li:not(.title):hover {
+        border-radius: 5px;
+        background-color: white;
+        color: @yellow;
+      }
+    }
+
+    .menu {
+      position: absolute;
+      list-style: none;
+      padding-left: 10px;
+      top: 130px;
+
+      li {
+        float: left;
+        width: auto;
+      }
+
+      .make-button {
+        position: relative;
+        margin-right: 5px;
+      }
+    }
+
+    .make-button {
+      position: absolute;
+      bottom: @contentBottomMargin;
+      right: 0;
+      margin-right: @contentSideMargin;
+      font-size: 0.8em;
+      border: solid 2px white;
+      border-radius: 5px;
+      padding: 0 5px;
+      cursor: pointer;
+      -webkit-transition: all @hoverTime; /* Safari */
+      transition: all @hoverTime;
+    }
+
+    .make-button:hover {
+      background-color: white;
+      color: @yellow;
+    }
+
+    .mixer {
+      position: absolute;
+      top: 0;
+      height: @panel1MixerHeight;
+      left: 50%;
+      margin-left: -@panel1MixerHeight/2;
+      z-index: 1;
+
+      img {
+        position: absolute;
+        top: 0;
+        display: none;
+        height: inherit;
+      }
+
+      img.selected {
+        display: block;
+      }
+    }
+  }
+  .mixer-panel-1 {
+    background-color: @yellow;
+  }
+  .mixer-panel-2 {
+    background-color: @blue;
+
+    .make-button:hover {
+      color: @blue;
+    }
+
+    .social {
+      .fb:hover {
+        background: linear-gradient(
+          rgba(104, 151, 195, 0.45), 
+          rgba(104, 151, 195, 0.45)
+        ), url(/images/standmixer/social.png);
+        background-position: -1px 0px;
+      }
+      .tw:hover {
+        background: linear-gradient(
+          rgba(104, 151, 195, 0.45), 
+          rgba(104, 151, 195, 0.45)
+        ), url(/images/standmixer/social.png);
+        background-position: 0px 105px;
+      }
+      .in:hover {
+        background: linear-gradient(
+          rgba(104, 151, 195, 0.45), 
+          rgba(104, 151, 195, 0.45)
+        ), url(/images/standmixer/social.png);
+        background-position: 0px 70px;
+      }
+      .pin:hover {
+        background: linear-gradient(
+          rgba(104, 151, 195, 0.45), 
+          rgba(104, 151, 195, 0.45)
+        ), url(/images/standmixer/social.png);
+        background-position: 0px 35px;
+      }
+    }
+  }
+}
