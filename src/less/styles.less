@@ -7,6 +7,7 @@
 
 @yellow: #fccd1f;
 @blue: #6897c3;
+@blueHighlight: #005c7c;
 
 @hoverTime: 0.3s;
 
@@ -111,7 +112,7 @@ body {
     padding: 0;
     float: none;
   }
-
+  ul {list-style: none;}
   h1 {font-size: 2em;}
   h2 {font-size: 1.5em;}
   h3 {font-size: 1.17em;}
@@ -311,6 +312,7 @@ body {
     }
 
     .copy {
+      display: none;
       position: relative;
       max-width: 350px;
       margin: 117px 0 0 20px;
@@ -407,6 +409,11 @@ body {
       color: @yellow;
     }
 
+    .make-button.selected {
+      background-color: white;
+      cursor: initial;
+    }
+
     .mixer {
       position: absolute;
       top: 0;
@@ -426,16 +433,173 @@ body {
         display: block;
       }
     }
+
+    .mixer-nav {
+      position: absolute;
+      top: 23%;
+      z-index: 5;
+
+      > * {
+        float: left;
+      }
+
+      > *:not(img) {
+        margin: 0 10px;
+        line-height: 15px;
+      }
+
+      img {
+        width: 15px;
+        cursor: pointer;
+        opacity: 0.7;
+        -webkit-transition: all @hoverTime; /* Safari */
+        transition: all @hoverTime;
+      }
+
+      img:last-child {
+        -ms-transform: rotate(180deg); /* IE 9 */
+        -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+        transform: rotate(180deg);
+      }
+
+      img:hover {
+        opacity: 1;
+      }
+    }
+
+    .infobox {
+      position: absolute;
+      right: 0;
+      margin-right: @contentSideMargin;
+      width: 340px;
+      height: 400px;
+      top: 170px;
+      display: none;
+
+      .infomenu {
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+
+        .selected {
+          border: 2px solid white;
+          border-bottom: none;
+          font-weight: 600;
+          cursor: initial;
+          height: 27px;
+        }
+
+        li {
+          height: 25px;
+          float: left;
+          margin-right: 2px;
+          padding: 0 5px;
+          border: 2px transparent;
+          cursor: pointer;
+        }
+
+        li:last-child {
+          margin-right: 0px;
+        }
+      }
+
+      .content {
+        border: 2px solid white;
+        height: 100%;
+        width: 100%;
+        top: 27px;
+        position: absolute;
+        z-index: 1;
+
+        > div {
+          display: none;
+          width: 310px;
+          height: 255px;
+          padding: 10px 15px;
+          position: absolute;
+        }
+
+        .info {
+          > div {
+            height: 30px;
+            border-bottom: 1px solid white;
+          }
+          
+          > div .title {
+            float: left;
+            top: 0;
+            left: 0;
+            position: relative;
+            margin-left: 0px;
+          }
+          
+          > div .price {float: right;}
+
+          .one li {width: 100%;}
+          .two li {width: 50%;}
+          .three li {width: 33%;}
+
+          ul {
+            margin-top: 10px;
+
+            li {
+              width: 50%;
+              float: left;
+              font-size: 0.8em;
+            }
+          }
+        }
+
+        .tips {
+          ul {
+            list-style: initial;
+            padding-left: 20px;
+
+            li:first-child {
+              margin-left: -20px;
+              list-style: none;
+            }
+          }
+        }
+
+        .gallery {
+          ul {
+            height: 100%;
+            margin-top: 23px;
+
+            li {
+              width: 30%;
+              margin-right: 3%;
+              margin-top: 3%;
+              float: left;
+              border: 1px solid white;
+            }
+
+            li:nth-child(3n) {
+              margin-right: 0;
+            }
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
   }
   .mixer-panel-1 {
     background-color: @yellow;
+
+    .copy {
+      display: block;
+    }
   }
   .mixer-panel-2 {
     background-color: @blue;
-
-    .make-button:hover {
-      color: @blue;
-    }
+    .infobox > div {background-color: @blue;}
+    .infobox .infomenu li {background-color: @blue;}
+    .mixer-nav > * {color: @blueHighlight;}
+    .make-button:hover,.make-button.selected {color: @blue;}
 
     .social {
       .fb:hover {

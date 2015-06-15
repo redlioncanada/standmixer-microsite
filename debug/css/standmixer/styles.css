@@ -153,6 +153,9 @@ body {
   padding: 0;
   float: none;
 }
+#main-container ul {
+  list-style: none;
+}
 #main-container h1 {
   font-size: 2em;
 }
@@ -331,6 +334,7 @@ body {
   position: relative;
 }
 #main-container .mixer-panel .copy {
+  display: none;
   position: relative;
   max-width: 350px;
   margin: 117px 0 0 20px;
@@ -414,6 +418,10 @@ body {
   background-color: white;
   color: #fccd1f;
 }
+#main-container .mixer-panel .make-button.selected {
+  background-color: white;
+  cursor: initial;
+}
 #main-container .mixer-panel .mixer {
   position: absolute;
   top: 0;
@@ -431,13 +439,159 @@ body {
 #main-container .mixer-panel .mixer img.selected {
   display: block;
 }
+#main-container .mixer-panel .mixer-nav {
+  position: absolute;
+  top: 23%;
+  z-index: 5;
+}
+#main-container .mixer-panel .mixer-nav > * {
+  float: left;
+}
+#main-container .mixer-panel .mixer-nav > *:not(img) {
+  margin: 0 10px;
+  line-height: 15px;
+}
+#main-container .mixer-panel .mixer-nav img {
+  width: 15px;
+  cursor: pointer;
+  opacity: 0.7;
+  -webkit-transition: all 0.3s;
+  /* Safari */
+  transition: all 0.3s;
+}
+#main-container .mixer-panel .mixer-nav img:last-child {
+  -ms-transform: rotate(180deg);
+  /* IE 9 */
+  -webkit-transform: rotate(180deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+#main-container .mixer-panel .mixer-nav img:hover {
+  opacity: 1;
+}
+#main-container .mixer-panel .infobox {
+  position: absolute;
+  right: 0;
+  margin-right: 40px;
+  width: 340px;
+  height: 400px;
+  top: 170px;
+  display: none;
+}
+#main-container .mixer-panel .infobox .infomenu {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+}
+#main-container .mixer-panel .infobox .infomenu .selected {
+  border: 2px solid white;
+  border-bottom: none;
+  font-weight: 600;
+  cursor: initial;
+  height: 27px;
+}
+#main-container .mixer-panel .infobox .infomenu li {
+  height: 25px;
+  float: left;
+  margin-right: 2px;
+  padding: 0 5px;
+  border: 2px transparent;
+  cursor: pointer;
+}
+#main-container .mixer-panel .infobox .infomenu li:last-child {
+  margin-right: 0px;
+}
+#main-container .mixer-panel .infobox .content {
+  border: 2px solid white;
+  height: 100%;
+  width: 100%;
+  top: 27px;
+  position: absolute;
+  z-index: 1;
+}
+#main-container .mixer-panel .infobox .content > div {
+  display: none;
+  width: 310px;
+  height: 255px;
+  padding: 10px 15px;
+  position: absolute;
+}
+#main-container .mixer-panel .infobox .content .info > div {
+  height: 30px;
+  border-bottom: 1px solid white;
+}
+#main-container .mixer-panel .infobox .content .info > div .title {
+  float: left;
+  top: 0;
+  left: 0;
+  position: relative;
+  margin-left: 0px;
+}
+#main-container .mixer-panel .infobox .content .info > div .price {
+  float: right;
+}
+#main-container .mixer-panel .infobox .content .info .one li {
+  width: 100%;
+}
+#main-container .mixer-panel .infobox .content .info .two li {
+  width: 50%;
+}
+#main-container .mixer-panel .infobox .content .info .three li {
+  width: 33%;
+}
+#main-container .mixer-panel .infobox .content .info ul {
+  margin-top: 10px;
+}
+#main-container .mixer-panel .infobox .content .info ul li {
+  width: 50%;
+  float: left;
+  font-size: 0.8em;
+}
+#main-container .mixer-panel .infobox .content .tips ul {
+  list-style: initial;
+  padding-left: 20px;
+}
+#main-container .mixer-panel .infobox .content .tips ul li:first-child {
+  margin-left: -20px;
+  list-style: none;
+}
+#main-container .mixer-panel .infobox .content .gallery ul {
+  height: 100%;
+  margin-top: 23px;
+}
+#main-container .mixer-panel .infobox .content .gallery ul li {
+  width: 30%;
+  margin-right: 3%;
+  margin-top: 3%;
+  float: left;
+  border: 1px solid white;
+}
+#main-container .mixer-panel .infobox .content .gallery ul li:nth-child(3n) {
+  margin-right: 0;
+}
+#main-container .mixer-panel .infobox .content .gallery ul img {
+  width: 100%;
+}
 #main-container .mixer-panel-1 {
   background-color: #fccd1f;
+}
+#main-container .mixer-panel-1 .copy {
+  display: block;
 }
 #main-container .mixer-panel-2 {
   background-color: #6897c3;
 }
-#main-container .mixer-panel-2 .make-button:hover {
+#main-container .mixer-panel-2 .infobox > div {
+  background-color: #6897c3;
+}
+#main-container .mixer-panel-2 .infobox .infomenu li {
+  background-color: #6897c3;
+}
+#main-container .mixer-panel-2 .mixer-nav > * {
+  color: #005c7c;
+}
+#main-container .mixer-panel-2 .make-button:hover,
+#main-container .mixer-panel-2 .make-button.selected {
   color: #6897c3;
 }
 #main-container .mixer-panel-2 .social .fb:hover {
