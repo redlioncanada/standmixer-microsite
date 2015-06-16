@@ -10,7 +10,7 @@ if (isMobile) {
 }
 
 $(document).ready(function () {
-    //start first panel mixer change
+    //change the mixer on the first panel at a set interval
     var mixerTimeout = undefined;
     resetMixerInterval();
     function resetMixerInterval() {
@@ -19,13 +19,11 @@ $(document).ready(function () {
             changeMixer();
         }, 5000);
     }
-
     $(".categories").on("click", "li:not(\".selected,.title\")", function () {
         var id = $(this).index();
         resetMixerInterval();
         changeMixer(id);
     });
-
     function changeMixer(id) {
         if (typeof id === "undefined") {
             id = $(".mixer-panel-1 .categories .selected").index() + 1;
@@ -35,9 +33,12 @@ $(document).ready(function () {
         var target = $(".mixer-panel-1 .categories li").eq(id);
 
         //change mixer image
-        $(".mixer-panel-1 .mixer .selected").fadeOut(500);
         $(".mixer-panel-1 .mixer img").eq(id - 1).fadeIn(400, function () {
-            $(this).addClass("selected");
+            var self = this;
+            $(".mixer-panel-1 .mixer .selected").fadeOut(500, function () {
+                $(this).removeClass("selected");
+                $(self).addClass("selected");
+            });
         });
 
         //change menu selection
@@ -46,6 +47,7 @@ $(document).ready(function () {
     }
     //end first panel mixer change
 
+    //on attachment button click, change the current attachment
     $(".menu li").click(function () {
         if ($(this).find("span").hasClass("selected")) return;
         var p = $(this).closest(".mixer-panel");
@@ -69,6 +71,7 @@ $(document).ready(function () {
         $(this).find("span").addClass("selected");
     });
 
+    //on 'choose attachment' arrow click, change the current attachment
     $(".mixer-nav .nav-left").click(function () {
         var p = $(this).closest(".mixer-panel");
         var m = $(p).find(".menu");
@@ -77,7 +80,6 @@ $(document).ready(function () {
         if (id - 1 < 0) id = $(m).find("li").length - 1;else id--;
         $(m).find("li").eq(id).click();
     });
-
     $(".mixer-nav .nav-right").click(function () {
         var p = $(this).closest(".mixer-panel");
         var m = $(p).find(".menu");
@@ -87,8 +89,9 @@ $(document).ready(function () {
         $(m).find("li").eq(id).click();
     });
 
+    //on infobox tab click, change the window
     $(".infobox .infomenu li").click(function () {
-        var p = $(this).parent().parent();
+        var p = $(this).closest(".mixer-panel");
 
         var old = $(p).find(".infomenu .selected");
         var oldId = $(old).attr("data-id");
@@ -96,8 +99,74 @@ $(document).ready(function () {
         $(old).removeClass("selected");
 
         var id = $(this).attr("data-id");
-        $(p).find(".content [data-id='" + id + "']").fadeIn();
-        $(this).addClass("selected");
+        $(p).find(".infobox .content [data-id='" + id + "']").fadeIn();
+        $(p).find(".infobox .infomenu li[data-id='" + id + "']").addClass("selected");
+    });
+
+    //on gallery image click, expand it and show close button
+    $(".infobox .gallery li").click(function () {
+        var p = $(this).closest(".gallery");
+        if ($(p).find("img.expanded").length) return;
+        var img = $(this).find("img");
+        var id = $(this).index();
+
+        var oTop = $(img).position().top - 1;
+        var oLeft = $(img).position().left - 1;
+        var oWidth = $(img).width();
+        var oHeight = $(img).height() + 1;
+
+        img = $(img).clone().css({
+            top: oTop,
+            left: oLeft,
+            width: oWidth,
+            height: oHeight,
+            position: "absolute",
+            border: "solid 1px white",
+            cursor: "pointer"
+        }).addClass("expanded").attr("data-id", id).appendTo(p);
+
+        var first = $(p).find("li").first();
+        var nTop = $(first).position().top;
+        var nLeft = $(first).position().left;
+        var nWidth = $(p).width();
+        var nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2;
+
+        var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" class=\"close\">X</div>").appendTo(p);
+
+        $(img).animate({
+            top: nTop,
+            left: nLeft,
+            width: nWidth,
+            height: nHeight
+        }, function () {
+            $(close).fadeIn();
+        });
+    });
+
+    //on expanded gallery image click, remove it
+    $(".infobox .gallery").on("click", ".expanded,.close", function () {
+        var p = $(this).closest(".gallery");
+        var exp = $(p).find(".expanded");
+        var id = $(exp).attr("data-id");
+        var img = $(p).find("li").eq(id);
+
+        $(p).find(".close").fadeOut(function () {
+            $(this).remove();
+
+            var oTop = parseInt($(img).position().top) + 9;
+            var oLeft = $(img).position().left;
+            var oWidth = $(img).width();
+            var oHeight = $(img).height() + 1;
+
+            $(exp).animate({
+                top: oTop,
+                left: oLeft,
+                width: oWidth,
+                height: oHeight
+            }, function () {
+                $(exp).remove();
+            });
+        });
     });
 
     //on load complete, hide overlay
@@ -114,7 +183,7 @@ $(document).ready(function () {
     //on window resize, resize components
     $(window).resize(redraw);
     function redraw() {
-        var left = $(window).width() / 2 - $(".mixer-nav").width();
+        var left = $(window).width() / 2 - $(".mixer-nav").width() + 10;
         $(".mixer-nav").css("left", left);
     }
 });

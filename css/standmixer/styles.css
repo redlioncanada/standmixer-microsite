@@ -1,3 +1,15 @@
+.loading-yellow .pace {
+  background-color: #fde68f;
+}
+.loading-yellow #main-container div#loading {
+  background-color: #fccd1f;
+}
+.loading-blue .pace {
+  background-color: #005c7c;
+}
+.loading-blue #main-container div#loading {
+  background-color: #6897c3;
+}
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -11,10 +23,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 5px;
+  height: 15px;
   width: 200px;
-  border-right: 1px solid #fff;
+  background-color: #fde68f;
   overflow: hidden;
+  border-radius: 5px;
 }
 .pace .pace-progress {
   -webkit-box-sizing: border-box;
@@ -250,43 +263,31 @@ body {
   margin-right: 8px;
   background: url(/images/standmixer/social.png);
   cursor: pointer;
-  -webkit-transition: all 0.3s;
+  -webkit-transition: background-color 0.3s;
   /* Safari */
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 }
 #main-container .mixer-header .social li div {
   height: 100%;
   width: 100%;
+  border-radius: 35px;
 }
 #main-container .mixer-header .social li:last-child {
   margin-right: 0px;
 }
-#main-container .mixer-header .social .fb {
-  background-position: -1px 0px;
+#main-container .mixer-header .social li:hover {
+  background-color: white;
 }
-#main-container .mixer-header .social .fb:hover {
-  background: linear-gradient(rgba(252, 205, 31, 0.45), rgba(252, 205, 31, 0.45)), url(/images/standmixer/social.png);
+#main-container .mixer-header .social .fb {
   background-position: -1px 0px;
 }
 #main-container .mixer-header .social .tw {
   background-position: 0px 105px;
 }
-#main-container .mixer-header .social .tw:hover {
-  background: linear-gradient(rgba(252, 205, 31, 0.45), rgba(252, 205, 31, 0.45)), url(/images/standmixer/social.png);
-  background-position: 0px 105px;
-}
 #main-container .mixer-header .social .in {
   background-position: 0px 70px;
 }
-#main-container .mixer-header .social .in:hover {
-  background: linear-gradient(rgba(252, 205, 31, 0.45), rgba(252, 205, 31, 0.45)), url(/images/standmixer/social.png);
-  background-position: 0px 70px;
-}
 #main-container .mixer-header .social .pin {
-  background-position: 0px 35px;
-}
-#main-container .mixer-header .social .pin:hover {
-  background: linear-gradient(rgba(252, 205, 31, 0.45), rgba(252, 205, 31, 0.45)), url(/images/standmixer/social.png);
   background-position: 0px 35px;
 }
 #main-container .mixer-panel {
@@ -336,8 +337,8 @@ body {
 #main-container .mixer-panel .copy {
   display: none;
   position: relative;
-  max-width: 350px;
-  margin: 117px 0 0 20px;
+  max-width: 325px;
+  margin: 135px 0 0 20px;
 }
 #main-container .mixer-panel .available-in {
   position: absolute;
@@ -441,7 +442,7 @@ body {
 }
 #main-container .mixer-panel .mixer-nav {
   position: absolute;
-  top: 23%;
+  top: 22.7%;
   z-index: 5;
 }
 #main-container .mixer-panel .mixer-nav > * {
@@ -449,10 +450,10 @@ body {
 }
 #main-container .mixer-panel .mixer-nav > *:not(img) {
   margin: 0 10px;
-  line-height: 15px;
+  line-height: 18px;
 }
 #main-container .mixer-panel .mixer-nav img {
-  width: 15px;
+  width: 20px;
   cursor: pointer;
   opacity: 0.7;
   -webkit-transition: all 0.3s;
@@ -486,17 +487,35 @@ body {
 #main-container .mixer-panel .infobox .infomenu .selected {
   border: 2px solid white;
   border-bottom: none;
+  margin-right: 0px;
   font-weight: 600;
   cursor: initial;
   height: 27px;
 }
+#main-container .mixer-panel .infobox .infomenu li:not(.selected) > div {
+  display: none;
+}
 #main-container .mixer-panel .infobox .infomenu li {
   height: 25px;
   float: left;
-  margin-right: 2px;
-  padding: 0 5px;
+  margin-right: 5px;
   border: 2px transparent;
   cursor: pointer;
+}
+#main-container .mixer-panel .infobox .infomenu li > * {
+  float: left;
+}
+#main-container .mixer-panel .infobox .infomenu li > span {
+  margin: 0 5px;
+}
+#main-container .mixer-panel .infobox .infomenu li > div {
+  background: url(/images/standmixer/diagonal.png) -4px -1px;
+  height: 29px;
+  width: 15px;
+  margin: -2px;
+}
+#main-container .mixer-panel .infobox .infomenu li > div:last-child {
+  background-position: -1px 37px;
 }
 #main-container .mixer-panel .infobox .infomenu li:last-child {
   margin-right: 0px;
@@ -506,6 +525,7 @@ body {
   height: 100%;
   width: 100%;
   top: 27px;
+  font-size: 0.9em;
   position: absolute;
   z-index: 1;
 }
@@ -530,22 +550,37 @@ body {
 #main-container .mixer-panel .infobox .content .info > div .price {
   float: right;
 }
+#main-container .mixer-panel .infobox .content .info .two {
+  margin-top: 15%;
+}
 #main-container .mixer-panel .infobox .content .info .one li {
-  width: 100%;
+  width: 87%;
 }
 #main-container .mixer-panel .infobox .content .info .two li {
-  width: 50%;
+  width: 42%;
+  height: 70px;
+  padding: 10px 10px;
+}
+#main-container .mixer-panel .infobox .content .info .two li span {
+  margin-top: 10px;
+}
+#main-container .mixer-panel .infobox .content .info .two li img {
+  margin-top: -10%;
 }
 #main-container .mixer-panel .infobox .content .info .three li {
-  width: 33%;
+  width: 28%;
 }
 #main-container .mixer-panel .infobox .content .info ul {
   margin-top: 10px;
 }
+#main-container .mixer-panel .infobox .content .info ul img {
+  float: right;
+}
 #main-container .mixer-panel .infobox .content .info ul li {
-  width: 50%;
+  width: 87%;
   float: left;
   font-size: 0.8em;
+  padding: 10px 20px;
 }
 #main-container .mixer-panel .infobox .content .tips ul {
   list-style: initial;
@@ -555,28 +590,58 @@ body {
   margin-left: -20px;
   list-style: none;
 }
+#main-container .mixer-panel .infobox .content .gallery .close {
+  position: absolute;
+  font-size: 25pt;
+  cursor: pointer;
+  display: none;
+}
 #main-container .mixer-panel .infobox .content .gallery ul {
   height: 100%;
   margin-top: 23px;
 }
 #main-container .mixer-panel .infobox .content .gallery ul li {
+  height: 37%;
   width: 30%;
   margin-right: 3%;
-  margin-top: 3%;
+  margin-top: 10px;
   float: left;
   border: 1px solid white;
+  cursor: pointer;
 }
 #main-container .mixer-panel .infobox .content .gallery ul li:nth-child(3n) {
   margin-right: 0;
 }
 #main-container .mixer-panel .infobox .content .gallery ul img {
+  height: 100%;
+}
+#main-container .mixer-panel .infobox[data-id="1"] .content .info .attachment {
+  width: 54%;
+}
+#main-container .mixer-panel .infobox[data-id="2"] .content .info .attachment {
+  width: 36%;
+}
+#main-container .mixer-panel .infobox[data-id="3"] .content .info .attachment {
   width: 100%;
+  padding-top: 30%;
 }
 #main-container .mixer-panel-1 {
   background-color: #fccd1f;
 }
 #main-container .mixer-panel-1 .copy {
   display: block;
+}
+#main-container .mixer-panel-1 .social .fb:hover {
+  background-position: 69px 0px;
+}
+#main-container .mixer-panel-1 .social .tw:hover {
+  background-position: 70px 105px;
+}
+#main-container .mixer-panel-1 .social .in:hover {
+  background-position: 70px 70px;
+}
+#main-container .mixer-panel-1 .social .pin:hover {
+  background-position: 70px 35px;
 }
 #main-container .mixer-panel-2 {
   background-color: #6897c3;
@@ -587,6 +652,9 @@ body {
 #main-container .mixer-panel-2 .infobox .infomenu li {
   background-color: #6897c3;
 }
+#main-container .mixer-panel-2 .infobox .infomenu li div {
+  background-color: #6897c3;
+}
 #main-container .mixer-panel-2 .mixer-nav > * {
   color: #005c7c;
 }
@@ -595,18 +663,14 @@ body {
   color: #6897c3;
 }
 #main-container .mixer-panel-2 .social .fb:hover {
-  background: linear-gradient(rgba(104, 151, 195, 0.45), rgba(104, 151, 195, 0.45)), url(/images/standmixer/social.png);
-  background-position: -1px 0px;
+  background-position: 34px 0px;
 }
 #main-container .mixer-panel-2 .social .tw:hover {
-  background: linear-gradient(rgba(104, 151, 195, 0.45), rgba(104, 151, 195, 0.45)), url(/images/standmixer/social.png);
-  background-position: 0px 105px;
+  background-position: 35px 105px;
 }
 #main-container .mixer-panel-2 .social .in:hover {
-  background: linear-gradient(rgba(104, 151, 195, 0.45), rgba(104, 151, 195, 0.45)), url(/images/standmixer/social.png);
-  background-position: 0px 70px;
+  background-position: 35px 70px;
 }
 #main-container .mixer-panel-2 .social .pin:hover {
-  background: linear-gradient(rgba(104, 151, 195, 0.45), rgba(104, 151, 195, 0.45)), url(/images/standmixer/social.png);
-  background-position: 0px 35px;
+  background-position: 35px 35px;
 }

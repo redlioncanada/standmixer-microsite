@@ -20,15 +20,9 @@ gulp.task("default", function() {
     gulp.watch('src/**/*.html', ['html']);
 });
 
-gulp.task("production", function() {
-    gulp.watch('src/js/**/*.js', ['jsmin']);
-    gulp.watch('src/less/**/*.less', ['cssmin']);
-    gulp.watch('src/**/*.html', ['htmlmin']);
-});
-
 gulp.task("html", function() {
     return gulp.src("src/**/*.html")
-        .pipe(gulp.dest("debug"))
+        .pipe(gulp.dest(""))
         .pipe(plugins.livereload());
 });
 
@@ -37,7 +31,7 @@ gulp.task("js", function () {
     b.on('error',function(e){console.log('error parsing js: '+e);b.end()});
   return gulp.src("src/js/**/*.js")
     .pipe(b)
-    .pipe(gulp.dest("debug/js/"+folderName))
+    .pipe(gulp.dest("js/"+folderName))
     .pipe(plugins.livereload())
     .pipe(gulp.dest("/Users/stepoole/Desktop/_upload/js/"+folderName))
     .pipe(gulp.dest("../javascript/"+folderName));
@@ -46,31 +40,8 @@ gulp.task("js", function () {
 gulp.task("css", function() {
 	return gulp.src("src/less/**/*.less")
 		.pipe(less())
-		.pipe(gulp.dest("debug/css/"+folderName))
+		.pipe(gulp.dest("css/"+folderName))
         .pipe(plugins.livereload())
         .pipe(gulp.dest("/Users/stepoole/Desktop/_upload/css/"+folderName))
         .pipe(gulp.dest("../css/"+folderName));
-});
-
-gulp.task("htmlmin", function() {
-    return gulp.src("src/**/*.html")
-        .pipe(minifyHtml())
-        .pipe(gulp.dest("."))
-});
-
-gulp.task("jsmin", function () {
-    var b = babel(babeloptions);
-    b.on('error',function(){console.log('error parsing js');b.end()});
-  return gulp.src("src/js/**/*.js")
-    .pipe(b)
-    .pipe(stripDebug())
-    .pipe(uglify())
-    .pipe(gulp.dest("js"));
-});
-
-gulp.task("cssmin", function() {
-    return gulp.src("src/less/**/*.less")
-        .pipe(less())
-        .pipe(minifyCss())
-        .pipe(gulp.dest("css"));
 });
