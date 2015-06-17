@@ -19,31 +19,19 @@ $(document).ready(function () {
             changeMixer();
         }, 5000);
     }
-    $(".categories").on("click", "li:not(\".selected,.title\")", function () {
-        var id = $(this).index();
-        resetMixerInterval();
-        changeMixer(id);
-    });
     function changeMixer(id) {
         if (typeof id === "undefined") {
-            id = $(".mixer-panel-1 .categories .selected").index() + 1;
-            if (id > $(".mixer-panel-1 .categories li").length - 1) id = 1;
+            id = $(".mixer-panel-1 .mixer .selected").index() + 1;
+            if (id > $(".mixer-panel-1 .mixer img").length - 1) id = 0;
         }
-
-        var target = $(".mixer-panel-1 .categories li").eq(id);
-
         //change mixer image
-        $(".mixer-panel-1 .mixer img").eq(id - 1).fadeIn(400, function () {
+        $(".mixer-panel-1 .mixer img").eq(id).fadeIn(400, function () {
             var self = this;
             $(".mixer-panel-1 .mixer .selected").fadeOut(500, function () {
                 $(this).removeClass("selected");
                 $(self).addClass("selected");
             });
         });
-
-        //change menu selection
-        $(".mixer-panel-1 .categories .selected").removeClass("selected");
-        $(target).addClass("selected");
     }
     //end first panel mixer change
 
@@ -55,9 +43,12 @@ $(document).ready(function () {
         var id = $(this).index();
 
         //change mixer image
-        $(img).find(".selected").fadeOut(500);
         $(img).find("img").eq(id).fadeIn(400, function () {
-            $(this).addClass("selected");
+            var self = this;
+            $(img).find(".selected").fadeOut(400, function () {
+                $(this).removeClass("selected");
+                $(self).addClass("selected");
+            });
         });
 
         //change copy
@@ -70,6 +61,7 @@ $(document).ready(function () {
         $(this).closest(".menu").find(".selected").removeClass("selected");
         $(this).find("span").addClass("selected");
     });
+    //end attachment button click
 
     //on 'choose attachment' arrow click, change the current attachment
     $(".mixer-nav .nav-left").click(function () {
@@ -88,6 +80,7 @@ $(document).ready(function () {
         if (id + 1 > $(m).find("li").length - 1) id = 0;else id++;
         $(m).find("li").eq(id).click();
     });
+    //end 'choose attachment' arrow click
 
     //on infobox tab click, change the window
     $(".infobox .infomenu li").click(function () {
@@ -102,6 +95,7 @@ $(document).ready(function () {
         $(p).find(".infobox .content [data-id='" + id + "']").fadeIn();
         $(p).find(".infobox .infomenu li[data-id='" + id + "']").addClass("selected");
     });
+    //end infobox tab click
 
     //on gallery image click, expand it and show close button
     $(".infobox .gallery li").click(function () {
@@ -142,6 +136,7 @@ $(document).ready(function () {
             $(close).fadeIn();
         });
     });
+    //end gallery image click
 
     //on expanded gallery image click, remove it
     $(".infobox .gallery").on("click", ".expanded,.close", function () {
@@ -168,22 +163,35 @@ $(document).ready(function () {
             });
         });
     });
+    //end expanded gallery image click
 
     //on load complete, hide overlay
     Pace.on("done", function () {
         $("#loading").fadeOut();
     });
+    //end load complete
 
-    //on click-to-top click, go to top
+    //on back-to-top click, go to top
     $(".back-to-top").click(function () {
         $("body").animate({ scrollTop: 0 }, "400");
     });
+    //end back-to-top click
 
-    setTimeout(redraw, 500);
+    //on anchor click, animate to the target location
+    $("a[href*=#]").click(function (event) {
+        $("html, body").animate({
+            scrollTop: $($.attr(this, "href")).offset().top
+        }, 500);
+        event.preventDefault();
+    });
+    //end anchor click
+
     //on window resize, resize components
+    setTimeout(redraw, 500);
     $(window).resize(redraw);
     function redraw() {
         var left = $(window).width() / 2 - $(".mixer-nav").width() + 10;
         $(".mixer-nav").css("left", left);
     }
+    //end window resize
 });
