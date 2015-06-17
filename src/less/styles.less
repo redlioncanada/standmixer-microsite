@@ -148,6 +148,10 @@ body {
     color: white;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   a img {
     border: 0;
   }
@@ -186,7 +190,7 @@ body {
     > div {
       position: relative;
       height: 47px;
-      margin: 15px @contentSideMargin;
+      margin: 20px @contentSideMargin;
       border-bottom: 3px solid white;
     }
 
@@ -286,13 +290,12 @@ body {
     .copy {
       display: none;
       position: relative;
-      max-width: 325px;
-      margin: 135px 0 0 20px;
+      max-width: 312px;
+      margin: 125px 0 0 20px;
     }
 
     .available-in {
       position: absolute;
-      width: 150px;
       font-size: 0.8em;
       margin-left: 20px;
       bottom: @contentBottomMargin;
@@ -338,9 +341,18 @@ body {
         transition: all @hoverTime;
       }
 
+      li a {
+        -webkit-transition: all @hoverTime; /* Safari */
+        transition: all @hoverTime;
+      }
+
       li:not(.title):hover {
         border-radius: 5px;
         background-color: white;
+        color: @yellow;
+      }
+
+      li:not(.title):hover a {
         color: @yellow;
       }
     }
@@ -360,6 +372,10 @@ body {
         position: relative;
         margin-right: 5px;
       }
+    }
+
+    > div > .make-button {
+      bottom: @contentBottomMargin+15;
     }
 
     .make-button {
@@ -475,6 +491,10 @@ body {
 
           > * {
             float: left;
+          }
+
+          > span:lang(fr) {
+            font-size: 0.8em;
           }
 
           > span {
@@ -627,6 +647,12 @@ body {
   }
   .mixer-panel-1 {
     background-color: @yellow;
+
+    .mixer-header .title {
+      height: 28px;
+      bottom: 10px;
+      position: absolute;
+    }
 
     .copy {
       display: block;
