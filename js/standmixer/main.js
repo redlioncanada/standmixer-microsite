@@ -43,7 +43,7 @@ $(document).ready(function () {
         var id = $(this).index();
 
         //change mixer image
-        $(img).find("img").eq(id).fadeIn(400, function () {
+        $(img).find("img").eq(id).fadeIn(300, function () {
             var self = this;
             $(img).find(".selected").fadeOut(400, function () {
                 $(this).removeClass("selected");
@@ -190,7 +190,7 @@ $(document).ready(function () {
     setTimeout(redraw, 500);
     $(window).resize(redraw);
     function redraw() {
-        var left = $(window).width() / 2 - $(".mixer-nav").width() + 10;
+        var left = $("#main-container").width() / 2 - $(".mixer-nav").width() + $(".mixer-nav").width() * 0.11;
         $(".mixer-nav").css("left", left);
     }
     //end window resize

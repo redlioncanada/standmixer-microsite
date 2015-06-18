@@ -1,5 +1,5 @@
 .loading-yellow .pace {
-  background-color: #fde68f;
+  background-color: #e3a22b;
 }
 .loading-yellow #main-container div#loading {
   background-color: #fccd1f;
@@ -83,6 +83,7 @@ body {
   line-height: 1.5;
   margin: 0;
   padding: 0;
+  min-width: 1366px;
   font-family: 'Avenir-Medium', 'Helvetica', Arial, sans-serif;
   letter-spacing: -0.2px;
   z-index: 1;
@@ -411,8 +412,22 @@ body {
   position: relative;
   margin-right: 5px;
 }
-#main-container .mixer-panel > div > .make-button {
-  bottom: 45px;
+#main-container .mixer-panel .cta-button {
+  position: absolute;
+  bottom: 40px;
+  height: 18px;
+  right: 0;
+  margin-right: 40px;
+  font-size: 0.8em;
+  cursor: pointer;
+  border-bottom: solid 1px white;
+  -webkit-transition: all 0.3s;
+  /* Safari */
+  transition: all 0.3s;
+}
+#main-container .mixer-panel .cta-button:hover {
+  color: #e3a22b;
+  border-bottom: solid 1px #e3a22b;
 }
 #main-container .mixer-panel .make-button {
   position: absolute;
@@ -462,7 +477,7 @@ body {
   float: left;
 }
 #main-container .mixer-panel .mixer-nav > *:not(img) {
-  margin: 0 10px;
+  margin: 0 4px;
   line-height: 18px;
 }
 #main-container .mixer-panel .mixer-nav img {
@@ -566,41 +581,58 @@ body {
 #main-container .mixer-panel .infobox .content .info > div .price {
   float: right;
 }
-#main-container .mixer-panel .infobox .content .info .two {
-  margin-top: 15%;
-}
 #main-container .mixer-panel .infobox .content .info .one li {
   width: 87%;
 }
+#main-container .mixer-panel .infobox .content .info .one li span {
+  top: 23px;
+}
+#main-container .mixer-panel .infobox .content .info .two {
+  margin-top: 15%;
+}
 #main-container .mixer-panel .infobox .content .info .two li {
-  width: 42%;
+  width: 38%;
   height: 70px;
   padding: 10px 10px;
+  margin-left: 11px;
 }
 #main-container .mixer-panel .infobox .content .info .two li span {
-  margin-top: 10px;
+  top: 23px;
 }
-#main-container .mixer-panel .infobox .content .info .two li img {
-  margin-top: -10%;
+#main-container .mixer-panel .infobox .content .info .two li span.break {
+  top: 14px;
 }
 #main-container .mixer-panel .infobox .content .info .three li {
   width: 28%;
 }
 #main-container .mixer-panel .infobox .content .info ul {
-  margin-top: 10px;
+  margin-top: 23px;
+  position: relative;
 }
 #main-container .mixer-panel .infobox .content .info ul img {
   float: right;
 }
+#main-container .mixer-panel .infobox .content .info ul span {
+  position: absolute;
+}
 #main-container .mixer-panel .infobox .content .info ul li {
+  position: relative;
   width: 87%;
   float: left;
   font-size: 0.8em;
   padding: 10px 20px;
 }
+#main-container .mixer-panel .infobox .content .tips > div > div {
+  border-bottom: 1px solid white;
+  padding-bottom: 6px;
+}
+#main-container .mixer-panel .infobox .content .tips p {
+  margin-top: 5px;
+}
 #main-container .mixer-panel .infobox .content .tips ul {
   list-style: initial;
   padding-left: 20px;
+  margin-top: 10px;
 }
 #main-container .mixer-panel .infobox .content .tips ul li:first-child {
   margin-left: -20px;
@@ -608,7 +640,12 @@ body {
 }
 #main-container .mixer-panel .infobox .content .gallery .close {
   position: absolute;
-  font-size: 25pt;
+  width: 25px;
+  height: 25px;
+  border-radius: 16px;
+  text-align: center;
+  line-height: 25px;
+  border: 2px solid white;
   cursor: pointer;
   display: none;
 }
@@ -635,7 +672,7 @@ body {
   width: 54%;
 }
 #main-container .mixer-panel .infobox[data-id="2"] .content .info .attachment {
-  width: 36%;
+  width: 41%;
 }
 #main-container .mixer-panel .infobox[data-id="3"] .content .info .attachment {
   width: 100%;
@@ -676,12 +713,19 @@ body {
 #main-container .mixer-panel-2 .infobox .infomenu li div {
   background-color: #6897c3;
 }
+#main-container .mixer-panel-2 .infobox .content .selected * {
+  color: #005c7c;
+}
 #main-container .mixer-panel-2 .mixer-nav > * {
   color: #005c7c;
 }
 #main-container .mixer-panel-2 .make-button:hover,
 #main-container .mixer-panel-2 .make-button.selected {
   color: #6897c3;
+}
+#main-container .mixer-panel-2 .cta-button:hover {
+  color: #005c7c;
+  border-bottom: solid 1px #005c7c;
 }
 #main-container .mixer-panel-2 .social .fb:hover {
   background-position: 34px 0px;

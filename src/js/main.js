@@ -191,7 +191,7 @@ $(document).ready(function(){
     setTimeout(redraw,500);
     $(window).resize(redraw);
     function redraw() {
-        let left = $(window).width() / 2 - $('.mixer-nav').width() + 10;
+        let left = $('#main-container').width() / 2 - $('.mixer-nav').width() + $('.mixer-nav').width()*.11;
         $('.mixer-nav').css('left', left);
     }
     //end window resize
