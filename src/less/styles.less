@@ -6,7 +6,7 @@
 @socialWidth: 35px;
 
 @yellow: #fccd1f;
-@yellowHighlight: #fde68f;
+@yellowHighlight: #e3a22b;
 @blue: #6897c3;
 @blueHighlight: #005c7c;
 
@@ -105,6 +105,8 @@ body {
   margin: 0;
   padding: 0;
   color: white;
+  min-width: 1366px;
+  overflow-x: hidden;
    
   div, span, object, iframe, img, table, caption, thead, tbody,
   tfoot, tr, tr, td, article, aside, canvas, details, figure, hgroup, menu,
@@ -374,8 +376,22 @@ body {
       }
     }
 
-    > div > .make-button {
-      bottom: @contentBottomMargin+15;
+    .cta-button {
+      position: absolute;
+      bottom: @contentBottomMargin+10;
+      height: 18px;
+      right: 0;
+      margin-right: @contentSideMargin;
+      font-size: 0.8em;
+      cursor: pointer;
+      border-bottom: solid 1px white;
+      -webkit-transition: all @hoverTime; /* Safari */
+      transition: all @hoverTime;
+    }
+
+    .cta-button:hover {
+      color: @yellowHighlight;
+      border-bottom: solid 1px @yellowHighlight;
     }
 
     .make-button {
@@ -432,7 +448,7 @@ body {
       }
 
       > *:not(img) {
-        margin: 0 10px;
+        margin: 0 4px;
         line-height: 18px;
       }
 
@@ -551,33 +567,48 @@ body {
           
           > div .price {float: right;}
 
+          .one li {
+            width: 87%;
+
+            span {
+              top: 23px;
+            }
+          }
           .two {
             margin-top: 15%;
           }
-          .one li {width: 87%;}
           .two li {
-            width: 42%;
+            width: 38%;
             height: 70px;
             padding: 10px 10px;
+            margin-left: 11px;
 
             span {
-              margin-top: 10px;
+              top: 23px;
             }
 
-            img {
-              margin-top: -10%;
+            span.break {
+              top: 14px;
             }
           }
-          .three li {width: 28%;}
+          .three li {
+            width: 28%;
+          }
 
           ul {
-            margin-top: 10px;
+            margin-top: 23px;
+            position: relative;
 
             img {
               float: right;
             }
 
+            span {
+              position: absolute;
+            }
+
             li {
+              position: relative;
               width: 87%;
               float: left;
               font-size: 0.8em;
@@ -587,9 +618,19 @@ body {
         }
 
         .tips {
+          > div > div {
+            border-bottom: 1px solid white;
+            padding-bottom: 6px;
+          }
+
+          p {
+            margin-top: 5px;
+          }
+
           ul {
             list-style: initial;
             padding-left: 20px;
+            margin-top: 10px;
 
             li:first-child {
               margin-left: -20px;
@@ -601,7 +642,12 @@ body {
         .gallery {
           .close {
             position: absolute;
-            font-size: 25pt;
+            width: 25px;
+            height: 25px;
+            border-radius: 16px;
+            text-align: center;
+            line-height: 25px;
+            border: 2px solid white;
             cursor: pointer;
             display: none;
           }
@@ -637,7 +683,7 @@ body {
     }
 
     .infobox[data-id="2"] .content .info .attachment { 
-      width: 36%;
+      width: 41%;
     }
 
     .infobox[data-id="3"] .content .info .attachment { 
@@ -670,8 +716,10 @@ body {
     .infobox > div {background-color: @blue;}
     .infobox .infomenu li {background-color: @blue;}
     .infobox .infomenu li div {background-color: @blue;}
+    .infobox .content .selected * {color: @blueHighlight;}
     .mixer-nav > * {color: @blueHighlight;}
     .make-button:hover,.make-button.selected {color: @blue;}
+    .cta-button:hover {color: @blueHighlight; border-bottom: solid 1px @blueHighlight;}
 
     .social {
       .fb:hover {background-position: 34px 0px;}
