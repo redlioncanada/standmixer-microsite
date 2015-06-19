@@ -15,7 +15,7 @@ $(document).ready(function(){
         clearTimeout(mixerTimeout);
         mixerTimeout = setInterval(function() {
             changeMixer();
-        },5000)
+        },3000)
     }
     function changeMixer(id) {
         if (typeof id === 'undefined') {
@@ -97,6 +97,27 @@ $(document).ready(function(){
     });
     //end infobox tab click
 
+    //on gallery arrow click, navigate
+    /*$('.infobox .gallery').on('click', '.left', function() {
+        navGallery(this,1);
+    });
+    $('.infobox .gallery').on('click', '.right', function() {
+        navGallery(this,0);
+    });
+    function navGallery(self, direction) {
+        let p = $(self).closest('.gallery');
+        let length = $(p).find('img').not('.expanded').length-1;
+        let img = $(p).find('.expanded');
+        let curId = $(img).index();
+        let newId = direction ? curId+1 : curId-1;
+        
+        if (newId > length) newId = 0;
+        else if (newId < 0) newId = length;
+
+        let src = $(p).find('img').not('.expanded').eq(newId).attr('src');
+        let newImg = $(img).clone().css('left',$(img).position().left+$(img).width()).attr('src',src).appendTo(p);
+    }*/
+
     //on gallery image click, expand it and show close button
     $('.infobox .gallery li').click(function() {
         let p = $(this).closest('.gallery');
@@ -115,8 +136,7 @@ $(document).ready(function(){
             width: oWidth,
             height: oHeight,
             position: 'absolute',
-            border: 'solid 1px white',
-            cursor: 'pointer'
+            border: 'solid 1px white'
         }).addClass('expanded').attr('data-id',id).appendTo(p);
 
 
@@ -127,6 +147,8 @@ $(document).ready(function(){
         let nHeight = $(first).position().top + $(first).height()*3 + parseInt($(first).css('marginTop'))*2;
 
         let close = $(`<div style="top:${nTop+10}px; left:${nLeft+nWidth-35}px;" class="close">X</div>`).appendTo(p);
+        //let leftArrow = $(`<img style="top:${nTop+(nHeight-nTop)/2}; left: ${nLeft+nWidth-40};" class="left" src="/images/standmixer/triangle.png"/>`).appendTo(p);
+        //let rightArrow = $(`<img style="top:${nTop+(nHeight-nTop)/2}; left: ${nLeft+20};" class="right" src="/images/standmixer/triangle.png"/>`).appendTo(p);
 
         $(img).animate({
             top: nTop,
@@ -135,17 +157,22 @@ $(document).ready(function(){
             height: nHeight
         }, function() {
             $(close).fadeIn();
+            //$(leftArrow).fadeIn();
+            //$(rightArrow).fadeIn();
         });
     });
     //end gallery image click
 
     //on expanded gallery image click, remove it
-    $('.infobox .gallery').on('click', '.expanded,.close', function() {
+    $('.infobox .gallery').on('click', '.close', function() {
         let p = $(this).closest('.gallery');
         let exp = $(p).find('.expanded');
         let id = $(exp).attr('data-id');
         let img = $(p).find('li').eq(id);
 
+        $(p).find('.left,.right').fadeOut(function() {
+            $(this).remove();
+        });
         $(p).find('.close').fadeOut(function() {
             $(this).remove();
 
