@@ -105,7 +105,6 @@ body {
   margin: 0;
   padding: 0;
   color: white;
-  min-width: 1366px;
   overflow-x: hidden;
    
   div, span, object, iframe, img, table, caption, thead, tbody,
@@ -232,7 +231,7 @@ body {
 
       .fb {background-position: -1px 0px;}
       .tw {background-position: 0px 105px;}
-      .in {background-position: 0px 70px;}
+      .in {background-position: 0px 70px; display: none;}
       .pin {background-position: 0px 35px;}
     }
   }
@@ -552,7 +551,7 @@ body {
         }
 
         .info {
-          > div {
+          > div:first-child {
             height: 30px;
             border-bottom: 1px solid white;
           }
@@ -575,24 +574,31 @@ body {
             }
           }
           .two {
-            margin-top: 15%;
+            margin-top: 10px;
+            width: 47%;
+            float: right;
           }
           .two li {
-            width: 38%;
-            height: 70px;
-            padding: 10px 10px;
+            height: 51px;
+            padding: 3px 10px;
             margin-left: 11px;
 
             span {
-              top: 23px;
+              top: 17px;
             }
 
             span.break {
-              top: 14px;
+              top: 9px;
             }
           }
           .three li {
             width: 28%;
+          }
+
+          .feature {
+            float: left;
+            height: 280px;
+            margin-top: 12%;
           }
 
           ul {
@@ -652,6 +658,23 @@ body {
             display: none;
           }
 
+          .left,.right {
+            display: none;
+            position: absolute;
+            cursor: pointer;
+            width: 25px;
+          }
+          .right {
+            -ms-transform: rotate(270deg); /* IE 9 */
+            -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+            transform: rotate(270deg);
+          }
+          .left {
+            -ms-transform: rotate(90deg); /* IE 9 */
+            -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+            transform: rotate(90deg);
+          }
+
           ul {
             height: 100%;
             margin-top: 23px;
@@ -691,6 +714,7 @@ body {
       padding-top: 30%;
     }
   }
+  //start panel-specific css
   .mixer-panel-1 {
     background-color: @yellow;
 
@@ -716,7 +740,6 @@ body {
     .infobox > div {background-color: @blue;}
     .infobox .infomenu li {background-color: @blue;}
     .infobox .infomenu li div {background-color: @blue;}
-    .infobox .content .selected * {color: @blueHighlight;}
     .mixer-nav > * {color: @blueHighlight;}
     .make-button:hover,.make-button.selected {color: @blue;}
     .cta-button:hover {color: @blueHighlight; border-bottom: solid 1px @blueHighlight;}
@@ -728,4 +751,14 @@ body {
       .pin:hover {background-position: 35px 35px;}
     }
   }
+  //end panel-specific css
 }
+
+//start device-specific css
+  .no-mobile {
+    #main-container {min-width: 1366px;}
+  }
+  .mobile {
+    .social .in {display: block !important;}
+  }
+  //end device-specific css
