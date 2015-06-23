@@ -3,10 +3,13 @@
 var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
+var mixerDotNav = undefined;
 
 if (isMobile) {
     //inject meta tags
     $("head").append("<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport' />").append("<meta content='True' name='HandheldFriendly' />");
+} else {
+    mixerDotNav = new MixerDotNav($(".mixer-panel-1"));
 }
 
 $(document).ready(function () {
@@ -17,13 +20,14 @@ $(document).ready(function () {
         clearTimeout(mixerTimeout);
         mixerTimeout = setInterval(function () {
             changeMixer();
-        }, 3000);
+        }, 4000);
     }
     function changeMixer(id) {
         if (typeof id === "undefined") {
             id = $(".mixer-panel-1 .mixer .selected").index() + 1;
             if (id > $(".mixer-panel-1 .mixer img").length - 1) id = 0;
         }
+        mixerDotNav.Select(id);
         //change mixer image
         $(".mixer-panel-1 .mixer img").eq(id).fadeIn(400, function () {
             var self = this;
@@ -34,6 +38,22 @@ $(document).ready(function () {
         });
     }
     //end first panel mixer change
+
+    //init mixer nav
+    mixerDotNav.on("selected", function () {
+        changeMixer(this.index);
+        resetMixerInterval();
+    });
+    //end init mixer nav
+
+    //on mixer attachment image click, nav to that category
+    $(".mixer-panel-1 .mixer img").click(function () {
+        var id = $(this).attr("data-id");
+        var att = $(this).attr("data-att");
+        $(".mixer-panel-1 .categories li a[href=\"#" + id + "\"]").click();
+        $(".make-button[data-att=\"" + att + "\"]").click();
+    });
+    //end mixer attachment image click
 
     //on attachment button click, change the current attachment
     $(".menu li").click(function () {
@@ -144,7 +164,7 @@ $(document).ready(function () {
         var nWidth = $(p).width();
         var nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2;
 
-        var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" class=\"close\">X</div>").appendTo(p);
+        var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" class=\"close\">+</div>").appendTo(p);
         //let leftArrow = $(`<img style="top:${nTop+(nHeight-nTop)/2}; left: ${nLeft+nWidth-40};" class="left" src="/images/standmixer/triangle.png"/>`).appendTo(p);
         //let rightArrow = $(`<img style="top:${nTop+(nHeight-nTop)/2}; left: ${nLeft+20};" class="right" src="/images/standmixer/triangle.png"/>`).appendTo(p);
 
@@ -205,10 +225,13 @@ $(document).ready(function () {
 
     //on anchor click, animate to the target location
     $("a[href*=#]").click(function (event) {
+        var hash = $(this).attr("href");
+        event.preventDefault();event.stopPropagation();
         $("html, body").animate({
             scrollTop: $($.attr(this, "href")).offset().top
-        }, 500);
-        event.preventDefault();
+        }, 500, function () {
+            document.location.hash = hash;
+        });
     });
     //end anchor click
 
@@ -216,8 +239,14 @@ $(document).ready(function () {
     setTimeout(redraw, 500);
     $(window).resize(redraw);
     function redraw() {
-        var left = $("#main-container").width() / 2 - $(".mixer-nav").width() + $(".mixer-nav").width() * 0.11;
-        $(".mixer-nav").css("left", left);
+        var navWidth = $(".mixer-nav").eq(1).width();
+        var mod = $(window).width() < 1470 ? navWidth * 0.07 * -1 : navWidth * 0.12;
+        var left = $("#main-container").width() / 2 - navWidth + mod;
+        $(".mixer-nav").not(".mixer-panel-7 .mixer-nav").css("left", left);
+
+        mod = $(window).width() < 1470 ? navWidth * 0.52 : navWidth * 0.72;
+        left = $("#main-container").width() / 2 + mod;
+        $(".mixer-panel-7 .mixer-nav").css("left", left);
     }
     //end window resize
 });
