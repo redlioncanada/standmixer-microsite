@@ -32,7 +32,6 @@ gulp.task("js", function () {
   return gulp.src("src/js/**/*.js")
     .pipe(b)
     .pipe(gulp.dest("js/"+folderName))
-    .pipe(plugins.livereload())
     .pipe(gulp.dest("/Users/stepoole/Desktop/_upload/js/"+folderName))
     .pipe(gulp.dest("../javascript/"+folderName));
 });
