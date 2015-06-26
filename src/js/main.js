@@ -2,6 +2,7 @@ var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
 let mixerDotNav = undefined;
+let gaw = new gaWrapper({prefix: "SMA", verbose: true, testMode: true});
 
 if (isMobile) {
     //inject meta tags
@@ -59,6 +60,7 @@ $(document).ready(function(){
         let p = $(this).closest('.mixer-panel');
         let img = $(p).find('.mixer');
         let id = $(this).index();
+        let type = $(this).find('span').attr('data-att');
 
         //change mixer image
         $(img).find('img').eq(id).fadeIn(300, function() {
@@ -74,6 +76,14 @@ $(document).ready(function(){
             $(p).find('.copy').eq(id).addClass('selected').fadeIn('fast');
             $(p).find('.infobox').eq(id).addClass('selected').fadeIn('fast');
         });
+
+        //change CTB link
+        let cta = $(p).find('.cta-button');
+        let ctaLink = $(cta).find('a');
+        let href = $(ctaLink).attr(`data-${type}-href`);
+        if (href && href.length) $(ctaLink).attr('href',href);
+        if (href == '#' && !$(cta).is(':animated')) $(cta).fadeOut();
+        else if (href != '#' && !$(cta).is(':animated')) $(cta).fadeIn();
 
         //change menu selection
         $(this).closest('.menu').find('.selected').removeClass('selected');
@@ -118,7 +128,7 @@ $(document).ready(function(){
     //end infobox tab click
 
     //on gallery arrow click, navigate
-    /*$('.infobox .gallery').on('click', '.left', function() {
+    $('.infobox .gallery').on('click', '.left', function() {
         navGallery(this,1);
     });
     $('.infobox .gallery').on('click', '.right', function() {
@@ -126,17 +136,27 @@ $(document).ready(function(){
     });
     function navGallery(self, direction) {
         let p = $(self).closest('.gallery');
-        let length = $(p).find('img').not('.expanded').length-1;
-        let img = $(p).find('.expanded');
-        let curId = $(img).index();
+        if (p.find('.expanded img').length > 1) return;
+        let length = $(p).find('ul img').length-1;
+        let img = $(p).find('.expanded .current');
+        let curId = parseInt($(img).attr('data-id'));
         let newId = direction ? curId+1 : curId-1;
         
         if (newId > length) newId = 0;
         else if (newId < 0) newId = length;
 
-        let src = $(p).find('img').not('.expanded').eq(newId).attr('src');
-        let newImg = $(img).clone().css('left',$(img).position().left+$(img).width()).attr('src',src).appendTo(p);
-    }*/
+        let curImg = $(p).find('ul img').eq(newId);
+        let mod = direction ? 1 : -1; 
+        let width = $(img).width()*mod;
+        let newImg = $(curImg).clone().css('left',width).attr('data-id',newId).appendTo(p.find('.expanded'));
+
+        $(img).animate({'left': width*-1}, function() {
+            $(this).remove();
+        });
+        $(newImg).animate({'left': 0}, function() {
+            $(this).addClass('current');
+        })
+    }   
 
     //on gallery image click, expand it and show close button
     $('.infobox .gallery li').click(function() {
@@ -150,35 +170,41 @@ $(document).ready(function(){
         let oWidth = $(img).width();
         let oHeight = $(img).height()+1;
         
-        img = $(img).clone().css({
+        let gallery = $('<div></div>').css({
             top: oTop,
             left: oLeft,
             width: oWidth,
             height: oHeight,
+            overflow: 'hidden', 
             position: 'absolute',
             border: 'solid 1px white'
-        }).addClass('expanded').attr('data-id',id).appendTo(p);
+        }).addClass('expanded').appendTo(p);
+
+        img = $(img).clone().css({
+            left: 0,
+            top: 0
+        }).addClass('current').attr('data-id',id).appendTo(gallery);
 
 
         let first = $(p).find('li').first();
-        let nTop = $(first).position().top;
+        let nTop = $(first).position().top+11;
         let nLeft = $(first).position().left;
         let nWidth = $(p).width();
-        let nHeight = $(first).position().top + $(first).height()*3 + parseInt($(first).css('marginTop'))*2;
+        let nHeight = $(first).position().top + $(first).height()*3 + parseInt($(first).css('marginTop'))*2 - 21;
 
-        let close = $(`<div style="top:${nTop+10}px; left:${nLeft+nWidth-35}px;" class="close">+</div>`).appendTo(p);
-        //let leftArrow = $(`<img style="top:${nTop+(nHeight-nTop)/2}; left: ${nLeft+nWidth-40};" class="left" src="/images/standmixer/triangle.png"/>`).appendTo(p);
-        //let rightArrow = $(`<img style="top:${nTop+(nHeight-nTop)/2}; left: ${nLeft+20};" class="right" src="/images/standmixer/triangle.png"/>`).appendTo(p);
+        let close = $(`<div style="top:${nTop+10}px; left:${nLeft+nWidth-35}px;" data-label="Close Gallery" class="close">+</div>`).appendTo(p);
+        let leftArrow = $(`<div class="left" data-label="Next Image"></div>`).appendTo(p);
+        let rightArrow = $(`<div class="right" data-label="Previous Image"></div>`).appendTo(p);
 
-        $(img).animate({
+        $(gallery).animate({
             top: nTop,
             left: nLeft,
             width: nWidth,
             height: nHeight
         }, function() {
             $(close).fadeIn();
-            //$(leftArrow).fadeIn();
-            //$(rightArrow).fadeIn();
+            $(leftArrow).fadeIn();
+            $(rightArrow).fadeIn();
         });
     });
     //end gallery image click
@@ -187,7 +213,7 @@ $(document).ready(function(){
     $('.infobox .gallery').on('click', '.close', function() {
         let p = $(this).closest('.gallery');
         let exp = $(p).find('.expanded');
-        let id = $(exp).attr('data-id');
+        let id = $(exp).find('.current').attr('data-id');
         let img = $(p).find('li').eq(id);
 
         $(p).find('.left,.right').fadeOut(function() {
@@ -228,9 +254,10 @@ $(document).ready(function(){
     //on anchor click, animate to the target location
     $('a[href*=#]').click(function(event){
         let hash = $(this).attr('href');
-        event.preventDefault(); event.stopPropagation();
+        if (!$(hash).offset() || hash == "#") return;
+        event.preventDefault();
         $('html, body').animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top
+            scrollTop: $( hash ).offset().top
         }, 500, function() {
             document.location.hash = hash;
         });
@@ -241,14 +268,7 @@ $(document).ready(function(){
     setTimeout(redraw,500);
     $(window).resize(redraw);
     function redraw() {
-        let navWidth = $('.mixer-nav').eq(1).width();
-        let mod = $(window).width() < 1470 ? navWidth*.07*-1 : navWidth*.12
-        let left = $('#main-container').width() / 2 - navWidth + mod;
-        $('.mixer-nav').not('.mixer-panel-7 .mixer-nav').css('left', left);
 
-        mod = $(window).width() < 1470 ? navWidth*.52 : navWidth*.72;
-        left = $('#main-container').width() / 2 + mod;
-        $('.mixer-panel-7 .mixer-nav').css('left',left);
     }
     //end window resize
 });

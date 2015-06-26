@@ -4,6 +4,7 @@ var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
 var mixerDotNav = undefined;
+var gaw = new gaWrapper({ prefix: "SMA", verbose: true, testMode: true });
 
 if (isMobile) {
     //inject meta tags
@@ -61,6 +62,7 @@ $(document).ready(function () {
         var p = $(this).closest(".mixer-panel");
         var img = $(p).find(".mixer");
         var id = $(this).index();
+        var type = $(this).find("span").attr("data-att");
 
         //change mixer image
         $(img).find("img").eq(id).fadeIn(300, function () {
@@ -76,6 +78,13 @@ $(document).ready(function () {
             $(p).find(".copy").eq(id).addClass("selected").fadeIn("fast");
             $(p).find(".infobox").eq(id).addClass("selected").fadeIn("fast");
         });
+
+        //change CTB link
+        var cta = $(p).find(".cta-button");
+        var ctaLink = $(cta).find("a");
+        var href = $(ctaLink).attr("data-" + type + "-href");
+        if (href && href.length) $(ctaLink).attr("href", href);
+        if (href == "#" && !$(cta).is(":animated")) $(cta).fadeOut();else if (href != "#" && !$(cta).is(":animated")) $(cta).fadeIn();
 
         //change menu selection
         $(this).closest(".menu").find(".selected").removeClass("selected");
@@ -118,24 +127,35 @@ $(document).ready(function () {
     //end infobox tab click
 
     //on gallery arrow click, navigate
-    /*$('.infobox .gallery').on('click', '.left', function() {
-        navGallery(this,1);
+    $(".infobox .gallery").on("click", ".left", function () {
+        navGallery(this, 1);
     });
-    $('.infobox .gallery').on('click', '.right', function() {
-        navGallery(this,0);
+    $(".infobox .gallery").on("click", ".right", function () {
+        navGallery(this, 0);
     });
     function navGallery(self, direction) {
-        let p = $(self).closest('.gallery');
-        let length = $(p).find('img').not('.expanded').length-1;
-        let img = $(p).find('.expanded');
-        let curId = $(img).index();
-        let newId = direction ? curId+1 : curId-1;
-        
-        if (newId > length) newId = 0;
-        else if (newId < 0) newId = length;
-         let src = $(p).find('img').not('.expanded').eq(newId).attr('src');
-        let newImg = $(img).clone().css('left',$(img).position().left+$(img).width()).attr('src',src).appendTo(p);
-    }*/
+        var p = $(self).closest(".gallery");
+        if (p.find(".expanded img").length > 1) {
+            return;
+        }var length = $(p).find("ul img").length - 1;
+        var img = $(p).find(".expanded .current");
+        var curId = parseInt($(img).attr("data-id"));
+        var newId = direction ? curId + 1 : curId - 1;
+
+        if (newId > length) newId = 0;else if (newId < 0) newId = length;
+
+        var curImg = $(p).find("ul img").eq(newId);
+        var mod = direction ? 1 : -1;
+        var width = $(img).width() * mod;
+        var newImg = $(curImg).clone().css("left", width).attr("data-id", newId).appendTo(p.find(".expanded"));
+
+        $(img).animate({ left: width * -1 }, function () {
+            $(this).remove();
+        });
+        $(newImg).animate({ left: 0 }, function () {
+            $(this).addClass("current");
+        });
+    }
 
     //on gallery image click, expand it and show close button
     $(".infobox .gallery li").click(function () {
@@ -149,34 +169,40 @@ $(document).ready(function () {
         var oWidth = $(img).width();
         var oHeight = $(img).height() + 1;
 
-        img = $(img).clone().css({
+        var gallery = $("<div></div>").css({
             top: oTop,
             left: oLeft,
             width: oWidth,
             height: oHeight,
+            overflow: "hidden",
             position: "absolute",
             border: "solid 1px white"
-        }).addClass("expanded").attr("data-id", id).appendTo(p);
+        }).addClass("expanded").appendTo(p);
+
+        img = $(img).clone().css({
+            left: 0,
+            top: 0
+        }).addClass("current").attr("data-id", id).appendTo(gallery);
 
         var first = $(p).find("li").first();
-        var nTop = $(first).position().top;
+        var nTop = $(first).position().top + 11;
         var nLeft = $(first).position().left;
         var nWidth = $(p).width();
-        var nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2;
+        var nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2 - 21;
 
-        var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" class=\"close\">+</div>").appendTo(p);
-        //let leftArrow = $(`<img style="top:${nTop+(nHeight-nTop)/2}; left: ${nLeft+nWidth-40};" class="left" src="/images/standmixer/triangle.png"/>`).appendTo(p);
-        //let rightArrow = $(`<img style="top:${nTop+(nHeight-nTop)/2}; left: ${nLeft+20};" class="right" src="/images/standmixer/triangle.png"/>`).appendTo(p);
+        var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" data-label=\"Close Gallery\" class=\"close\">+</div>").appendTo(p);
+        var leftArrow = $("<div class=\"left\" data-label=\"Next Image\"></div>").appendTo(p);
+        var rightArrow = $("<div class=\"right\" data-label=\"Previous Image\"></div>").appendTo(p);
 
-        $(img).animate({
+        $(gallery).animate({
             top: nTop,
             left: nLeft,
             width: nWidth,
             height: nHeight
         }, function () {
             $(close).fadeIn();
-            //$(leftArrow).fadeIn();
-            //$(rightArrow).fadeIn();
+            $(leftArrow).fadeIn();
+            $(rightArrow).fadeIn();
         });
     });
     //end gallery image click
@@ -185,7 +211,7 @@ $(document).ready(function () {
     $(".infobox .gallery").on("click", ".close", function () {
         var p = $(this).closest(".gallery");
         var exp = $(p).find(".expanded");
-        var id = $(exp).attr("data-id");
+        var id = $(exp).find(".current").attr("data-id");
         var img = $(p).find("li").eq(id);
 
         $(p).find(".left,.right").fadeOut(function () {
@@ -226,9 +252,10 @@ $(document).ready(function () {
     //on anchor click, animate to the target location
     $("a[href*=#]").click(function (event) {
         var hash = $(this).attr("href");
-        event.preventDefault();event.stopPropagation();
+        if (!$(hash).offset() || hash == "#") return;
+        event.preventDefault();
         $("html, body").animate({
-            scrollTop: $($.attr(this, "href")).offset().top
+            scrollTop: $(hash).offset().top
         }, 500, function () {
             document.location.hash = hash;
         });
@@ -238,15 +265,6 @@ $(document).ready(function () {
     //on window resize, resize components
     setTimeout(redraw, 500);
     $(window).resize(redraw);
-    function redraw() {
-        var navWidth = $(".mixer-nav").eq(1).width();
-        var mod = $(window).width() < 1470 ? navWidth * 0.07 * -1 : navWidth * 0.12;
-        var left = $("#main-container").width() / 2 - navWidth + mod;
-        $(".mixer-nav").not(".mixer-panel-7 .mixer-nav").css("left", left);
-
-        mod = $(window).width() < 1470 ? navWidth * 0.52 : navWidth * 0.72;
-        left = $("#main-container").width() / 2 + mod;
-        $(".mixer-panel-7 .mixer-nav").css("left", left);
-    }
+    function redraw() {}
     //end window resize
 });

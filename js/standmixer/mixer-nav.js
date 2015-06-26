@@ -25,6 +25,8 @@ var MixerDotNav = (function (_Messenger) {
 	_createClass(MixerDotNav, [{
 		key: '_init',
 		value: function _init() {
+			var _this = this;
+
 			var self = this;
 
 			var _loop = function (i) {
@@ -32,7 +34,8 @@ var MixerDotNav = (function (_Messenger) {
 				var el = i == 0 ? '<li class="selected"><div></div></li>' : '<li><div></div></li>';
 				$(self.element).append(el);
 				el = $(self.element).find('li').eq(i);
-				$(el).click(function () {
+				var att = $(_this.images).eq(i).attr('data-att');
+				$(el).attr('data-att', att).click(function () {
 					self.Select(id);
 				});
 			};

@@ -15,7 +15,8 @@ class MixerDotNav extends Messenger {
 			let el = i == 0 ? `<li class="selected"><div></div></li>` : `<li><div></div></li>`;
 			$(self.element).append(el);
 			el = $(self.element).find('li').eq(i);
-			$(el).click(function() {
+			let att = $(this.images).eq(i).attr('data-att');
+			$(el).attr('data-att',att).click(function() {
 				self.Select(id);
 			})
 		}
