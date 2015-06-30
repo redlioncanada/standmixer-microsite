@@ -9,7 +9,7 @@ if (isMobile) {
     $('head').append("<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport' />").append("<meta content='True' name='HandheldFriendly' />");
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
     //change the mixer on the first panel at a set interval
     let mixerTimeout = undefined;
     resetMixerInterval();
