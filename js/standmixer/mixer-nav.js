@@ -10,10 +10,13 @@ var _inherits = function (subClass, superClass) { if (typeof superClass !== 'fun
 
 var MixerDotNav = (function (_Messenger) {
 	function MixerDotNav(target) {
+		var mobile = arguments[1] === undefined ? false : arguments[1];
+
 		_classCallCheck(this, MixerDotNav);
 
 		_get(Object.getPrototypeOf(MixerDotNav.prototype), 'constructor', this).call(this);
 		this.target = target;
+		this.mobile = mobile;
 		this.images = $(target).find('.mixer img');
 		this.element = $(target).find('.mixer-dot-nav');
 		this.index = 0;
@@ -43,6 +46,7 @@ var MixerDotNav = (function (_Messenger) {
 			for (var i = 0; i < self.images.length; i++) {
 				_loop(i);
 			}
+			if (this.mobile) $(this.element).css('marginLeft', -$(this.element).width() / 2);
 		}
 	}, {
 		key: 'Select',

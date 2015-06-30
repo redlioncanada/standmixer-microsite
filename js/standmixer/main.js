@@ -9,8 +9,6 @@ var gaw = new gaWrapper({ prefix: "SMA", verbose: true, testMode: true });
 if (isMobile) {
     //inject meta tags
     $("head").append("<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport' />").append("<meta content='True' name='HandheldFriendly' />");
-} else {
-    mixerDotNav = new MixerDotNav($(".mixer-panel-1"));
 }
 
 $(document).ready(function () {
@@ -28,7 +26,7 @@ $(document).ready(function () {
             id = $(".mixer-panel-1 .mixer .selected").index() + 1;
             if (id > $(".mixer-panel-1 .mixer img").length - 1) id = 0;
         }
-        mixerDotNav.Select(id);
+        if (!isMobile) mixerDotNav.Select(id);
         //change mixer image
         $(".mixer-panel-1 .mixer img").eq(id).fadeIn(400, function () {
             var self = this;
@@ -40,13 +38,6 @@ $(document).ready(function () {
     }
     //end first panel mixer change
 
-    //init mixer nav
-    mixerDotNav.on("selected", function () {
-        changeMixer(this.index);
-        resetMixerInterval();
-    });
-    //end init mixer nav
-
     //on mixer attachment image click, nav to that category
     $(".mixer-panel-1 .mixer img").click(function () {
         var id = $(this).attr("data-id");
@@ -56,75 +47,183 @@ $(document).ready(function () {
     });
     //end mixer attachment image click
 
-    //on attachment button click, change the current attachment
-    $(".menu li").click(function () {
-        if ($(this).find("span").hasClass("selected")) return;
-        var p = $(this).closest(".mixer-panel");
-        var img = $(p).find(".mixer");
-        var id = $(this).index();
-        var type = $(this).find("span").attr("data-att");
+    if (!isMobile) {
+        //init mixer nav
+        mixerDotNav = new MixerDotNav($(".mixer-panel-1"));
+        mixerDotNav.on("selected", function () {
+            changeMixer(this.index);
+            resetMixerInterval();
+        });
+        //end init mixer nav
 
-        //change mixer image
-        $(img).find("img").eq(id).fadeIn(300, function () {
-            var self = this;
-            $(img).find(".selected").fadeOut(400, function () {
-                $(this).removeClass("selected");
-                $(self).addClass("selected");
+        //on attachment button click, change the current attachment
+        $(".menu li").click(function () {
+            if ($(this).find("span").hasClass("selected")) return;
+            var p = $(this).closest(".mixer-panel");
+            var img = $(p).find(".mixer");
+            var id = $(this).index();
+            var type = $(this).find("span").attr("data-att");
+
+            //change mixer image
+            $(img).find("img").eq(id).fadeIn(300, function () {
+                var self = this;
+                $(img).find(".selected").fadeOut(400, function () {
+                    $(this).removeClass("selected");
+                    $(self).addClass("selected");
+                });
             });
+
+            //change copy
+            $(p).find(".copy.selected, .infobox.selected").removeClass("selected").fadeOut("fast", function () {
+                $(p).find(".copy").eq(id).addClass("selected").fadeIn("fast");
+                $(p).find(".infobox").eq(id).addClass("selected").fadeIn("fast");
+            });
+
+            //change CTB link
+            var cta = $(p).find(".cta-button");
+            var ctaLink = $(cta).find("a");
+            var href = $(ctaLink).attr("data-" + type + "-href");
+            if (href && href.length) $(ctaLink).attr("href", href);
+            if (href == "#" && !$(cta).is(":animated")) $(cta).fadeOut();else if (href != "#" && !$(cta).is(":animated")) $(cta).fadeIn();
+
+            //change menu selection
+            $(this).closest(".menu").find(".selected").removeClass("selected");
+            $(this).find("span").addClass("selected");
         });
+        //end attachment button click
 
-        //change copy
-        $(p).find(".copy.selected, .infobox.selected").removeClass("selected").fadeOut("fast", function () {
-            $(p).find(".copy").eq(id).addClass("selected").fadeIn("fast");
-            $(p).find(".infobox").eq(id).addClass("selected").fadeIn("fast");
+        //on 'choose attachment' arrow click, change the current attachment
+        $(".mixer-nav .nav-left").click(function () {
+            var p = $(this).closest(".mixer-panel");
+            var m = $(p).find(".menu");
+            var id = $(m).find(".selected").parent().index();
+
+            if (id - 1 < 0) id = $(m).find("li").length - 1;else id--;
+            $(m).find("li").eq(id).click();
         });
+        $(".mixer-nav .nav-right").click(function () {
+            var p = $(this).closest(".mixer-panel");
+            var m = $(p).find(".menu");
+            var id = $(m).find(".selected").parent().index();
 
-        //change CTB link
-        var cta = $(p).find(".cta-button");
-        var ctaLink = $(cta).find("a");
-        var href = $(ctaLink).attr("data-" + type + "-href");
-        if (href && href.length) $(ctaLink).attr("href", href);
-        if (href == "#" && !$(cta).is(":animated")) $(cta).fadeOut();else if (href != "#" && !$(cta).is(":animated")) $(cta).fadeIn();
+            if (id + 1 > $(m).find("li").length - 1) id = 0;else id++;
+            $(m).find("li").eq(id).click();
+        });
+        //end 'choose attachment' arrow click
 
-        //change menu selection
-        $(this).closest(".menu").find(".selected").removeClass("selected");
-        $(this).find("span").addClass("selected");
-    });
-    //end attachment button click
+        //on infobox tab click, change the window
+        $(".infobox .infomenu li").click(function () {
+            var p = $(this).closest(".mixer-panel");
 
-    //on 'choose attachment' arrow click, change the current attachment
-    $(".mixer-nav .nav-left").click(function () {
-        var p = $(this).closest(".mixer-panel");
-        var m = $(p).find(".menu");
-        var id = $(m).find(".selected").parent().index();
+            var old = $(p).find(".infomenu .selected");
+            var oldId = $(old).attr("data-id");
+            $(p).find(".content [data-id='" + oldId + "']").fadeOut();
+            $(old).removeClass("selected");
 
-        if (id - 1 < 0) id = $(m).find("li").length - 1;else id--;
-        $(m).find("li").eq(id).click();
-    });
-    $(".mixer-nav .nav-right").click(function () {
-        var p = $(this).closest(".mixer-panel");
-        var m = $(p).find(".menu");
-        var id = $(m).find(".selected").parent().index();
+            var id = $(this).attr("data-id");
+            $(p).find(".infobox .content [data-id='" + id + "']").fadeIn();
+            $(p).find(".infobox .infomenu li[data-id='" + id + "']").addClass("selected");
+        });
+        //end infobox tab click
+    } else {
+        var i;
 
-        if (id + 1 > $(m).find("li").length - 1) id = 0;else id++;
-        $(m).find("li").eq(id).click();
-    });
-    //end 'choose attachment' arrow click
+        (function () {
+            var doMobileSwipe =
+            //end init mixer navs
 
-    //on infobox tab click, change the window
-    $(".infobox .infomenu li").click(function () {
-        var p = $(this).closest(".mixer-panel");
+            function (d, e) {
+                var newId = undefined;
+                if (d == "left") {
+                    newId = $(p).find(".mixer .selected").index() + 1;
+                    if (newId > $(p).find(".mixer img").length) newId = 0;
+                } else if (d == "right") {
+                    newId = $(p).find(".mixer .selected").index() - 1;
+                    if (newId < 0) newId = $(p).find(".mixer img").length;
+                } else if (typeof d === "number") {
+                    if (d < 0 || d > $(p).find(".mixer img").length) return;else newId = d;
+                }
 
-        var old = $(p).find(".infomenu .selected");
-        var oldId = $(old).attr("data-id");
-        $(p).find(".content [data-id='" + oldId + "']").fadeOut();
-        $(old).removeClass("selected");
+                var p = $(e).closest(".mixer-panel");
+                //do some mobile swiping
+            };
 
-        var id = $(this).attr("data-id");
-        $(p).find(".infobox .content [data-id='" + id + "']").fadeIn();
-        $(p).find(".infobox .infomenu li[data-id='" + id + "']").addClass("selected");
-    });
-    //end infobox tab click
+            var closeLeftDrawer =
+            //end not drawer click
+
+            function (e) {
+                var cb = arguments[1] === undefined ? false : arguments[1];
+                var width = $(e).width();$(e).animate({ left: -width }, 400, function () {
+                    if (cb) cb();
+                });$(e).closest(".mobile-drawer").removeClass("open");
+            };
+
+            var openLeftDrawer = function (e) {
+                var cb = arguments[1] === undefined ? false : arguments[1];
+                $(e).css("zIndex", "100").animate({ left: "-1px" }, 400, function () {
+                    if (cb) cb();
+                });$(e).closest(".mobile-drawer").addClass("open");
+            };
+
+            var closeRightDrawer = function (e) {
+                var cb = arguments[1] === undefined ? false : arguments[1];
+                var width = $(e).width();$(e).animate({ right: -width }, 400, function () {
+                    if (cb) cb();
+                });$(e).closest(".mobile-drawer").removeClass("open");
+            };
+
+            var openRightDrawer = function (e) {
+                var cb = arguments[1] === undefined ? false : arguments[1];
+                $(e).css("zIndex", "100").animate({ right: "-1px" }, 400, function () {
+                    if (cb) cb();
+                });$(e).closest(".mobile-drawer").addClass("open");
+            };
+
+            //init mixer navs
+            for (i = 2; i <= 7; i++) {
+                var _mixerDotNav = new MixerDotNav($(".mixer-panel-" + i.toString()), isMobile);
+                _mixerDotNav.on("selected", function () {
+                    doMobileSwipe(this.index, this);
+                });
+
+                //init hammerjs
+                $(".mixer-panel-" + i.toString()).hammer().bind("swipe", function (e) {
+                    var d = e.gesture.direction == Hammer.DIRECTION_LEFT ? "left" : "right";
+                    closeLeftDrawer(".mobile-drawer-left");
+                    closeRightDrawer(".mobile-drawer-right", function () {
+                        doMobileSwipe(d, this);
+                    });
+                });
+                //end init hammerjs
+            }
+
+            //on drawer click, animate out
+            $(".mobile-drawer").click(function () {
+                var self = this;
+                var p = $(this).closest(".mixer-panel");
+
+                if ($(this).hasClass("mobile-drawer-left")) {
+                    $(p).find(".mobile-drawer-left").each(function (i, e) {
+                        $(e).css("zIndex", "100");
+                        openLeftDrawer(e);
+                    });
+                } else {
+                    $(p).find(".mobile-drawer-right").each(function (i, e) {
+                        $(e).css("zIndex", "100");
+                        openRightDrawer(e);
+                    });
+                }
+                $(self).css("zIndex", "200");
+            });
+            //end drawer click
+
+            //on not drawer click, close the drawer
+            $(".mobile-close").mousedown(function () {
+                closeLeftDrawer(".mobile-drawer-left");
+                closeRightDrawer(".mobile-drawer-right");
+            });
+        })();
+    }
 
     //on gallery arrow click, navigate
     $(".infobox .gallery").on("click", ".left", function () {

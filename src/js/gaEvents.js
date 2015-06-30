@@ -24,11 +24,10 @@ gaw.register('label', {'action': 'Clicked Specifications Tab'}, function(str, el
 gaw.register('label', {'action': 'Clicked Attachments Arrows'}, function(str, element, cb) {
 	if ($(element).hasClass('nav-left')) cb('Previous Attachment');
 	else if ($(element).hasClass('nav-right')) cb('Next Attachment');
-	else {cb('');}
+	else {cb(false);}
 });
 
 gaw.register('label', {'action': 'Clicked Image Gallery'}, function(str, element, cb) {
-	console.log(str);
 	if (!$(element).parent().hasClass('expanded')) cb($(element).closest('li').index().toString());
 	else cb(str);
 });

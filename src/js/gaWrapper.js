@@ -25,8 +25,13 @@ class gaWrapper {
 		this.events.push({'dynamicType':dynamicType, 'match':match, 'function':fn});
 	}
 
-	push(category, action, label, element) {
+	push(category, action, label, element=false) {
 		if (!this.checkGALoaded()) return;
+
+		if (!element) {
+			this._push(category, action, label);
+			return;
+		}
 
 		let hasEvent = false;
 		for (var i in this.events) {
@@ -74,13 +79,11 @@ class gaWrapper {
 		let category = $(target).closest('*[data-ga-category]');
 		let label = $(target).closest('*[data-ga-label]', category);
 		let action = $(target).closest('*[data-ga-action]', category);
+		if (!label.length) label = category;
+		if (!action.length) action = category
 
-		if (!label.length) label = $(category).attr('data-ga-label');
-		else label = $(label).attr('data-ga-label');
-
-		if (!action.length) action = $(category).attr('data-ga-action');
-		else action = $(action).attr('data-ga-action');
-
+		label = $(label).attr('data-ga-label');
+		action = $(action).attr('data-ga-action');
 		category = $(category).attr('data-ga-category');
 
 		this.push(category, action, label, target);

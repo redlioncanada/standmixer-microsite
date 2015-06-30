@@ -42,12 +42,19 @@ var gaWrapper = (function () {
 		}
 	}, {
 		key: "push",
-		value: function push(category, action, label, element) {
+		value: function push(category, action, label) {
 			var _this = this;
+
+			var element = arguments[3] === undefined ? false : arguments[3];
 
 			if (!this.checkGALoaded()) {
 				return;
-			}var hasEvent = false;
+			}if (!element) {
+				this._push(category, action, label);
+				return;
+			}
+
+			var hasEvent = false;
 			for (var i in this.events) {
 				if ("action" in this.events[i].match && action === this.events[i].match.action || "category" in this.events[i].match && category === this.events[i].match.category || "label" in this.events[i].match && label === this.events[i].match.label) {
 					(function () {
@@ -116,11 +123,11 @@ var gaWrapper = (function () {
 			var category = $(target).closest("*[data-ga-category]");
 			var label = $(target).closest("*[data-ga-label]", category);
 			var action = $(target).closest("*[data-ga-action]", category);
+			if (!label.length) label = category;
+			if (!action.length) action = category;
 
-			if (!label.length) label = $(category).attr("data-ga-label");else label = $(label).attr("data-ga-label");
-
-			if (!action.length) action = $(category).attr("data-ga-action");else action = $(action).attr("data-ga-action");
-
+			label = $(label).attr("data-ga-label");
+			action = $(action).attr("data-ga-action");
 			category = $(category).attr("data-ga-category");
 
 			this.push(category, action, label, target);

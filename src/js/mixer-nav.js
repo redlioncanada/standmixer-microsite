@@ -1,7 +1,8 @@
 class MixerDotNav extends Messenger {
-	constructor(target) {
+	constructor(target, mobile=false) {
 		super();
 		this.target = target;
+		this.mobile = mobile;
 		this.images = $(target).find('.mixer img');
 		this.element = $(target).find('.mixer-dot-nav');
 		this.index = 0;
@@ -20,6 +21,7 @@ class MixerDotNav extends Messenger {
 				self.Select(id);
 			})
 		}
+		if (this.mobile) $(this.element).css('marginLeft', -$(this.element).width()/2);
 	}
 
 	Select(id) {

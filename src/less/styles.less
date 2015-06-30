@@ -3,7 +3,9 @@
 @contentBottomMargin: 30px;
 @panel1Height: 700px;
 @panel1MixerHeight: @panel1Height;
+@panel1MixerHeightMobile: 450px;
 @socialWidth: 35px;
+@mobileDrawerWidth: 290px;
 
 @yellow: #fccd1f;
 @yellowHighlight: #e3a22b;
@@ -90,6 +92,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 10px !important;
+  padding: 0;
+  margin: 0;
 }
 #header-main-nav {border-bottom: solid 2px white;}
 #page {width: 100%;}
@@ -797,6 +801,10 @@ body {
 
     .copy {
       display: block;
+
+      p {
+        margin-top: 4px;
+      }
     }
 
     .social {
@@ -805,6 +813,8 @@ body {
       .in:hover {background-position: -35px 70px;}
       .pin:hover {background-position: -35px 35px;}
     }
+
+    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @yellow;}
   }
   .mixer-panel-2 {
     background-color: @blue;
@@ -818,6 +828,7 @@ body {
     .mixer-nav > * {color: @blueHighlight;}
     .make-button:hover,.make-button.selected {color: @blue;}
     .cta-button:hover {color: @blueHighlight; border-bottom: solid 1px @blueHighlight;}
+    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @blue;}
 
     .social {
       .fb:hover {background-position: -71px 0px;}
@@ -838,6 +849,7 @@ body {
     .mixer-nav > * {color: @pinkHighlight;}
     .make-button:hover,.make-button.selected {color: @pink;}
     .cta-button:hover {color: @pinkHighlight; border-bottom: solid 1px @pinkHighlight;}
+    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @pink;}
 
     .social {
       .fb:hover {background-position: -106px 0px;}
@@ -904,6 +916,7 @@ body {
     .mixer-nav > * {color: @oliveHighlight;}
     .make-button:hover,.make-button.selected {color: @olive;}
     .cta-button:hover {color: @oliveHighlight; border-bottom: solid 1px @oliveHighlight;}
+    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @olive;}
 
     .social {
       .fb:hover {background-position: -141px 0px;}
@@ -937,6 +950,7 @@ body {
     .mixer-nav > * {color: @orangeHighlight;}
     .make-button:hover,.make-button.selected {color: @orange;}
     .cta-button:hover {color: @orangeHighlight; border-bottom: solid 1px @orangeHighlight;}
+    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @orange;}
 
     .social {
       .fb:hover {background-position: -176px 0px;}
@@ -974,6 +988,7 @@ body {
     .mixer-nav > * {color: @skyHighlight;}
     .make-button:hover,.make-button.selected {color: @sky;}
     .cta-button:hover {color: @skyHighlight; border-bottom: solid 1px @skyHighlight;}
+    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @sky;}
 
     .social {
       .fb:hover {background-position: -211px 0px;}
@@ -1003,6 +1018,7 @@ body {
     .mixer-nav > * {color: @redHighlight;}
     .make-button:hover,.make-button.selected {color: @red;}
     .cta-button:hover {color: @redHighlight; border-bottom: solid 1px @redHighlight;}
+    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @red;}
 
     .social {
       .fb:hover {background-position: -246px 0px;}
@@ -1056,7 +1072,93 @@ body {
 
     }
   }
+
   .mobile {
     .social .in {display: block !important;}
+    #main-container {
+      min-width: 375px;
+
+      .mixer-dot-nav {
+        bottom: initial;
+        margin-left: initial;
+
+        li {
+          float: left;
+          margin-left: 8px;
+
+          div {
+            width: 12px;
+            height: 12px;
+            border-radius: 24px;
+          }
+        }
+      }
+
+      .mixer-panel {
+        height: @panel1MixerHeightMobile;
+
+        > div {
+          height: inherit;
+        }
+
+        .mixer {
+          height: @panel1MixerHeightMobile;
+          left: 51%;
+          margin-left: -@panel1MixerHeightMobile/2;
+        }
+      }
+
+      .mobile-close {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 10;
+      }
+
+      .mobile-drawer {
+        position: absolute;
+        height: 382px;
+        width: @mobileDrawerWidth;
+        top: 24px;
+        z-index: 100;
+
+        .mobile-title {
+          position: absolute;
+          right: 0;
+          z-index: 2;
+          width: 42px;
+        }
+
+        .mobile-copy {
+          padding: 20px;
+        }
+
+        .mobile-content-1,.mobile-content-2,.mobile-content-3,.mobile-content-4 {
+          position: absolute;
+          border: 1px solid white;
+          height: inherit;
+          width: @mobileDrawerWidth - 1;
+          z-index: 1;
+        }
+      }
+      .mobile-drawer-tips {
+        top: 24px;
+        .mobile-title {top: 106px;}
+      }
+      .mobile-drawer-info {
+        top: 24px;
+        .mobile-title {top: 305px;}
+      }
+      .mobile-drawer-left {
+        left: -@mobileDrawerWidth;
+        .mobile-title {right: -41px;}
+      }
+      .mobile-drawer-right {
+        right: -@mobileDrawerWidth;
+        .mobile-title {left: -41px;}
+      }
+    }
   }
   //end device-specific css
