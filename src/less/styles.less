@@ -480,6 +480,7 @@ body {
       margin-left: -240px;
       bottom: 32%;
       position: absolute;
+      z-index: 201;
 
       .selected div {
         background-color: white;
@@ -814,7 +815,7 @@ body {
       .pin:hover {background-position: -35px 35px;}
     }
 
-    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @yellow;}
+    .mobile-title, .mobile-content {background-color: @yellow;}
   }
   .mixer-panel-2 {
     background-color: @blue;
@@ -828,7 +829,7 @@ body {
     .mixer-nav > * {color: @blueHighlight;}
     .make-button:hover,.make-button.selected {color: @blue;}
     .cta-button:hover {color: @blueHighlight; border-bottom: solid 1px @blueHighlight;}
-    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @blue;}
+    .mobile-title, .mobile-content {background-color: @blue;}
 
     .social {
       .fb:hover {background-position: -71px 0px;}
@@ -849,7 +850,7 @@ body {
     .mixer-nav > * {color: @pinkHighlight;}
     .make-button:hover,.make-button.selected {color: @pink;}
     .cta-button:hover {color: @pinkHighlight; border-bottom: solid 1px @pinkHighlight;}
-    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @pink;}
+    .mobile-title, .mobile-content {background-color: @pink;}
 
     .social {
       .fb:hover {background-position: -106px 0px;}
@@ -916,7 +917,7 @@ body {
     .mixer-nav > * {color: @oliveHighlight;}
     .make-button:hover,.make-button.selected {color: @olive;}
     .cta-button:hover {color: @oliveHighlight; border-bottom: solid 1px @oliveHighlight;}
-    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @olive;}
+    .mobile-title, .mobile-content {background-color: @olive;}
 
     .social {
       .fb:hover {background-position: -141px 0px;}
@@ -950,7 +951,7 @@ body {
     .mixer-nav > * {color: @orangeHighlight;}
     .make-button:hover,.make-button.selected {color: @orange;}
     .cta-button:hover {color: @orangeHighlight; border-bottom: solid 1px @orangeHighlight;}
-    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @orange;}
+    .mobile-title, .mobile-content {background-color: @orange;}
 
     .social {
       .fb:hover {background-position: -176px 0px;}
@@ -988,7 +989,7 @@ body {
     .mixer-nav > * {color: @skyHighlight;}
     .make-button:hover,.make-button.selected {color: @sky;}
     .cta-button:hover {color: @skyHighlight; border-bottom: solid 1px @skyHighlight;}
-    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @sky;}
+    .mobile-title, .mobile-content {background-color: @sky;}
 
     .social {
       .fb:hover {background-position: -211px 0px;}
@@ -1018,7 +1019,7 @@ body {
     .mixer-nav > * {color: @redHighlight;}
     .make-button:hover,.make-button.selected {color: @red;}
     .cta-button:hover {color: @redHighlight; border-bottom: solid 1px @redHighlight;}
-    .mobile-title, .mobile-content-1, .mobile-content-2, .mobile-content-3, .mobile-content-4 {background-color: @red;}
+    .mobile-title, .mobile-content {background-color: @red;}
 
     .social {
       .fb:hover {background-position: -246px 0px;}
@@ -1135,12 +1136,13 @@ body {
           padding: 20px;
         }
 
-        .mobile-content-1,.mobile-content-2,.mobile-content-3,.mobile-content-4 {
+        .mobile-content {
           position: absolute;
           border: 1px solid white;
           height: inherit;
           width: @mobileDrawerWidth - 1;
           z-index: 1;
+          overflow-y: scroll;
         }
       }
       .mobile-drawer-tips {
@@ -1152,11 +1154,11 @@ body {
         .mobile-title {top: 305px;}
       }
       .mobile-drawer-left {
-        left: -@mobileDrawerWidth;
-        .mobile-title {right: -41px;}
+        left: -@mobileDrawerWidth - 1;
+        .mobile-title {right: -42px;}
       }
       .mobile-drawer-right {
-        right: -@mobileDrawerWidth;
+        right: -@mobileDrawerWidth - 1;
         .mobile-title {left: -41px;}
       }
     }

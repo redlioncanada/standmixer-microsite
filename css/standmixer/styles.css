@@ -502,6 +502,7 @@ body {
   margin-left: -240px;
   bottom: 32%;
   position: absolute;
+  z-index: 201;
 }
 #main-container .mixer-panel .mixer-dot-nav .selected div {
   background-color: white;
@@ -799,10 +800,7 @@ body {
   background-position: -35px 35px;
 }
 #main-container .mixer-panel-1 .mobile-title,
-#main-container .mixer-panel-1 .mobile-content-1,
-#main-container .mixer-panel-1 .mobile-content-2,
-#main-container .mixer-panel-1 .mobile-content-3,
-#main-container .mixer-panel-1 .mobile-content-4 {
+#main-container .mixer-panel-1 .mobile-content {
   background-color: #fccd1f;
 }
 #main-container .mixer-panel-2 {
@@ -843,10 +841,7 @@ body {
   border-bottom: solid 1px #005c7c;
 }
 #main-container .mixer-panel-2 .mobile-title,
-#main-container .mixer-panel-2 .mobile-content-1,
-#main-container .mixer-panel-2 .mobile-content-2,
-#main-container .mixer-panel-2 .mobile-content-3,
-#main-container .mixer-panel-2 .mobile-content-4 {
+#main-container .mixer-panel-2 .mobile-content {
   background-color: #6897c3;
 }
 #main-container .mixer-panel-2 .social .fb:hover {
@@ -899,10 +894,7 @@ body {
   border-bottom: solid 1px #920742;
 }
 #main-container .mixer-panel-3 .mobile-title,
-#main-container .mixer-panel-3 .mobile-content-1,
-#main-container .mixer-panel-3 .mobile-content-2,
-#main-container .mixer-panel-3 .mobile-content-3,
-#main-container .mixer-panel-3 .mobile-content-4 {
+#main-container .mixer-panel-3 .mobile-content {
   background-color: #e12474;
 }
 #main-container .mixer-panel-3 .social .fb:hover {
@@ -993,10 +985,7 @@ body {
   border-bottom: solid 1px #8f8608;
 }
 #main-container .mixer-panel-4 .mobile-title,
-#main-container .mixer-panel-4 .mobile-content-1,
-#main-container .mixer-panel-4 .mobile-content-2,
-#main-container .mixer-panel-4 .mobile-content-3,
-#main-container .mixer-panel-4 .mobile-content-4 {
+#main-container .mixer-panel-4 .mobile-content {
   background-color: #c8bc1a;
 }
 #main-container .mixer-panel-4 .social .fb:hover {
@@ -1067,10 +1056,7 @@ body {
   border-bottom: solid 1px #ad4606;
 }
 #main-container .mixer-panel-5 .mobile-title,
-#main-container .mixer-panel-5 .mobile-content-1,
-#main-container .mixer-panel-5 .mobile-content-2,
-#main-container .mixer-panel-5 .mobile-content-3,
-#main-container .mixer-panel-5 .mobile-content-4 {
+#main-container .mixer-panel-5 .mobile-content {
   background-color: #eb5a01;
 }
 #main-container .mixer-panel-5 .social .fb:hover {
@@ -1134,10 +1120,7 @@ body {
   border-bottom: solid 1px #0678ad;
 }
 #main-container .mixer-panel-6 .mobile-title,
-#main-container .mixer-panel-6 .mobile-content-1,
-#main-container .mixer-panel-6 .mobile-content-2,
-#main-container .mixer-panel-6 .mobile-content-3,
-#main-container .mixer-panel-6 .mobile-content-4 {
+#main-container .mixer-panel-6 .mobile-content {
   background-color: #6ebbd7;
 }
 #main-container .mixer-panel-6 .social .fb:hover {
@@ -1196,10 +1179,7 @@ body {
   border-bottom: solid 1px #c2283a;
 }
 #main-container .mixer-panel-7 .mobile-title,
-#main-container .mixer-panel-7 .mobile-content-1,
-#main-container .mixer-panel-7 .mobile-content-2,
-#main-container .mixer-panel-7 .mobile-content-3,
-#main-container .mixer-panel-7 .mobile-content-4 {
+#main-container .mixer-panel-7 .mobile-content {
   background-color: #f64258;
 }
 #main-container .mixer-panel-7 .social .fb:hover {
@@ -1301,15 +1281,13 @@ body {
 .mobile #main-container .mobile-drawer .mobile-copy {
   padding: 20px;
 }
-.mobile #main-container .mobile-drawer .mobile-content-1,
-.mobile #main-container .mobile-drawer .mobile-content-2,
-.mobile #main-container .mobile-drawer .mobile-content-3,
-.mobile #main-container .mobile-drawer .mobile-content-4 {
+.mobile #main-container .mobile-drawer .mobile-content {
   position: absolute;
   border: 1px solid white;
   height: inherit;
   width: 289px;
   z-index: 1;
+  overflow-y: scroll;
 }
 .mobile #main-container .mobile-drawer-tips {
   top: 24px;
@@ -1324,13 +1302,13 @@ body {
   top: 305px;
 }
 .mobile #main-container .mobile-drawer-left {
-  left: -290px;
+  left: -291px;
 }
 .mobile #main-container .mobile-drawer-left .mobile-title {
-  right: -41px;
+  right: -42px;
 }
 .mobile #main-container .mobile-drawer-right {
-  right: -290px;
+  right: -291px;
 }
 .mobile #main-container .mobile-drawer-right .mobile-title {
   left: -41px;

@@ -19,8 +19,10 @@ var MixerDotNav = (function (_Messenger) {
 		this.mobile = mobile;
 		this.images = $(target).find('.mixer img');
 		this.element = $(target).find('.mixer-dot-nav');
+		this.parent = $(target).closest('.mixer-panel');
 		this.index = 0;
 		this._init();
+		$(window).resize(this._resize);
 	}
 
 	_inherits(MixerDotNav, _Messenger);
@@ -37,10 +39,12 @@ var MixerDotNav = (function (_Messenger) {
 				var el = i == 0 ? '<li class="selected"><div></div></li>' : '<li><div></div></li>';
 				$(self.element).append(el);
 				el = $(self.element).find('li').eq(i);
+
 				var att = $(_this.images).eq(i).attr('data-att');
-				$(el).attr('data-att', att).click(function () {
-					self.Select(id);
-				});
+				$(el).click(function () {
+					self.lastClicked = id;
+					self.emit('selected');
+				}).attr('data-att', att);
 			};
 
 			for (var i = 0; i < self.images.length; i++) {
@@ -57,7 +61,11 @@ var MixerDotNav = (function (_Messenger) {
 			}$(self.element).find('.selected').removeClass('selected');
 			$(self.element).find('li').eq(id).addClass('selected');
 			self.index = id;
-			self.emit('selected');
+		}
+	}, {
+		key: '_resize',
+		value: function _resize() {
+			if (this.mobile) $(this.element).css('marginLeft', -$(this.element).width() / 2);
 		}
 	}]);
 

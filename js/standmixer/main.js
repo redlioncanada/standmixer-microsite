@@ -4,7 +4,7 @@ var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
 var mixerDotNav = undefined;
-var gaw = new gaWrapper({ prefix: "SMA", verbose: true, testMode: true });
+var gaw = new gaWrapper({ prefix: "SMA", verbose: true });
 
 if (isMobile) {
     //inject meta tags
@@ -51,7 +51,7 @@ $(document).ready(function () {
         //init mixer nav
         mixerDotNav = new MixerDotNav($(".mixer-panel-1"));
         mixerDotNav.on("selected", function () {
-            changeMixer(this.index);
+            changeMixer(this.lastClicked);
             resetMixerInterval();
         });
         //end init mixer nav
@@ -134,18 +134,38 @@ $(document).ready(function () {
 
             function (d, e) {
                 var newId = undefined;
+                var p = $(e).closest(".mixer-panel");
+                var mixerDiv = $(p).find(".mixer");
+                if ($(mixerDiv).hasClass("animating")) return -1;
+                var curImg = $(p).find(".mixer .selected");
+                var curId = $(curImg).index();
+                var numImages = $(p).find(".mixer img").length;
+
                 if (d == "left") {
-                    newId = $(p).find(".mixer .selected").index() + 1;
-                    if (newId > $(p).find(".mixer img").length) newId = 0;
+                    newId = curId + 1;
+                    if (newId > numImages - 1) newId = 0;
                 } else if (d == "right") {
-                    newId = $(p).find(".mixer .selected").index() - 1;
-                    if (newId < 0) newId = $(p).find(".mixer img").length;
+                    newId = curId - 1;
+                    if (newId < 0) newId = numImages - 1;
                 } else if (typeof d === "number") {
-                    if (d < 0 || d > $(p).find(".mixer img").length) return;else newId = d;
+                    if (d < 0 || d > numImages - 1) return -1;else newId = d;
                 }
 
-                var p = $(e).closest(".mixer-panel");
-                //do some mobile swiping
+                var pWidth = $(p).width();
+                var newImg = $(p).find(".mixer img").eq(newId);
+                var mod = newId > curId ? 1 : -1;
+
+                $(mixerDiv).addClass("animating");
+                newImg.css({ left: pWidth * mod, display: "block" }).animate({ left: 0 }, 400);
+                curImg.animate({ left: -pWidth * mod }, 400, function () {
+                    $(newImg).addClass("selected");
+                    $(this).removeClass("selected").css("display", "none");
+                    $(mixerDiv).removeClass("animating");
+                });
+
+                $(p).find(".mobile-content").not(".mobile-content-" + (newId + 1)).css("display", "none");
+                $(p).find(".mobile-content-" + (newId + 1)).css("display", "block");
+                return newId;
             };
 
             var closeLeftDrawer =
@@ -153,7 +173,7 @@ $(document).ready(function () {
 
             function (e) {
                 var cb = arguments[1] === undefined ? false : arguments[1];
-                var width = $(e).width();$(e).animate({ left: -width }, 400, function () {
+                var width = $(e).width();$(e).animate({ left: -width - 1 }, 400, function () {
                     if (cb) cb();
                 });$(e).closest(".mobile-drawer").removeClass("open");
             };
@@ -167,7 +187,7 @@ $(document).ready(function () {
 
             var closeRightDrawer = function (e) {
                 var cb = arguments[1] === undefined ? false : arguments[1];
-                var width = $(e).width();$(e).animate({ right: -width }, 400, function () {
+                var width = $(e).width();$(e).animate({ right: -width - 1 }, 400, function () {
                     if (cb) cb();
                 });$(e).closest(".mobile-drawer").removeClass("open");
             };
@@ -179,22 +199,45 @@ $(document).ready(function () {
                 });$(e).closest(".mobile-drawer").addClass("open");
             };
 
-            //init mixer navs
-            for (i = 2; i <= 7; i++) {
-                var _mixerDotNav = new MixerDotNav($(".mixer-panel-" + i.toString()), isMobile);
-                _mixerDotNav.on("selected", function () {
-                    doMobileSwipe(this.index, this);
+            var _loop = function () {
+                var mixerDotNav = new MixerDotNav($(".mixer-panel-" + i.toString()), isMobile);
+                mixerDotNav.on("selected", function () {
+                    var self = this;
+                    var ret = undefined;
+                    if ($(this.parent).find(".mobile-drawer.open").length) {
+                        closeLeftDrawer(".mobile-drawer-left", function () {
+                            if (doMobileSwipe(self.lastClicked, self.element) >= 0) self.Select(self.lastClicked);
+                        });
+                        closeRightDrawer(".mobile-drawer-right", function () {
+                            if (doMobileSwipe(self.lastClicked, self.element) >= 0) self.Select(self.lastClicked);
+                        });
+                    } else {
+                        if (doMobileSwipe(self.lastClicked, self.element) >= 0) self.Select(self.lastClicked);
+                    }
                 });
 
                 //init hammerjs
                 $(".mixer-panel-" + i.toString()).hammer().bind("swipe", function (e) {
+                    var id = false;
                     var d = e.gesture.direction == Hammer.DIRECTION_LEFT ? "left" : "right";
-                    closeLeftDrawer(".mobile-drawer-left");
-                    closeRightDrawer(".mobile-drawer-right", function () {
-                        doMobileSwipe(d, this);
-                    });
+                    if ($(this).closest(".mixer-panel").find(".mobile-drawer.open").length) {
+                        closeLeftDrawer(".mobile-drawer-left", function () {
+                            id = doMobileSwipe(d, this);
+                        });
+                        closeRightDrawer(".mobile-drawer-right", function () {
+                            id = doMobileSwipe(d, this);
+                        });
+                    } else {
+                        id = doMobileSwipe(d, this);
+                    }
+                    if (id >= 0) mixerDotNav.Select(id);
                 });
                 //end init hammerjs
+            };
+
+            //init mixer navs
+            for (i = 2; i <= 7; i++) {
+                _loop();
             }
 
             //on drawer click, animate out
@@ -204,16 +247,22 @@ $(document).ready(function () {
 
                 if ($(this).hasClass("mobile-drawer-left")) {
                     $(p).find(".mobile-drawer-left").each(function (i, e) {
-                        $(e).css("zIndex", "100");
+                        $(e).css("zIndex", "100").removeClass("selected");
                         openLeftDrawer(e);
+                    });
+                    $(p).find(".mobile-drawer-right").each(function (i, e) {
+                        closeRightDrawer(e);
                     });
                 } else {
                     $(p).find(".mobile-drawer-right").each(function (i, e) {
-                        $(e).css("zIndex", "100");
+                        $(e).css("zIndex", "100").removeClass("selected");
                         openRightDrawer(e);
                     });
+                    $(p).find(".mobile-drawer-left").each(function (i, e) {
+                        closeLeftDrawer(e);
+                    });
                 }
-                $(self).css("zIndex", "200");
+                $(self).css("zIndex", "200").addClass("selected");
             });
             //end drawer click
 
