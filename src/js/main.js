@@ -209,7 +209,7 @@ $(document).ready(function() {
 
             if ($(this).hasClass('mobile-drawer-left')) {
                 $(p).find('.mobile-drawer-left').each(function(i, e) {
-                    $(e).css('zIndex','100').removeClass('selected');
+                    $(e).css('zIndex','199').removeClass('selected');
                     openLeftDrawer(e);
                 });
                 $(p).find('.mobile-drawer-right').each(function(i, e) {
@@ -217,7 +217,7 @@ $(document).ready(function() {
                 });
             } else {
                 $(p).find('.mobile-drawer-right').each(function(i, e) {
-                    $(e).css('zIndex','100').removeClass('selected');
+                    $(e).css('zIndex','199').removeClass('selected');
                     openRightDrawer(e);
                 });
                 $(p).find('.mobile-drawer-left').each(function(i, e) {
