@@ -275,14 +275,15 @@ $(document).ready(function () {
     }
 
     //on gallery arrow click, navigate
-    $(".infobox .gallery").on("click", ".left", function () {
+    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".left", function () {
         navGallery(this, 1);
     });
-    $(".infobox .gallery").on("click", ".right", function () {
+    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".right", function () {
         navGallery(this, 0);
     });
     function navGallery(self, direction) {
         var p = $(self).closest(".gallery");
+        if (!p.length) p = $(self).closest(".mobile-content");
         if (p.find(".expanded img").length > 1) {
             return;
         }var length = $(p).find("ul img").length - 1;
@@ -295,7 +296,7 @@ $(document).ready(function () {
         var curImg = $(p).find("ul img").eq(newId);
         var mod = direction ? 1 : -1;
         var width = $(img).width() * mod;
-        var newImg = $(curImg).clone().css("left", width).attr("data-id", newId).appendTo(p.find(".expanded"));
+        var newImg = $(curImg).clone().css({ left: width, top: 0 }).attr("data-id", newId).appendTo(p.find(".expanded"));
 
         $(img).animate({ left: width * -1 }, function () {
             $(this).remove();
@@ -306,12 +307,16 @@ $(document).ready(function () {
     }
 
     //on gallery image click, expand it and show close button
-    $(".infobox .gallery li").click(function () {
+    $(".infobox .gallery li, .mobile-drawer-gallery li").click(function () {
         var p = $(this).closest(".gallery");
+        var mobile = false;
+        if (!p.length) {
+            p = $(this).closest(".mobile-content");
+            mobile = true;
+        }
         if ($(p).find("img.expanded").length) return;
         var img = $(this).find("img");
         var id = $(this).index();
-
         var oTop = $(img).position().top - 1;
         var oLeft = $(img).position().left - 1;
         var oWidth = $(img).width();
@@ -333,10 +338,17 @@ $(document).ready(function () {
         }).addClass("current").attr("data-id", id).appendTo(gallery);
 
         var first = $(p).find("li").first();
+        var nWidth = undefined,
+            nHeight = undefined;
+        if (mobile) {
+            nWidth = $(first).width() * 3 + 2;
+            nHeight = $(first).height() * 3 + 2;
+        } else {
+            nWidth = $(p).width();
+            nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2 - 21;
+        }
         var nTop = $(first).position().top + 11;
         var nLeft = $(first).position().left;
-        var nWidth = $(p).width();
-        var nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2 - 21;
 
         var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" data-label=\"Close Gallery\" class=\"close\">+</div>").appendTo(p);
         var leftArrow = $("<div class=\"left\" data-label=\"Next Image\"></div>").appendTo(p);
@@ -356,8 +368,9 @@ $(document).ready(function () {
     //end gallery image click
 
     //on expanded gallery image click, remove it
-    $(".infobox .gallery").on("click", ".close", function () {
+    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".close", function () {
         var p = $(this).closest(".gallery");
+        if (!p.length) p = $(this).closest(".mobile-content");
         var exp = $(p).find(".expanded");
         var id = $(exp).find(".current").attr("data-id");
         var img = $(p).find("li").eq(id);
