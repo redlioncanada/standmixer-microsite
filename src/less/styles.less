@@ -1350,6 +1350,7 @@ body {
             -ms-transform: rotate(45deg); /* IE 9 */
             -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
             transform: rotate(45deg);
+            z-index: 5
           }
           .expanded img {
             width: 100%;
@@ -1365,6 +1366,19 @@ body {
             background: url(/images/standmixer/triangle-sheet.png);
             background-position: -19px 0;
             padding: 0 !important;
+          }
+          .left-section,.right-section {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 1;
+          }
+          .left-section {
+            left: 0;
+          }
+          .right-section {
+            left: 50%;
           }
           .right {
             left: 25px;

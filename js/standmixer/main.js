@@ -217,7 +217,7 @@ $(document).ready(function () {
                 });
 
                 //init hammerjs
-                $(".mixer-panel-" + i.toString()).hammer().bind("swipe", function (e) {
+                $(".mixer-panel-" + i.toString()).hammer({ threshold: 8, velocity: 0.4 }).bind("swipe", function (e) {
                     var id = false;
                     var d = e.gesture.direction == Hammer.DIRECTION_LEFT ? "left" : "right";
                     if ($(this).closest(".mixer-panel").find(".mobile-drawer.open").length) {
@@ -275,10 +275,10 @@ $(document).ready(function () {
     }
 
     //on gallery arrow click, navigate
-    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".left", function () {
+    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".left,.left-section", function () {
         navGallery(this, 1);
     });
-    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".right", function () {
+    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".right,.right-section", function () {
         navGallery(this, 0);
     });
     function navGallery(self, direction) {
@@ -353,6 +353,8 @@ $(document).ready(function () {
         var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" data-label=\"Close Gallery\" class=\"close\">+</div>").appendTo(p);
         var leftArrow = $("<div class=\"left\" data-label=\"Next Image\"></div>").appendTo(p);
         var rightArrow = $("<div class=\"right\" data-label=\"Previous Image\"></div>").appendTo(p);
+        var leftSection = $("<div class=\"left-section\" data=label=\"Next Image\"></div>").appendTo(p);
+        var rightSection = $("<div class=\"right-section\" data=label=\"Previous Image\"></div>").appendTo(p);
 
         $(gallery).animate({
             top: nTop,
@@ -375,7 +377,7 @@ $(document).ready(function () {
         var id = $(exp).find(".current").attr("data-id");
         var img = $(p).find("li").eq(id);
 
-        $(p).find(".left,.right").fadeOut(function () {
+        $(p).find(".left,.right,.left-section,.right-section").fadeOut(function () {
             $(this).remove();
         });
         $(p).find(".close").fadeOut(function () {

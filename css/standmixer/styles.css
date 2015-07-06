@@ -1509,6 +1509,7 @@ body {
   -webkit-transform: rotate(45deg);
   /* Chrome, Safari, Opera */
   transform: rotate(45deg);
+  z-index: 5;
 }
 .mobile #main-container .mobile-drawer-gallery .expanded img {
   width: 100%;
@@ -1525,6 +1526,20 @@ body {
   background: url(/images/standmixer/triangle-sheet.png);
   background-position: -19px 0;
   padding: 0 !important;
+}
+.mobile #main-container .mobile-drawer-gallery .left-section,
+.mobile #main-container .mobile-drawer-gallery .right-section {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+}
+.mobile #main-container .mobile-drawer-gallery .left-section {
+  left: 0;
+}
+.mobile #main-container .mobile-drawer-gallery .right-section {
+  left: 50%;
 }
 .mobile #main-container .mobile-drawer-gallery .right {
   left: 25px;
