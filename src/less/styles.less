@@ -1117,6 +1117,8 @@ body {
         z-index: 10;
       }
 
+      .mobile-drawer.open.selected .mobile-title.hidden {display: block;}
+
       .mobile-drawer {
         position: absolute;
         height: 382px;
@@ -1132,6 +1134,10 @@ body {
           right: 0;
           z-index: 2;
           width: 42px;
+        }
+
+        .mobile-title.hidden {
+          display: none;
         }
 
         .mobile-copy {
@@ -1193,6 +1199,8 @@ body {
           .price {
             float: right;
             font-weight: 700;
+            font-size: 0.9em;
+            margin-top: 3px;
           }
         }
         .mobile-content > p {
@@ -1223,12 +1231,13 @@ body {
         }
 
         .attachment.strainer {
-          margin: 8px 0 0 11px;
+          margin: 23px 0 0 29px;
+          width: 79%;
         }
 
         .attachment.citrus {
-          width: 75%;
-          margin: 0 0 0 31px;
+          width: 65%;
+          margin: 15px 0 0 42px;
         }
 
         .attachment.juicer {
@@ -1237,8 +1246,8 @@ body {
         }
 
         .attachment.mill {
-          width: 86%;
-          margin: 0;
+          width: 76%;
+          margin: 10px;
         }
 
         .attachment.ice-cream {
@@ -1283,12 +1292,14 @@ body {
 
             li {height: 52px;}
             li span {
+              padding-left: 12px;
               font-size: 0.8em;
               float: left;
               line-height: 38px;
             }
             li span.break {
-              line-height: 23px;
+              line-height: 13px;
+              margin-top: 7px;
             }
             li .attachment {
               width: 34%;
@@ -1298,7 +1309,14 @@ body {
         }
 
         .grinder,.stuffer,.shredder {
-          > div:nth-child(2) {padding-top: 0;}
+          > div:nth-child(2) {
+            padding-top: 0;
+
+            > div {
+              padding-top: 13px;
+              border-bottom: 1px solid white;
+            }
+          }
           > div:nth-child(2) img {
             width: 63%;
             margin-left: 70px;
@@ -1306,7 +1324,10 @@ body {
           > img {
             width: 81%;
             margin-left: 29px;
-            padding-top: 10px;
+            padding-top: 17px;
+          }
+          > p {
+            line-height: 17px;
           }
         }
         div.shredder img.attachment {margin-left: 47px;}
@@ -1384,11 +1405,15 @@ body {
         }
       .mobile-drawer-left {
         left: -@mobileDrawerWidth - 1;
-        .mobile-title {right: -41px;}
+        .mobile-title {right: -42px;}
       }
       .mobile-drawer-right {
         right: -@mobileDrawerWidth - 1;
-        .mobile-title {left: -40px;}
+        .mobile-title {
+          left: -41px;
+
+          img {margin-left: 1px;}
+        }
       }
     }
 

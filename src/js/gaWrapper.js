@@ -1,6 +1,5 @@
 class gaWrapper {
-	constructor(opts) {
-		if (!opts) {opts = {};}
+	constructor(opts = {}) {
 		this.prefix = opts.prefix ? opts.prefix : "";
 		this.testMode = opts.testMode ? opts.testMode : false;
 		this.verbose = opts.verbose ? opts.verbose : false;
@@ -15,7 +14,7 @@ class gaWrapper {
 		this.log('init');
 
 		if (this.testMode) {
-			$('a').click(function(e) {e.preventDefault();})
+			$('a').click(function(e) {e.preventDefault();});
 		}
 	}
 

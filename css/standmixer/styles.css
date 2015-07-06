@@ -1283,6 +1283,9 @@ body {
   width: 100%;
   z-index: 10;
 }
+.mobile #main-container .mobile-drawer.open.selected .mobile-title.hidden {
+  display: block;
+}
 .mobile #main-container .mobile-drawer {
   position: absolute;
   height: 382px;
@@ -1304,6 +1307,9 @@ body {
   right: 0;
   z-index: 2;
   width: 42px;
+}
+.mobile #main-container .mobile-drawer .mobile-title.hidden {
+  display: none;
 }
 .mobile #main-container .mobile-drawer .mobile-copy {
   padding: 20px;
@@ -1360,6 +1366,8 @@ body {
 .mobile #main-container .mobile-drawer-info .mobile-content > div .price {
   float: right;
   font-weight: 700;
+  font-size: 0.9em;
+  margin-top: 3px;
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > p {
   padding: 0 20px;
@@ -1384,19 +1392,20 @@ body {
   margin: 43px 0 0 14px;
 }
 .mobile #main-container .mobile-drawer-info .attachment.strainer {
-  margin: 8px 0 0 11px;
+  margin: 23px 0 0 29px;
+  width: 79%;
 }
 .mobile #main-container .mobile-drawer-info .attachment.citrus {
-  width: 75%;
-  margin: 0 0 0 31px;
+  width: 65%;
+  margin: 15px 0 0 42px;
 }
 .mobile #main-container .mobile-drawer-info .attachment.juicer {
   width: 63%;
   margin: 2px 0 0 44px;
 }
 .mobile #main-container .mobile-drawer-info .attachment.mill {
-  width: 86%;
-  margin: 0;
+  width: 76%;
+  margin: 10px;
 }
 .mobile #main-container .mobile-drawer-info .attachment.ice-cream {
   margin: 52px 0 0 7px;
@@ -1435,12 +1444,14 @@ body {
   height: 52px;
 }
 .mobile #main-container .mobile-drawer-info .press > div:nth-child(2) > ul li span {
+  padding-left: 12px;
   font-size: 0.8em;
   float: left;
   line-height: 38px;
 }
 .mobile #main-container .mobile-drawer-info .press > div:nth-child(2) > ul li span.break {
-  line-height: 23px;
+  line-height: 13px;
+  margin-top: 7px;
 }
 .mobile #main-container .mobile-drawer-info .press > div:nth-child(2) > ul li .attachment {
   width: 34%;
@@ -1450,6 +1461,12 @@ body {
 .mobile #main-container .mobile-drawer-info .stuffer > div:nth-child(2),
 .mobile #main-container .mobile-drawer-info .shredder > div:nth-child(2) {
   padding-top: 0;
+}
+.mobile #main-container .mobile-drawer-info .grinder > div:nth-child(2) > div,
+.mobile #main-container .mobile-drawer-info .stuffer > div:nth-child(2) > div,
+.mobile #main-container .mobile-drawer-info .shredder > div:nth-child(2) > div {
+  padding-top: 13px;
+  border-bottom: 1px solid white;
 }
 .mobile #main-container .mobile-drawer-info .grinder > div:nth-child(2) img,
 .mobile #main-container .mobile-drawer-info .stuffer > div:nth-child(2) img,
@@ -1462,7 +1479,12 @@ body {
 .mobile #main-container .mobile-drawer-info .shredder > img {
   width: 81%;
   margin-left: 29px;
-  padding-top: 10px;
+  padding-top: 17px;
+}
+.mobile #main-container .mobile-drawer-info .grinder > p,
+.mobile #main-container .mobile-drawer-info .stuffer > p,
+.mobile #main-container .mobile-drawer-info .shredder > p {
+  line-height: 17px;
 }
 .mobile #main-container .mobile-drawer-info div.shredder img.attachment {
   margin-left: 47px;
@@ -1544,13 +1566,16 @@ body {
   left: -291px;
 }
 .mobile #main-container .mobile-drawer-left .mobile-title {
-  right: -41px;
+  right: -42px;
 }
 .mobile #main-container .mobile-drawer-right {
   right: -291px;
 }
 .mobile #main-container .mobile-drawer-right .mobile-title {
-  left: -40px;
+  left: -41px;
+}
+.mobile #main-container .mobile-drawer-right .mobile-title img {
+  margin-left: 1px;
 }
 .mobile .mixer-panel-6 .mobile-drawer-info .attachment {
   width: 85%;

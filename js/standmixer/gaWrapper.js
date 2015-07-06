@@ -5,12 +5,11 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var gaWrapper = (function () {
-	function gaWrapper(opts) {
+	function gaWrapper() {
+		var opts = arguments[0] === undefined ? {} : arguments[0];
+
 		_classCallCheck(this, gaWrapper);
 
-		if (!opts) {
-			opts = {};
-		}
 		this.prefix = opts.prefix ? opts.prefix : '';
 		this.testMode = opts.testMode ? opts.testMode : false;
 		this.verbose = opts.verbose ? opts.verbose : false;
