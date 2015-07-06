@@ -1329,8 +1329,12 @@ body {
 .mobile #main-container .mobile-drawer-tips .mobile-title {
   top: 106px;
 }
-.mobile #main-container .mobile-drawer-info .mobile-content > div {
+.mobile #main-container .mobile-drawer-info .mobile-content > div > div:nth-child(3) {
+  width: 263px;
+  left: 0;
+  position: relative;
   border-bottom: 1px solid white;
+  padding: 22px 0 0 0;
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > div .title {
   float: left;
@@ -1353,4 +1357,9 @@ body {
 }
 .mobile #main-container .mobile-drawer-right .mobile-title {
   left: -40px;
+}
+.mobile .mixer-panel-6 .mobile-drawer-info .attachment {
+  width: 85%;
+  left: 13px;
+  position: relative;
 }

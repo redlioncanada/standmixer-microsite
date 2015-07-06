@@ -1182,8 +1182,14 @@ body {
         .mobile-title {top: 106px;}
       }
       .mobile-drawer-info {
-        .mobile-content > div {
+        .mobile-content > div > div:nth-child(3) {
+          width: 263px;
+          left: 0;
+          position: relative;
           border-bottom: 1px solid white;
+          padding: 22px 0 0 0;
+        }
+        .mobile-content > div {
           .title {float: left;}
           .price {
             float: right;
@@ -1201,5 +1207,15 @@ body {
         .mobile-title {left: -40px;}
       }
     }
+
+    //start panel-specific css
+    .mixer-panel-6 {
+      .mobile-drawer-info .attachment {
+        width: 85%;
+        left: 13px;
+        position: relative;
+      }
+    }
+    //end panel-specific css
   }
   //end device-specific css
