@@ -1249,7 +1249,7 @@ body {
   display: block !important;
 }
 .mobile #main-container {
-  min-width: 375px;
+  min-width: initial;
 }
 .mobile #main-container .mixer-dot-nav {
   bottom: initial;
@@ -1272,7 +1272,7 @@ body {
 }
 .mobile #main-container .mixer-panel .mixer {
   height: 400px;
-  left: 49%;
+  left: 52%;
   margin-left: -200px;
 }
 .mobile #main-container .mobile-close {
@@ -1307,6 +1307,9 @@ body {
   right: 0;
   z-index: 2;
   width: 42px;
+}
+.mobile #main-container .mobile-drawer .mobile-title > img {
+  width: 100%;
 }
 .mobile #main-container .mobile-drawer .mobile-title.hidden {
   display: none;
@@ -1479,7 +1482,7 @@ body {
 .mobile #main-container .mobile-drawer-info .shredder > img {
   width: 81%;
   margin-left: 29px;
-  padding-top: 17px;
+  padding-top: 8px;
 }
 .mobile #main-container .mobile-drawer-info .grinder > p,
 .mobile #main-container .mobile-drawer-info .stuffer > p,
@@ -1591,6 +1594,26 @@ body {
 }
 .mobile #main-container .mobile-drawer-right .mobile-title img {
   margin-left: 1px;
+}
+@media (max-width: 355px) {
+  .mobile #main-container .mobile-drawer-left .mobile-title {
+    width: 28px;
+    right: -28px;
+  }
+  .mobile #main-container .mobile-drawer-right .mobile-title {
+    width: 28px;
+    left: -28px;
+  }
+  .mobile #main-container .mobile-drawer-gallery .mobile-title,
+  .mobile #main-container .mobile-drawer-description .mobile-title {
+    top: 56px;
+  }
+  .mobile #main-container .mobile-drawer-tips .mobile-title {
+    top: 128px;
+  }
+  .mobile #main-container .mobile-drawer-info .mobile-title {
+    top: 264px;
+  }
 }
 .mobile .mixer-panel-6 .mobile-drawer-info .attachment {
   width: 85%;

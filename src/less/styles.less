@@ -1076,7 +1076,7 @@ body {
   .mobile {
     .social .in {display: block !important;}
     #main-container {
-      min-width: 375px;
+      min-width: initial;
 
       .mixer-dot-nav {
         bottom: initial;
@@ -1103,7 +1103,7 @@ body {
 
         .mixer {
           height: @panel1MixerHeightMobile;
-          left: 49%;
+          left: 52%;
           margin-left: -@panel1MixerHeightMobile/2;
         }
       }
@@ -1134,6 +1134,10 @@ body {
           right: 0;
           z-index: 2;
           width: 42px;
+
+          > img {
+            width: 100%;
+          }
         }
 
         .mobile-title.hidden {
@@ -1324,7 +1328,7 @@ body {
           > img {
             width: 81%;
             margin-left: 29px;
-            padding-top: 17px;
+            padding-top: 8px;
           }
           > p {
             line-height: 17px;
@@ -1430,6 +1434,34 @@ body {
         }
       }
     }
+
+    //<= iphone 5 begin
+    @media(max-width:355px) {
+      #main-container {
+        .mobile-drawer-left .mobile-title {
+          width: 28px;
+          right: -28px;
+        }
+
+        .mobile-drawer-right .mobile-title {
+          width: 28px;
+          left: -28px;
+        }
+
+        .mobile-drawer-gallery .mobile-title, .mobile-drawer-description .mobile-title {
+          top: 56px;
+        }
+
+        .mobile-drawer-tips .mobile-title {
+          top: 128px;
+        }
+
+        .mobile-drawer-info .mobile-title {
+          top: 264px;
+        }
+      }
+    }
+  //<= iphone5 end
 
     //start panel-specific css
     .mixer-panel-6 {
