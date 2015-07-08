@@ -341,7 +341,7 @@ body {
 }
 #main-container .mixer-panel .mixer-header .back-to-top {
   position: absolute;
-  left: 0;
+  right: 0;
   font-size: 0.7em;
   cursor: pointer;
 }
@@ -369,6 +369,12 @@ body {
   font-size: 0.9em;
   max-width: 280px;
   margin: 125px 0 0 20px;
+}
+#main-container .mixer-panel .copy:lang(fr) {
+  max-width: 310px;
+}
+#main-container .mixer-panel .available-in:lang(fr) {
+  bottom: 20px;
 }
 #main-container .mixer-panel .available-in {
   position: absolute;
@@ -437,6 +443,9 @@ body {
 #main-container .mixer-panel .menu .make-button {
   position: relative;
   margin-right: 5px;
+}
+#main-container .mixer-panel .cta-button:lang(fr) {
+  bottom: 30px;
 }
 #main-container .mixer-panel .cta-button {
   position: absolute;
@@ -577,6 +586,9 @@ body {
 #main-container .mixer-panel .infobox .infomenu li:not(.selected) > div {
   display: none;
 }
+#main-container .mixer-panel .infobox .infomenu li:lang(fr) {
+  margin-right: 2px;
+}
 #main-container .mixer-panel .infobox .infomenu li {
   height: 25px;
   float: left;
@@ -611,6 +623,12 @@ body {
   height: 255px;
   padding: 10px 15px;
   position: absolute;
+}
+#main-container .mixer-panel .infobox .content .info .two-line {
+  height: 52px !important;
+}
+#main-container .mixer-panel .infobox .content .info .two-line .price {
+  margin-top: 12px;
 }
 #main-container .mixer-panel .infobox .content .info > div:first-child {
   height: 30px;
@@ -859,6 +877,12 @@ body {
 #main-container .mixer-panel-2 .social .pin:hover {
   background-position: -70px 35px;
 }
+#main-container .mixer-panel-2 .menu:lang(fr) {
+  width: 420px;
+}
+#main-container .mixer-panel-2 .menu:lang(fr) li {
+  margin-bottom: 3px;
+}
 #main-container .mixer-panel-3 {
   background-color: #e12474;
 }
@@ -945,6 +969,9 @@ body {
 #main-container .mixer-panel-3 .infobox[data-id="2"] .content .info > img {
   width: 100%;
   padding-top: 20px;
+}
+#main-container .mixer-panel-3 .menu:lang(fr) {
+  width: 346px;
 }
 #main-container .mixer-panel-3 .menu {
   width: 300px;
@@ -1229,6 +1256,12 @@ body {
 .no-mobile #main-container {
   min-width: 1366px;
 }
+.no-mobile #main-container .mixer-panel:lang(fr) .mixer-nav {
+  margin-left: -125px;
+}
+.no-mobile #main-container .mixer-panel-7:lang(fr) .mixer-nav {
+  margin-left: 115px;
+}
 @media (max-width: 1470px) {
   .no-mobile #main-container .mixer-panel .mixer {
     left: 47%;
@@ -1238,12 +1271,23 @@ body {
   }
   .no-mobile #main-container .mixer-panel .mixer-nav {
     left: 47%;
-    margin-left: -169px;
+    margin-left: -151px;
+  }
+  .no-mobile #main-container .mixer-panel:lang(fr) .mixer-nav {
+    margin-left: -138px;
   }
   .no-mobile #main-container .mixer-panel-7 .mixer-nav {
     margin-left: 102px;
     top: 44.4%;
   }
+  .no-mobile #main-container .mixer-panel-7:lang(fr) .mixer-nav {
+    margin-left: 102px;
+  }
+}
+.mobile {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 .mobile .social .in {
   display: block !important;
@@ -1264,6 +1308,76 @@ body {
   height: 12px;
   border-radius: 24px;
 }
+.mobile #main-container .mobile-legal {
+  padding: 0 40px;
+  height: 60px;
+}
+.mobile #main-container .mobile-legal > div {
+  width: 100%;
+  height: inherit;
+  border-top: 1px solid #9d9fa2;
+  padding-top: 5px;
+}
+.mobile #main-container .mobile-legal .legal {
+  margin-bottom: 4px;
+}
+.mobile #main-container .mobile-legal .terms {
+  margin-right: 5px;
+}
+.mobile #main-container .mobile-legal * {
+  color: #9d9fa2;
+  font-size: 8pt;
+  line-height: 11px;
+}
+.mobile #main-container .mobile-legal a {
+  color: #7e7e7e;
+}
+.mobile #main-container #mobile-social {
+  height: 62px;
+  border-top: 1px solid #9d9fa2;
+  padding: 0 40px;
+}
+.mobile #main-container #mobile-social > img {
+  float: left;
+  height: 62px;
+}
+.mobile #main-container #mobile-social div {
+  float: right;
+  width: 70%;
+  height: 100%;
+}
+.mobile #main-container #mobile-social div ul {
+  float: right;
+  width: 145px;
+  margin-top: 12px;
+}
+.mobile #main-container #mobile-social div ul li {
+  float: left;
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  border: 2px solid #9d9fa2;
+  margin-left: 8px;
+  background: url(/images/standmixer/social.png);
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  /* Safari */
+  transition: background-color 0.3s;
+}
+.mobile #main-container #mobile-social div ul li div {
+  height: 100%;
+  width: 100%;
+  border-radius: 35px;
+}
+.mobile #main-container #mobile-social div .fb {
+  background-position: -280px 0px;
+}
+.mobile #main-container #mobile-social div .tw {
+  background-position: -280px 105px;
+}
+.mobile #main-container #mobile-social div .pin {
+  background-position: -280px 35px;
+}
 .mobile #main-container .mixer-panel {
   height: 400px;
 }
@@ -1272,7 +1386,7 @@ body {
 }
 .mobile #main-container .mixer-panel .mixer {
   height: 400px;
-  left: 52%;
+  left: 54%;
   margin-left: -200px;
 }
 .mobile #main-container .mobile-close {
@@ -1286,11 +1400,17 @@ body {
 .mobile #main-container .mobile-drawer.open.selected .mobile-title.hidden {
   display: block;
 }
+.mobile #main-container .mobile-drawer.open {
+  z-index: 200;
+}
+.mobile #main-container .mobile-drawer.selected {
+  z-index: 201;
+}
 .mobile #main-container .mobile-drawer {
   position: absolute;
-  height: 382px;
+  height: 392px;
   width: 290px;
-  top: 8px;
+  top: 3px;
   z-index: 100;
   font-size: 11pt;
 }
@@ -1323,6 +1443,13 @@ body {
   border-bottom: 1px solid white;
   margin-bottom: 8px;
 }
+.mobile #main-container .mobile-drawer .mobile-copy .cta {
+  margin-top: 6px;
+}
+.mobile #main-container .mobile-drawer .mobile-copy .cta a {
+  text-decoration: underline;
+  cursor: pointer;
+}
 .mobile #main-container .mobile-drawer .mobile-content {
   position: absolute;
   display: none;
@@ -1354,7 +1481,16 @@ body {
   margin-left: 17px;
 }
 .mobile #main-container .mobile-drawer-tips .mobile-title {
-  top: 106px;
+  top: 109px;
+}
+.mobile #main-container .mobile-drawer-info .two-line {
+  height: 52px !important;
+}
+.mobile #main-container .mobile-drawer-info .two-line .price {
+  margin-top: 12px !important;
+}
+.mobile #main-container .mobile-drawer-info .two-line > div:not(.price) {
+  padding-top: 44px !important;
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > div > div:nth-child(3) {
   width: 263px;
@@ -1376,7 +1512,7 @@ body {
   padding: 0 20px;
 }
 .mobile #main-container .mobile-drawer-info .mobile-title {
-  top: 305px;
+  top: 313px;
 }
 .mobile #main-container .mobile-drawer-info .one .attachment {
   width: 90%;
@@ -1568,8 +1704,8 @@ body {
 }
 .mobile #main-container .mobile-drawer-gallery ul li {
   height: 20%;
-  margin-right: 12px;
-  margin-top: 12px;
+  margin-right: 10px;
+  margin-top: 10px;
   float: left;
   border: 1px solid white;
   cursor: pointer;
@@ -1591,9 +1727,6 @@ body {
 }
 .mobile #main-container .mobile-drawer-right .mobile-title {
   left: -41px;
-}
-.mobile #main-container .mobile-drawer-right .mobile-title img {
-  margin-left: 1px;
 }
 @media (max-width: 355px) {
   .mobile #main-container .mobile-drawer-left .mobile-title {

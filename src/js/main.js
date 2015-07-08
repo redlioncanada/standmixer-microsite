@@ -128,22 +128,24 @@ $(document).ready(function() {
         //end infobox tab click
     } else {
         //init mixer navs
-        for (var i = 2; i <= 7; i++) {
+        for (var i = 1; i <= 7; i++) {
             let mixerDotNav = new MixerDotNav($('.mixer-panel-'+i.toString()), isMobile);
-            mixerDotNav.on("selected", function() {
-                let self = this;
-                let ret = undefined;
-                if ($(this.parent).find('.mobile-drawer.open').length) {
-                    closeLeftDrawer('.mobile-drawer-left', function() {
+            if (i > 1) {
+                mixerDotNav.on("selected", function() {
+                    let self = this;
+                    let ret = undefined;
+                    if ($(this.parent).find('.mobile-drawer.open').length) {
+                        closeLeftDrawer('.mobile-drawer-left', function() {
+                            if (doMobileSwipe(self.lastClicked,self.element) >= 0) self.Select(self.lastClicked);
+                        });
+                        closeRightDrawer('.mobile-drawer-right', function() {
+                            if (doMobileSwipe(self.lastClicked,self.element) >= 0) self.Select(self.lastClicked);
+                        });
+                    } else {
                         if (doMobileSwipe(self.lastClicked,self.element) >= 0) self.Select(self.lastClicked);
-                    });
-                    closeRightDrawer('.mobile-drawer-right', function() {
-                        if (doMobileSwipe(self.lastClicked,self.element) >= 0) self.Select(self.lastClicked);
-                    });
-                } else {
-                    if (doMobileSwipe(self.lastClicked,self.element) >= 0) self.Select(self.lastClicked);
-                }
-            });
+                    }
+                });
+            }
 
             //init hammerjs
             $('.mixer-panel-'+i.toString()).hammer({"threshold":8,"velocity":0.4}).bind("swipe", function(e) {
@@ -159,7 +161,10 @@ $(document).ready(function() {
                 } else {
                     id = doMobileSwipe(d,this);
                 }
-                if (id >= 0) mixerDotNav.Select(id);
+                if (id >= 0 && id !== false) {
+                    console.log(id);
+                    mixerDotNav.Select(id);
+                }
             });
             //end init hammerjs
         }
@@ -209,7 +214,7 @@ $(document).ready(function() {
 
             if ($(this).hasClass('mobile-drawer-left')) {
                 $(p).find('.mobile-drawer-left').each(function(i, e) {
-                    $(e).css('zIndex','199').removeClass('selected');
+                    $(e).removeClass('selected');
                     openLeftDrawer(e);
                 });
                 $(p).find('.mobile-drawer-right').each(function(i, e) {
@@ -217,14 +222,14 @@ $(document).ready(function() {
                 });
             } else {
                 $(p).find('.mobile-drawer-right').each(function(i, e) {
-                    $(e).css('zIndex','199').removeClass('selected');
+                    $(e).removeClass('selected');
                     openRightDrawer(e);
                 });
                 $(p).find('.mobile-drawer-left').each(function(i, e) {
                     closeLeftDrawer(e);
                 });
             }
-            $(self).css('zIndex','200').addClass('selected');
+            $(self).addClass('selected');
         });
         //end drawer click
 
@@ -235,10 +240,10 @@ $(document).ready(function() {
         });
         //end not drawer click
 
-        function closeLeftDrawer(e,cb=false) {let width = $(e).width(); $(e).animate({'left': -width - 1}, 400, function(){if (cb) cb();}); $(e).closest('.mobile-drawer').removeClass('open');}
-        function openLeftDrawer(e,cb=false) {$(e).css('zIndex','100').animate({'left': '-1px'}, 400, function(){if (cb) cb();}); $(e).closest('.mobile-drawer').addClass('open');}
-        function closeRightDrawer(e,cb=false) {let width = $(e).width(); $(e).animate({'right': -width - 1}, 400, function(){if (cb) cb();}); $(e).closest('.mobile-drawer').removeClass('open');} 
-        function openRightDrawer(e,cb=false) {$(e).css('zIndex','100').animate({'right': '-1px'}, 400, function(){if (cb) cb();}); $(e).closest('.mobile-drawer').addClass('open');}
+        function closeLeftDrawer(e,cb=false) {let width = $(e).width(); $(e).animate({'left': -width - 1}, 400, function(){if (cb) cb(); $(e).closest('.mobile-drawer').removeClass('open selected');});}
+        function openLeftDrawer(e,cb=false) {$(e).animate({'left': '-1px'}, 400, function(){if (cb) cb();}); $(e).closest('.mobile-drawer').addClass('open');}
+        function closeRightDrawer(e,cb=false) {let width = $(e).width(); $(e).animate({'right': -width - 1}, 400, function(){if (cb) cb(); $(e).closest('.mobile-drawer').removeClass('open selected');});} 
+        function openRightDrawer(e,cb=false) {$(e).animate({'right': '-1px'}, 400, function(){if (cb) cb();}); $(e).closest('.mobile-drawer').addClass('open');}
     }
 
     //on gallery arrow click, navigate
@@ -313,7 +318,7 @@ $(document).ready(function() {
             nWidth = $(p).width();
             nHeight = $(first).position().top + $(first).height()*3 + parseInt($(first).css('marginTop'))*2 - 21;
         }
-        let nTop = $(first).position().top+11;
+        let nTop = $(first).position().top+9;
         let nLeft = $(first).position().left;
 
         let close = $(`<div style="top:${nTop+10}px; left:${nLeft+nWidth-35}px;" data-label="Close Gallery" class="close">+</div>`).appendTo(p);

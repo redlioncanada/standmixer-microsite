@@ -293,7 +293,7 @@ body {
 
       .back-to-top {
         position: absolute;
-        left: 0;
+        right: 0;
         font-size: 0.7em;
         cursor: pointer;
 
@@ -327,6 +327,14 @@ body {
       font-size: 0.9em;
       max-width: 280px;
       margin: 125px 0 0 20px;
+    }
+
+    .copy:lang(fr) {
+      max-width: 310px;
+    }
+
+    .available-in:lang(fr) {
+      bottom: @contentBottomMargin - 10;
     }
 
     .available-in {
@@ -407,6 +415,10 @@ body {
         position: relative;
         margin-right: 5px;
       }
+    }
+
+    .cta-button:lang(fr) {
+      bottom: @contentBottomMargin;
     }
 
     .cta-button {
@@ -562,6 +574,10 @@ body {
           display: none;
         }
 
+        li:lang(fr) {
+          margin-right: 2px;
+        }
+
         li {
           height: 25px;
           float: left;
@@ -605,6 +621,11 @@ body {
         }
 
         .info {
+          .two-line {
+            height: 52px !important;
+            .price {margin-top: 12px;}
+          }
+
           > div:first-child {
             height: 30px;
             border-bottom: 1px solid white;
@@ -836,6 +857,11 @@ body {
       .in:hover {background-position: -70px 70px;}
       .pin:hover {background-position: -70px 35px;}
     }
+
+    .menu:lang(fr) {
+      width: 420px;
+      li {margin-bottom: 3px;}
+    }
   }
   .mixer-panel-3 {
     background-color: @pink;
@@ -897,6 +923,9 @@ body {
       }
     }
 
+    .menu:lang(fr) {
+      width: 346px;
+    }
     .menu {
       width: 300px;
       li:first-child, li:nth-child(2) {
@@ -1053,7 +1082,17 @@ body {
 
 //start device-specific css
   .no-mobile {
-    #main-container {min-width: 1366px;}
+    #main-container {
+      min-width: 1366px;
+
+      .mixer-panel:lang(fr) .mixer-nav {
+        margin-left: -125px;
+      }
+
+      .mixer-panel-7:lang(fr) .mixer-nav {
+        margin-left: 115px;
+      }
+    }
     @media (max-width: 1470px) {
       #main-container {
         .mixer-panel .mixer {left: 47%;}
@@ -1061,19 +1100,30 @@ body {
 
         .mixer-panel .mixer-nav {
           left: 47%; 
-          margin-left: -169px;
+          margin-left: -151px;
+        }
+
+        .mixer-panel:lang(fr) .mixer-nav {
+          margin-left: -138px;
         }
 
         .mixer-panel-7 .mixer-nav {
           margin-left: 102px;
           top: 44.4%;
         }
-      }
 
+        .mixer-panel-7:lang(fr) .mixer-nav {
+          margin-left: 102px;
+        }
+      }
     }
   }
 
   .mobile {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust:100%;
+    -ms-text-size-adjust:100%;  
+
     .social .in {display: block !important;}
     #main-container {
       min-width: initial;
@@ -1094,6 +1144,75 @@ body {
         }
       }
 
+      .mobile-legal {
+        padding: 0 40px;
+        height: 60px;
+
+        > div {
+          width: 100%;
+          height: inherit;
+          border-top: 1px solid #9d9fa2;
+          padding-top: 5px;
+        }
+
+        .legal {
+          margin-bottom: 4px;
+        }
+        .terms {
+          margin-right: 5px;
+        }
+        * {
+          color: #9d9fa2;
+          font-size: 8pt;
+          line-height: 11px;
+        }
+        a {color: #7e7e7e;}
+      }
+      #mobile-social {
+        height: 62px;
+        border-top: 1px solid #9d9fa2;
+        padding: 0 40px;
+
+        > img {
+          float: left;
+          height: 62px;
+        }
+        div {
+          float: right;
+          width: 70%;
+          height: 100%;
+
+          ul {
+            float: right;
+            width: 145px;
+            margin-top: 12px;
+
+            li {
+              float: left;
+              width: @socialWidth;
+              height: @socialWidth;
+              border-radius: @socialWidth;
+              border: 2px solid #9d9fa2;
+              margin-left: 8px;
+              background: url(/images/standmixer/social.png);
+              cursor: pointer;
+              -webkit-transition: background-color @hoverTime; /* Safari */
+              transition: background-color @hoverTime;
+
+              div {
+                height: 100%;
+                width: 100%;
+                border-radius: @socialWidth;
+              }
+            }
+          }
+
+          .fb {background-position: -280px 0px;}
+          .tw {background-position: -280px 105px;}
+          .pin {background-position: -280px 35px;}
+        }
+      }
+
       .mixer-panel {
         height: @panel1MixerHeightMobile;
 
@@ -1103,7 +1222,7 @@ body {
 
         .mixer {
           height: @panel1MixerHeightMobile;
-          left: 52%;
+          left: 54%;
           margin-left: -@panel1MixerHeightMobile/2;
         }
       }
@@ -1118,12 +1237,14 @@ body {
       }
 
       .mobile-drawer.open.selected .mobile-title.hidden {display: block;}
+      .mobile-drawer.open {z-index: 200;}
+      .mobile-drawer.selected {z-index: 201;}
 
       .mobile-drawer {
         position: absolute;
-        height: 382px;
+        height: 392px;
         width: @mobileDrawerWidth;
-        top: 8px;
+        top: 3px;
         z-index: 100;
         font-size: 11pt;
 
@@ -1152,6 +1273,15 @@ body {
             width: 100%;
             border-bottom: 1px solid white;
             margin-bottom: 8px;
+          }
+
+          .cta {
+            margin-top: 6px;
+
+            a {
+              text-decoration: underline;
+              cursor: pointer;
+            }
           }
         }
 
@@ -1188,9 +1318,15 @@ body {
             li:not(:first-child) {margin-left: 17px;}
           }
         }
-        .mobile-title {top: 106px;}
+        .mobile-title {top: 109px;}
       }
       .mobile-drawer-info {
+        .two-line {
+          height: 52px !important;
+          .price {margin-top: 12px !important;}
+          > div:not(.price) {padding-top: 44px !important;}
+        }
+
         .mobile-content > div > div:nth-child(3) {
           width: 263px;
           left: 0;
@@ -1210,7 +1346,7 @@ body {
         .mobile-content > p {
           padding: 0 20px;
         }
-        .mobile-title {top: 305px;}
+        .mobile-title {top: 313px;}
 
         .one {
           .attachment {
@@ -1405,8 +1541,8 @@ body {
 
             li {
               height: 20%;
-              margin-right: 12px;
-              margin-top: 12px;
+              margin-right: 10px;
+              margin-top: 10px;
               float: left;
               border: 1px solid white;
               cursor: pointer;
@@ -1429,8 +1565,6 @@ body {
         right: -@mobileDrawerWidth - 1;
         .mobile-title {
           left: -41px;
-
-          img {margin-left: 1px;}
         }
       }
     }

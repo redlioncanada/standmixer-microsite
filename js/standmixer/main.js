@@ -174,13 +174,13 @@ $(document).ready(function () {
             function (e) {
                 var cb = arguments[1] === undefined ? false : arguments[1];
                 var width = $(e).width();$(e).animate({ left: -width - 1 }, 400, function () {
-                    if (cb) cb();
-                });$(e).closest(".mobile-drawer").removeClass("open");
+                    if (cb) cb();$(e).closest(".mobile-drawer").removeClass("open selected");
+                });
             };
 
             var openLeftDrawer = function (e) {
                 var cb = arguments[1] === undefined ? false : arguments[1];
-                $(e).css("zIndex", "100").animate({ left: "-1px" }, 400, function () {
+                $(e).animate({ left: "-1px" }, 400, function () {
                     if (cb) cb();
                 });$(e).closest(".mobile-drawer").addClass("open");
             };
@@ -188,33 +188,35 @@ $(document).ready(function () {
             var closeRightDrawer = function (e) {
                 var cb = arguments[1] === undefined ? false : arguments[1];
                 var width = $(e).width();$(e).animate({ right: -width - 1 }, 400, function () {
-                    if (cb) cb();
-                });$(e).closest(".mobile-drawer").removeClass("open");
+                    if (cb) cb();$(e).closest(".mobile-drawer").removeClass("open selected");
+                });
             };
 
             var openRightDrawer = function (e) {
                 var cb = arguments[1] === undefined ? false : arguments[1];
-                $(e).css("zIndex", "100").animate({ right: "-1px" }, 400, function () {
+                $(e).animate({ right: "-1px" }, 400, function () {
                     if (cb) cb();
                 });$(e).closest(".mobile-drawer").addClass("open");
             };
 
             var _loop = function () {
                 var mixerDotNav = new MixerDotNav($(".mixer-panel-" + i.toString()), isMobile);
-                mixerDotNav.on("selected", function () {
-                    var self = this;
-                    var ret = undefined;
-                    if ($(this.parent).find(".mobile-drawer.open").length) {
-                        closeLeftDrawer(".mobile-drawer-left", function () {
+                if (i > 1) {
+                    mixerDotNav.on("selected", function () {
+                        var self = this;
+                        var ret = undefined;
+                        if ($(this.parent).find(".mobile-drawer.open").length) {
+                            closeLeftDrawer(".mobile-drawer-left", function () {
+                                if (doMobileSwipe(self.lastClicked, self.element) >= 0) self.Select(self.lastClicked);
+                            });
+                            closeRightDrawer(".mobile-drawer-right", function () {
+                                if (doMobileSwipe(self.lastClicked, self.element) >= 0) self.Select(self.lastClicked);
+                            });
+                        } else {
                             if (doMobileSwipe(self.lastClicked, self.element) >= 0) self.Select(self.lastClicked);
-                        });
-                        closeRightDrawer(".mobile-drawer-right", function () {
-                            if (doMobileSwipe(self.lastClicked, self.element) >= 0) self.Select(self.lastClicked);
-                        });
-                    } else {
-                        if (doMobileSwipe(self.lastClicked, self.element) >= 0) self.Select(self.lastClicked);
-                    }
-                });
+                        }
+                    });
+                }
 
                 //init hammerjs
                 $(".mixer-panel-" + i.toString()).hammer({ threshold: 8, velocity: 0.4 }).bind("swipe", function (e) {
@@ -230,13 +232,16 @@ $(document).ready(function () {
                     } else {
                         id = doMobileSwipe(d, this);
                     }
-                    if (id >= 0) mixerDotNav.Select(id);
+                    if (id >= 0 && id !== false) {
+                        console.log(id);
+                        mixerDotNav.Select(id);
+                    }
                 });
                 //end init hammerjs
             };
 
             //init mixer navs
-            for (i = 2; i <= 7; i++) {
+            for (i = 1; i <= 7; i++) {
                 _loop();
             }
 
@@ -247,7 +252,7 @@ $(document).ready(function () {
 
                 if ($(this).hasClass("mobile-drawer-left")) {
                     $(p).find(".mobile-drawer-left").each(function (i, e) {
-                        $(e).css("zIndex", "199").removeClass("selected");
+                        $(e).removeClass("selected");
                         openLeftDrawer(e);
                     });
                     $(p).find(".mobile-drawer-right").each(function (i, e) {
@@ -255,14 +260,14 @@ $(document).ready(function () {
                     });
                 } else {
                     $(p).find(".mobile-drawer-right").each(function (i, e) {
-                        $(e).css("zIndex", "199").removeClass("selected");
+                        $(e).removeClass("selected");
                         openRightDrawer(e);
                     });
                     $(p).find(".mobile-drawer-left").each(function (i, e) {
                         closeLeftDrawer(e);
                     });
                 }
-                $(self).css("zIndex", "200").addClass("selected");
+                $(self).addClass("selected");
             });
             //end drawer click
 
@@ -347,7 +352,7 @@ $(document).ready(function () {
             nWidth = $(p).width();
             nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2 - 21;
         }
-        var nTop = $(first).position().top + 11;
+        var nTop = $(first).position().top + 9;
         var nLeft = $(first).position().left;
 
         var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" data-label=\"Close Gallery\" class=\"close\">+</div>").appendTo(p);
