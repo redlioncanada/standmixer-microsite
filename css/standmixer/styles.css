@@ -27,7 +27,6 @@
   width: 200px;
   background-color: #fde68f;
   overflow: hidden;
-  border-radius: 5px;
 }
 .pace .pace-progress {
   -webkit-box-sizing: border-box;
@@ -578,7 +577,7 @@ body {
   border: 1px solid white;
   border-bottom: none;
   margin-right: 0px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: default;
   height: 27px;
   border-radius: 5px 5px 0 0;
@@ -600,10 +599,11 @@ body {
   float: left;
 }
 #main-container .mixer-panel .infobox .infomenu li > span:lang(fr) {
-  font-size: 0.8em;
+  font-size: 0.9em;
+  margin-top: 1px;
 }
 #main-container .mixer-panel .infobox .infomenu li > span {
-  margin: 0 12px;
+  margin: 0 11px;
 }
 #main-container .mixer-panel .infobox .infomenu li:last-child {
   margin-right: 0px;
@@ -884,21 +884,21 @@ body {
   margin-bottom: 3px;
 }
 #main-container .mixer-panel-3 {
-  background-color: #e12474;
+  background-color: #802550;
 }
 #main-container .mixer-panel-3 .infobox > div {
-  background-color: #e12474;
+  background-color: #802550;
 }
 #main-container .mixer-panel-3 .infobox .infomenu li {
-  background-color: #e12474;
+  background-color: #802550;
 }
 #main-container .mixer-panel-3 .infobox .infomenu li div {
-  background-color: #e12474;
+  background-color: #802550;
 }
 #main-container .mixer-panel-3 .infobox .content .gallery .close,
 #main-container .mixer-panel-3 .mobile-drawer-gallery .mobile-content .close {
-  border: 2px solid #e12474;
-  color: #e12474;
+  border: 2px solid #802550;
+  color: #802550;
 }
 #main-container .mixer-panel-3 .infobox .content .gallery .left,
 #main-container .mixer-panel-3 .infobox .content .gallery .right,
@@ -913,19 +913,19 @@ body {
   background-position: 20px -20px;
 }
 #main-container .mixer-panel-3 .mixer-nav > * {
-  color: #920742;
+  color: #c25689;
 }
 #main-container .mixer-panel-3 .make-button:hover,
 #main-container .mixer-panel-3 .make-button.selected {
-  color: #e12474;
+  color: #802550;
 }
 #main-container .mixer-panel-3 .cta-button:hover {
-  color: #920742;
-  border-bottom: solid 1px #920742;
+  color: #c25689;
+  border-bottom: solid 1px #c25689;
 }
 #main-container .mixer-panel-3 .mobile-title,
 #main-container .mixer-panel-3 .mobile-content {
-  background-color: #e12474;
+  background-color: #802550;
 }
 #main-container .mixer-panel-3 .social .fb:hover {
   background-position: -106px 0px;
@@ -971,7 +971,7 @@ body {
   padding-top: 20px;
 }
 #main-container .mixer-panel-3 .menu:lang(fr) {
-  width: 346px;
+  width: 355px;
 }
 #main-container .mixer-panel-3 .menu {
   width: 300px;
@@ -1257,7 +1257,7 @@ body {
   min-width: 1366px;
 }
 .no-mobile #main-container .mixer-panel:lang(fr) .mixer-nav {
-  margin-left: -125px;
+  margin-left: -145px;
 }
 .no-mobile #main-container .mixer-panel-7:lang(fr) .mixer-nav {
   margin-left: 115px;
@@ -1271,10 +1271,10 @@ body {
   }
   .no-mobile #main-container .mixer-panel .mixer-nav {
     left: 47%;
-    margin-left: -151px;
+    margin-left: -172px;
   }
   .no-mobile #main-container .mixer-panel:lang(fr) .mixer-nav {
-    margin-left: -138px;
+    margin-left: -159px;
   }
   .no-mobile #main-container .mixer-panel-7 .mixer-nav {
     margin-left: 102px;
@@ -1358,7 +1358,6 @@ body {
   border-radius: 35px;
   border: 2px solid #9d9fa2;
   margin-left: 8px;
-  background: url(/images/standmixer/social.png);
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
   /* Safari */
@@ -1369,25 +1368,19 @@ body {
   width: 100%;
   border-radius: 35px;
 }
-.mobile #main-container #mobile-social div .fb {
-  background-position: -280px 0px;
-}
-.mobile #main-container #mobile-social div .tw {
-  background-position: -280px 105px;
-}
-.mobile #main-container #mobile-social div .pin {
-  background-position: -280px 35px;
+.mobile #main-container #mobile-social div ul li div > img {
+  width: 100%;
 }
 .mobile #main-container .mixer-panel {
-  height: 400px;
+  height: 430px;
 }
 .mobile #main-container .mixer-panel > div {
   height: inherit;
 }
 .mobile #main-container .mixer-panel .mixer {
-  height: 400px;
+  height: 430px;
   left: 54%;
-  margin-left: -200px;
+  margin-left: -215px;
 }
 .mobile #main-container .mobile-close {
   position: absolute;
@@ -1408,9 +1401,9 @@ body {
 }
 .mobile #main-container .mobile-drawer {
   position: absolute;
-  height: 392px;
+  height: 382px;
   width: 290px;
-  top: 3px;
+  top: 22px;
   z-index: 100;
   font-size: 11pt;
 }
@@ -1426,7 +1419,7 @@ body {
   position: absolute;
   right: 0;
   z-index: 2;
-  width: 42px;
+  width: 41px;
 }
 .mobile #main-container .mobile-drawer .mobile-title > img {
   width: 100%;
@@ -1454,7 +1447,7 @@ body {
   position: absolute;
   display: none;
   border: 1px solid white;
-  height: inherit;
+  height: 382px;
   width: 289px;
   z-index: 1;
   overflow-y: scroll;
@@ -1481,7 +1474,7 @@ body {
   margin-left: 17px;
 }
 .mobile #main-container .mobile-drawer-tips .mobile-title {
-  top: 109px;
+  top: 106px;
 }
 .mobile #main-container .mobile-drawer-info .two-line {
   height: 52px !important;
@@ -1512,7 +1505,7 @@ body {
   padding: 0 20px;
 }
 .mobile #main-container .mobile-drawer-info .mobile-title {
-  top: 313px;
+  top: 305px;
 }
 .mobile #main-container .mobile-drawer-info .one .attachment {
   width: 90%;
@@ -1720,32 +1713,48 @@ body {
   left: -291px;
 }
 .mobile #main-container .mobile-drawer-left .mobile-title {
-  right: -42px;
+  right: -40px;
 }
 .mobile #main-container .mobile-drawer-right {
   right: -291px;
 }
 .mobile #main-container .mobile-drawer-right .mobile-title {
-  left: -41px;
+  left: -40px;
 }
 @media (max-width: 355px) {
+  .mobile #main-container .mixer-panel,
+  .mobile #main-container .mixer-panel .mixer {
+    height: 370px;
+  }
+  .mobile #main-container .mixer-panel .mixer {
+    margin-left: -186px;
+  }
+  .mobile #main-container .mixer-panel .mobile-drawer {
+    top: 38px;
+    height: 288px;
+  }
+  .mobile #main-container .mixer-panel .mobile-content {
+    height: 288px;
+  }
   .mobile #main-container .mobile-drawer-left .mobile-title {
-    width: 28px;
-    right: -28px;
+    width: 31px;
+    right: -31px;
   }
   .mobile #main-container .mobile-drawer-right .mobile-title {
-    width: 28px;
-    left: -28px;
-  }
-  .mobile #main-container .mobile-drawer-gallery .mobile-title,
-  .mobile #main-container .mobile-drawer-description .mobile-title {
-    top: 56px;
+    width: 31px;
+    left: -31px;
   }
   .mobile #main-container .mobile-drawer-tips .mobile-title {
-    top: 128px;
+    top: 80px;
   }
   .mobile #main-container .mobile-drawer-info .mobile-title {
-    top: 264px;
+    top: 230px;
+  }
+  .mobile #main-container .mobile-drawer-gallery .mobile-content ul {
+    margin-top: -11px;
+  }
+  .mobile #main-container .mobile-drawer-gallery .mobile-content li {
+    height: 27%;
   }
 }
 .mobile .mixer-panel-6 .mobile-drawer-info .attachment {

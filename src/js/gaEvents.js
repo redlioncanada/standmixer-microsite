@@ -31,3 +31,21 @@ gaw.register('label', {'action': 'Clicked Image Gallery'}, function(str, element
 	if (!$(element).parent().hasClass('expanded')) cb($(element).closest('li').index().toString());
 	else cb(str);
 });
+
+if (isMobile) {
+	gaw.register('label', {'action': 'Selected Description Tab'}, function(str, element, cb) {
+		cb($(element).closest('.mobile-drawer').find('.mobile-drawer-description .mobile-content.selected').data('ga-label'));
+	});
+
+	gaw.register('label', {'action': 'Selected Gallery Tab'}, function(str, element, cb) {
+		cb($(element).closest('.mobile-drawer').find('.mobile-drawer-description .mobile-content.selected').data('ga-label'));
+	});
+
+	gaw.register('label', {'action': 'Selected Tips Tab'}, function(str, element, cb) {
+		cb($(element).closest('.mobile-drawer').find('.mobile-drawer-description .mobile-content.selected').data('ga-label'));
+	});
+
+	gaw.register('label', {'action': 'Selected Info Tab'}, function(str, element, cb) {
+		cb($(element).closest('.mobile-drawer').find('.mobile-drawer-description .mobile-content.selected').data('ga-label'));
+	});
+}

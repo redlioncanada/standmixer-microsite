@@ -2,7 +2,7 @@ var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
 let mixerDotNav = undefined;
-let gaw = new gaWrapper({prefix: "SMA", verbose: true});
+let gaw = new gaWrapper({prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: true});
 
 if (isMobile) {
     //inject meta tags
@@ -202,8 +202,8 @@ $(document).ready(function() {
                 $(mixerDiv).removeClass('animating');
             });
 
-            $(p).find('.mobile-content').not('.mobile-content-'+(newId+1)).css('display', 'none');
-            $(p).find('.mobile-content-'+(newId+1)).css('display', 'block');
+            $(p).find('.mobile-content').not('.mobile-content-'+(newId+1)).css('display', 'none').removeClass('selected');
+            $(p).find('.mobile-content-'+(newId+1)).css('display', 'block').addClass('selected');
             return newId;
         }
 
@@ -327,7 +327,7 @@ $(document).ready(function() {
         let leftSection = $(`<div class="left-section" data=label="Next Image"></div>`).appendTo(p);
         let rightSection = $(`<div class="right-section" data=label="Previous Image"></div>`).appendTo(p);
 
-        $(gallery).animate({
+        $(gallery).delay(500).animate({
             top: nTop,
             left: nLeft,
             width: nWidth,

@@ -3,16 +3,17 @@
 @contentBottomMargin: 30px;
 @panel1Height: 700px;
 @panel1MixerHeight: @panel1Height;
-@panel1MixerHeightMobile: 400px;
+@panel1MixerHeightMobile: 430px;
 @socialWidth: 35px;
 @mobileDrawerWidth: 290px;
+@mobileDrawerHeight: 382px;
 
 @yellow: #fccd1f;
 @yellowHighlight: #e3a22b;
 @blue: #6897c3;
 @blueHighlight: #005c7c;
-@pink: #e12474;
-@pinkHighlight: #920742;
+@pink: #802550;
+@pinkHighlight: #c25689;
 @olive: #c8bc1a;
 @oliveHighlight: #8f8608;
 @orange: #eb5a01;
@@ -53,7 +54,6 @@
   width: 200px;
   background-color: #fde68f;
   overflow: hidden;
-  border-radius: 5px;
 }
 
 .pace .pace-progress {
@@ -79,6 +79,7 @@
   height: 100%;
   width: 100%;
   background: #fff;
+  
 }
 
 .pace.pace-inactive {
@@ -564,7 +565,7 @@ body {
           border: 1px solid white;
           border-bottom: none;
           margin-right: 0px;
-          font-weight: 600;
+          font-weight: 700;
           cursor: default;
           height: 27px;
           border-radius: 5px 5px 0 0;
@@ -590,11 +591,12 @@ body {
           }
 
           > span:lang(fr) {
-            font-size: 0.8em;
+            font-size: 0.9em;
+            margin-top: 1px;
           }
 
           > span {
-            margin: 0 12px;
+            margin: 0 11px;
           }
         }
 
@@ -924,7 +926,7 @@ body {
     }
 
     .menu:lang(fr) {
-      width: 346px;
+      width: 355px;
     }
     .menu {
       width: 300px;
@@ -1086,7 +1088,7 @@ body {
       min-width: 1366px;
 
       .mixer-panel:lang(fr) .mixer-nav {
-        margin-left: -125px;
+        margin-left: -145px;
       }
 
       .mixer-panel-7:lang(fr) .mixer-nav {
@@ -1100,11 +1102,11 @@ body {
 
         .mixer-panel .mixer-nav {
           left: 47%; 
-          margin-left: -151px;
+          margin-left: -172px;
         }
 
         .mixer-panel:lang(fr) .mixer-nav {
-          margin-left: -138px;
+          margin-left: -159px;
         }
 
         .mixer-panel-7 .mixer-nav {
@@ -1194,7 +1196,6 @@ body {
               border-radius: @socialWidth;
               border: 2px solid #9d9fa2;
               margin-left: 8px;
-              background: url(/images/standmixer/social.png);
               cursor: pointer;
               -webkit-transition: background-color @hoverTime; /* Safari */
               transition: background-color @hoverTime;
@@ -1204,12 +1205,12 @@ body {
                 width: 100%;
                 border-radius: @socialWidth;
               }
+
+              div > img {
+                width: 100%;
+              }
             }
           }
-
-          .fb {background-position: -280px 0px;}
-          .tw {background-position: -280px 105px;}
-          .pin {background-position: -280px 35px;}
         }
       }
 
@@ -1242,9 +1243,9 @@ body {
 
       .mobile-drawer {
         position: absolute;
-        height: 392px;
+        height: @mobileDrawerHeight;
         width: @mobileDrawerWidth;
-        top: 3px;
+        top: 22px;
         z-index: 100;
         font-size: 11pt;
 
@@ -1254,7 +1255,7 @@ body {
           position: absolute;
           right: 0;
           z-index: 2;
-          width: 42px;
+          width: 41px;
 
           > img {
             width: 100%;
@@ -1289,7 +1290,7 @@ body {
           position: absolute;
           display: none;
           border: 1px solid white;
-          height: inherit;
+          height: @mobileDrawerHeight;
           width: @mobileDrawerWidth - 1;
           z-index: 1;
           overflow-y: scroll;
@@ -1318,7 +1319,7 @@ body {
             li:not(:first-child) {margin-left: 17px;}
           }
         }
-        .mobile-title {top: 109px;}
+        .mobile-title {top: 106px;}
       }
       .mobile-drawer-info {
         .two-line {
@@ -1346,7 +1347,7 @@ body {
         .mobile-content > p {
           padding: 0 20px;
         }
-        .mobile-title {top: 313px;}
+        .mobile-title {top: 305px;}
 
         .one {
           .attachment {
@@ -1559,12 +1560,12 @@ body {
         }
       .mobile-drawer-left {
         left: -@mobileDrawerWidth - 1;
-        .mobile-title {right: -42px;}
+        .mobile-title {right: -40px;}
       }
       .mobile-drawer-right {
         right: -@mobileDrawerWidth - 1;
         .mobile-title {
-          left: -41px;
+          left: -40px;
         }
       }
     }
@@ -1572,26 +1573,48 @@ body {
     //<= iphone 5 begin
     @media(max-width:355px) {
       #main-container {
+        .mixer-panel, .mixer-panel .mixer {
+          height: 370px;
+        }
+
+        .mixer-panel .mixer {
+          margin-left: -186px;
+        }
+
+        .mixer-panel .mobile-drawer {
+          top: 38px;
+          height: 288px;
+        }
+
+        .mixer-panel .mobile-content {
+          height: 288px;
+        }
+
         .mobile-drawer-left .mobile-title {
-          width: 28px;
-          right: -28px;
+          width: 31px;
+          right: -31px;
         }
 
         .mobile-drawer-right .mobile-title {
-          width: 28px;
-          left: -28px;
+          width: 31px;
+          left: -31px;
         }
 
         .mobile-drawer-gallery .mobile-title, .mobile-drawer-description .mobile-title {
-          top: 56px;
+          //top: 56px;
         }
 
         .mobile-drawer-tips .mobile-title {
-          top: 128px;
+          top: 80px;
         }
 
         .mobile-drawer-info .mobile-title {
-          top: 264px;
+          top: 230px;
+        }
+
+        .mobile-drawer-gallery .mobile-content {
+          ul {margin-top: -11px;}
+          li {height: 27%;}
         }
       }
     }
