@@ -19,7 +19,7 @@ gaw.register('label', { action: 'Clicked Attachment Types' }, function (str, ele
 
 gaw.register('label', { action: 'Clicked Specifications Tab' }, function (str, element, cb) {
 	var ret = $(element).text();
-	if (ret == 'CLICK TO BUY >>') ret = 'Where to Buy';
+	if (ret.indexOf('CLICK TO BUY >>') > -1 || ret.indexOf('CLIQUEZ POUR ACHETER') > -1 || ret.indexOf('TAP TO BUY' > -1)) ret = 'Where to Buy';
 	cb(ret);
 });
 
@@ -35,18 +35,18 @@ gaw.register('label', { action: 'Clicked Image Gallery' }, function (str, elemen
 
 if (isMobile) {
 	gaw.register('label', { action: 'Selected Description Tab' }, function (str, element, cb) {
-		cb($(element).closest('.mobile-drawer').find('.mobile-drawer-description .mobile-content.selected').data('ga-label'));
+		cb($(element).closest('.mixer-panel').find('.mobile-drawer-description .selected').attr('data-ga-label'));
 	});
 
 	gaw.register('label', { action: 'Selected Gallery Tab' }, function (str, element, cb) {
-		cb($(element).closest('.mobile-drawer').find('.mobile-drawer-description .mobile-content.selected').data('ga-label'));
+		cb($(element).closest('.mixer-panel').find('.mobile-drawer-description .selected').attr('data-ga-label'));
 	});
 
 	gaw.register('label', { action: 'Selected Tips Tab' }, function (str, element, cb) {
-		cb($(element).closest('.mobile-drawer').find('.mobile-drawer-description .mobile-content.selected').data('ga-label'));
+		cb($(element).closest('.mixer-panel').find('.mobile-drawer-description .selected').attr('data-ga-label'));
 	});
 
 	gaw.register('label', { action: 'Selected Info Tab' }, function (str, element, cb) {
-		cb($(element).closest('.mobile-drawer').find('.mobile-drawer-description .mobile-content.selected').data('ga-label'));
+		cb($(element).closest('.mixer-panel').find('.mobile-drawer-description .selected').attr('data-ga-label'));
 	});
 }

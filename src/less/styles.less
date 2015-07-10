@@ -6,6 +6,7 @@
 @panel1MixerHeightMobile: 430px;
 @socialWidth: 35px;
 @mobileDrawerWidth: 290px;
+@mobileDrawerSmallWidth: 256px;
 @mobileDrawerHeight: 382px;
 
 @yellow: #fccd1f;
@@ -24,16 +25,6 @@
 @redHighlight: #c2283a; 
 
 @hoverTime: 0.3s;
-
-//start preloader
-.loading-yellow {
-  .pace {background-color: @yellowHighlight;}
-  #main-container div#loading {background-color: @yellow;}
-}
-.loading-blue {
-  .pace {background-color: @blueHighlight;}
-  #main-container div#loading {background-color: @blue;}
-}
 
 .pace {
   -webkit-pointer-events: none;
@@ -69,7 +60,7 @@
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 
-  max-width: 600px;
+  //max-width: 600px;
   position: fixed;
   z-index: 2000;
   display: block;
@@ -79,7 +70,7 @@
   height: 100%;
   width: 100%;
   background: #fff;
-  
+
 }
 
 .pace.pace-inactive {
@@ -328,10 +319,17 @@ body {
       font-size: 0.9em;
       max-width: 280px;
       margin: 125px 0 0 20px;
+
+      > p {
+        font-size: 0.75em;
+        font-weight: 700;
+        line-height: 11px;
+        margin-bottom: 5px;
+      }
     }
 
     .copy:lang(fr) {
-      max-width: 310px;
+      max-width: 318px;
     }
 
     .available-in:lang(fr) {
@@ -821,7 +819,6 @@ body {
     }
 
     .mixer img {cursor: pointer;}
-
     .copy {
       display: block;
 
@@ -858,6 +855,11 @@ body {
       .tw:hover {background-position: -70px 105px;}
       .in:hover {background-position: -70px 70px;}
       .pin:hover {background-position: -70px 35px;}
+    }
+
+    .menu {
+      width: 325px;
+      li {margin-top: 3px;}
     }
 
     .menu:lang(fr) {
@@ -1005,6 +1007,10 @@ body {
         margin-left: 54px;
         float: none;
       }
+
+      .content:lang(fr) .info .attachment {
+        margin-top: -11px;
+      }
     }
   }
   .mixer-panel-6 {
@@ -1133,6 +1139,7 @@ body {
       .mixer-dot-nav {
         bottom: initial;
         margin-left: initial;
+        top: 14px;
 
         li {
           float: left;
@@ -1237,7 +1244,7 @@ body {
         z-index: 10;
       }
 
-      .mobile-drawer.open.selected .mobile-title.hidden {display: block;}
+      .mobile-drawer.open.selected .mobile-title.hidden:not(.small) {display: block;}
       .mobile-drawer.open {z-index: 200;}
       .mobile-drawer.selected {z-index: 201;}
 
@@ -1262,7 +1269,7 @@ body {
           }
         }
 
-        .mobile-title.hidden {
+        .mobile-title.hidden,.mobile-title.small {
           display: none;
         }
 
@@ -1478,11 +1485,11 @@ body {
 
           .close {
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: 25px;
+            height: 25px;
             border-radius: 35px;
             text-align: center;
-            line-height: 15px;
+            line-height: 25px;
             border: 2px solid white;
             font-size: 1.6em;
             font-weight: 700;
@@ -1560,7 +1567,7 @@ body {
         }
       .mobile-drawer-left {
         left: -@mobileDrawerWidth - 1;
-        .mobile-title {right: -40px;}
+        .mobile-title {right: -41px;}
       }
       .mobile-drawer-right {
         right: -@mobileDrawerWidth - 1;
@@ -1582,12 +1589,14 @@ body {
         }
 
         .mixer-panel .mobile-drawer {
-          top: 38px;
-          height: 288px;
+          top: 16px;
+          height: 336px;
+          width: @mobileDrawerSmallWidth;
         }
 
-        .mixer-panel .mobile-content {
-          height: 288px;
+        .mixer-panel .mobile-drawer .mobile-content {
+          height: 336px;
+          width: @mobileDrawerSmallWidth - 1;
         }
 
         .mobile-drawer-left .mobile-title {
@@ -1605,16 +1614,84 @@ body {
         }
 
         .mobile-drawer-tips .mobile-title {
-          top: 80px;
+          top: 93px;
         }
 
         .mobile-drawer-info .mobile-title {
-          top: 230px;
+          top: 268px;
+        }
+
+        .mobile-drawer-info .mobile-content > div {
+          font-size: 0.9em;
+
+          .price {margin-top: 1px;}
         }
 
         .mobile-drawer-gallery .mobile-content {
-          ul {margin-top: -11px;}
-          li {height: 27%;}
+          ul {margin-top: 30px;}
+          li {height: 19.5%;}
+          .left,.right {top: 160px;}
+        }
+
+        .mobile-drawer-right {
+          right: -@mobileDrawerSmallWidth - 1;
+        }
+        .mobile-drawer-left {
+          left: -@mobileDrawerSmallWidth - 1;
+        }
+
+        .mobile-drawer-right .mobile-title {left: -30px;}
+
+        .mobile-drawer.open.selected .mobile-title.small {display: block;}
+
+        .mobile-title:not(.small) {
+          display: none;
+        }
+        .mobile-title.small:not(.hidden) {
+          display: block !important;
+        }
+
+        .mobile-drawer {
+          width: @mobileDrawerSmallWidth - 1;
+        }
+        .mobile-content {
+          font-size: 0.9em;
+          width: @mobileDrawerSmallWidth
+        }
+
+        .mobile-drawer-info {
+          .roller ul.one {
+            .attachment {width: 48% !important;}
+            li {height: 83px;}
+          }
+          .press {
+            div > img {margin-top: 27px;}
+            > div:nth-child(2) {padding-top: 3px;}
+            > div:nth-child(2) > ul li {height: 46px;}
+          }
+          .ravioli {margin-top: 66px !important;}
+          .grinder .attachment {width: 48% !important;}
+          .stuffer .attachment {width: 48% !important;}
+        }
+
+        .mobile-drawer-info:lang(fr) {
+          .roller ul.one {
+            padding-top: 0px;
+          }
+          .strainer .attachment {margin-top: 4px;}
+          .attachment.juicer {
+            width: 56%;
+            margin-top: -9px;
+          }
+          .shredder .attachment {
+            width: 55%;
+          }
+          .attachment.mixing {
+            margin-top: 12px;
+          }
+          .attachment.food-processor {
+            height: 62%;
+          }
         }
       }
     }

@@ -1,15 +1,3 @@
-.loading-yellow .pace {
-  background-color: #e3a22b;
-}
-.loading-yellow #main-container div#loading {
-  background-color: #fccd1f;
-}
-.loading-blue .pace {
-  background-color: #005c7c;
-}
-.loading-blue #main-container div#loading {
-  background-color: #6897c3;
-}
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -39,7 +27,6 @@
   -ms-transform: translate3d(0, 0, 0);
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  max-width: 600px;
   position: fixed;
   z-index: 2000;
   display: block;
@@ -369,8 +356,14 @@ body {
   max-width: 280px;
   margin: 125px 0 0 20px;
 }
+#main-container .mixer-panel .copy > p {
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 11px;
+  margin-bottom: 5px;
+}
 #main-container .mixer-panel .copy:lang(fr) {
-  max-width: 310px;
+  max-width: 318px;
 }
 #main-container .mixer-panel .available-in:lang(fr) {
   bottom: 20px;
@@ -877,6 +870,12 @@ body {
 #main-container .mixer-panel-2 .social .pin:hover {
   background-position: -70px 35px;
 }
+#main-container .mixer-panel-2 .menu {
+  width: 325px;
+}
+#main-container .mixer-panel-2 .menu li {
+  margin-top: 3px;
+}
 #main-container .mixer-panel-2 .menu:lang(fr) {
   width: 420px;
 }
@@ -1121,6 +1120,9 @@ body {
   margin-left: 54px;
   float: none;
 }
+#main-container .mixer-panel-5 .infobox[data-id="2"] .content:lang(fr) .info .attachment {
+  margin-top: -11px;
+}
 #main-container .mixer-panel-6 {
   background-color: #6ebbd7;
 }
@@ -1298,6 +1300,7 @@ body {
 .mobile #main-container .mixer-dot-nav {
   bottom: initial;
   margin-left: initial;
+  top: 14px;
 }
 .mobile #main-container .mixer-dot-nav li {
   float: left;
@@ -1390,7 +1393,7 @@ body {
   width: 100%;
   z-index: 10;
 }
-.mobile #main-container .mobile-drawer.open.selected .mobile-title.hidden {
+.mobile #main-container .mobile-drawer.open.selected .mobile-title.hidden:not(.small) {
   display: block;
 }
 .mobile #main-container .mobile-drawer.open {
@@ -1424,7 +1427,8 @@ body {
 .mobile #main-container .mobile-drawer .mobile-title > img {
   width: 100%;
 }
-.mobile #main-container .mobile-drawer .mobile-title.hidden {
+.mobile #main-container .mobile-drawer .mobile-title.hidden,
+.mobile #main-container .mobile-drawer .mobile-title.small {
   display: none;
 }
 .mobile #main-container .mobile-drawer .mobile-copy {
@@ -1626,11 +1630,11 @@ body {
 }
 .mobile #main-container .mobile-drawer-gallery .close {
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
   border-radius: 35px;
   text-align: center;
-  line-height: 15px;
+  line-height: 25px;
   border: 2px solid white;
   font-size: 1.6em;
   font-weight: 700;
@@ -1713,7 +1717,7 @@ body {
   left: -291px;
 }
 .mobile #main-container .mobile-drawer-left .mobile-title {
-  right: -40px;
+  right: -41px;
 }
 .mobile #main-container .mobile-drawer-right {
   right: -291px;
@@ -1730,11 +1734,13 @@ body {
     margin-left: -186px;
   }
   .mobile #main-container .mixer-panel .mobile-drawer {
-    top: 38px;
-    height: 288px;
+    top: 16px;
+    height: 336px;
+    width: 256px;
   }
-  .mobile #main-container .mixer-panel .mobile-content {
-    height: 288px;
+  .mobile #main-container .mixer-panel .mobile-drawer .mobile-content {
+    height: 336px;
+    width: 255px;
   }
   .mobile #main-container .mobile-drawer-left .mobile-title {
     width: 31px;
@@ -1745,16 +1751,94 @@ body {
     left: -31px;
   }
   .mobile #main-container .mobile-drawer-tips .mobile-title {
-    top: 80px;
+    top: 93px;
   }
   .mobile #main-container .mobile-drawer-info .mobile-title {
-    top: 230px;
+    top: 268px;
+  }
+  .mobile #main-container .mobile-drawer-info .mobile-content > div {
+    font-size: 0.9em;
+  }
+  .mobile #main-container .mobile-drawer-info .mobile-content > div .price {
+    margin-top: 1px;
   }
   .mobile #main-container .mobile-drawer-gallery .mobile-content ul {
-    margin-top: -11px;
+    margin-top: 30px;
   }
   .mobile #main-container .mobile-drawer-gallery .mobile-content li {
-    height: 27%;
+    height: 19.5%;
+  }
+  .mobile #main-container .mobile-drawer-gallery .mobile-content .left,
+  .mobile #main-container .mobile-drawer-gallery .mobile-content .right {
+    top: 160px;
+  }
+  .mobile #main-container .mobile-drawer-right {
+    right: -257px;
+  }
+  .mobile #main-container .mobile-drawer-left {
+    left: -257px;
+  }
+  .mobile #main-container .mobile-drawer-right .mobile-title {
+    left: -30px;
+  }
+  .mobile #main-container .mobile-drawer.open.selected .mobile-title.small {
+    display: block;
+  }
+  .mobile #main-container .mobile-title:not(.small) {
+    display: none;
+  }
+  .mobile #main-container .mobile-title.small:not(.hidden) {
+    display: block !important;
+  }
+  .mobile #main-container .mobile-drawer {
+    width: 255px;
+  }
+  .mobile #main-container .mobile-content {
+    font-size: 0.9em;
+    width: 256px;
+  }
+  .mobile #main-container .mobile-drawer-info .roller ul.one .attachment {
+    width: 48% !important;
+  }
+  .mobile #main-container .mobile-drawer-info .roller ul.one li {
+    height: 83px;
+  }
+  .mobile #main-container .mobile-drawer-info .press div > img {
+    margin-top: 27px;
+  }
+  .mobile #main-container .mobile-drawer-info .press > div:nth-child(2) {
+    padding-top: 3px;
+  }
+  .mobile #main-container .mobile-drawer-info .press > div:nth-child(2) > ul li {
+    height: 46px;
+  }
+  .mobile #main-container .mobile-drawer-info .ravioli {
+    margin-top: 66px !important;
+  }
+  .mobile #main-container .mobile-drawer-info .grinder .attachment {
+    width: 48% !important;
+  }
+  .mobile #main-container .mobile-drawer-info .stuffer .attachment {
+    width: 48% !important;
+  }
+  .mobile #main-container .mobile-drawer-info:lang(fr) .roller ul.one {
+    padding-top: 0px;
+  }
+  .mobile #main-container .mobile-drawer-info:lang(fr) .strainer .attachment {
+    margin-top: 4px;
+  }
+  .mobile #main-container .mobile-drawer-info:lang(fr) .attachment.juicer {
+    width: 56%;
+    margin-top: -9px;
+  }
+  .mobile #main-container .mobile-drawer-info:lang(fr) .shredder .attachment {
+    width: 55%;
+  }
+  .mobile #main-container .mobile-drawer-info:lang(fr) .attachment.mixing {
+    margin-top: 12px;
+  }
+  .mobile #main-container .mobile-drawer-info:lang(fr) .attachment.food-processor {
+    height: 62%;
   }
 }
 .mobile .mixer-panel-6 .mobile-drawer-info .attachment {

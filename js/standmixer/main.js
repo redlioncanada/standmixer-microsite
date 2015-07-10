@@ -4,7 +4,7 @@ var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
 var mixerDotNav = undefined;
-var gaw = new gaWrapper({ prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: true });
+var gaw = new gaWrapper({ testMode: true, prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: true });
 
 if (isMobile) {
     //inject meta tags
@@ -281,10 +281,10 @@ $(document).ready(function () {
 
     //on gallery arrow click, navigate
     $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".left,.left-section", function () {
-        navGallery(this, 1);
+        navGallery(this, 0);
     });
     $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".right,.right-section", function () {
-        navGallery(this, 0);
+        navGallery(this, 1);
     });
     function navGallery(self, direction) {
         var p = $(self).closest(".gallery");
@@ -313,7 +313,7 @@ $(document).ready(function () {
 
     //on gallery image click, expand it and show close button
     $(".infobox .gallery li, .mobile-drawer-gallery li").click(function () {
-        var p = $(this).closest(".gallery");
+        var p = $(this).closest("ul");
         var mobile = false;
         if (!p.length) {
             p = $(this).closest(".mobile-content");
@@ -327,7 +327,7 @@ $(document).ready(function () {
         var oWidth = $(img).width();
         var oHeight = $(img).height() + 1;
 
-        var gallery = $("<div></div>").css({
+        var gallery = $("<div style=\"padding:0;\"></div>").css({
             top: oTop,
             left: oLeft,
             width: oWidth,
@@ -343,25 +343,18 @@ $(document).ready(function () {
         }).addClass("current").attr("data-id", id).appendTo(gallery);
 
         var first = $(p).find("li").first();
-        var nWidth = undefined,
-            nHeight = undefined;
-        if (mobile) {
-            nWidth = $(first).width() * 3 + 2;
-            nHeight = $(first).height() * 3 + 2;
-        } else {
-            nWidth = $(p).width();
-            nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2 - 21;
-        }
+        var nWidth = $(p).width();
+        var nHeight = $(first).position().top + $(first).height() * 3 + parseInt($(first).css("marginTop")) * 2 - 21;
         var nTop = $(first).position().top + 9;
         var nLeft = $(first).position().left;
 
-        var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" data-label=\"Close Gallery\" class=\"close\">+</div>").appendTo(p);
-        var leftArrow = $("<div class=\"left\" data-label=\"Next Image\"></div>").appendTo(p);
-        var rightArrow = $("<div class=\"right\" data-label=\"Previous Image\"></div>").appendTo(p);
-        var leftSection = $("<div class=\"left-section\" data=label=\"Next Image\"></div>").appendTo(p);
-        var rightSection = $("<div class=\"right-section\" data=label=\"Previous Image\"></div>").appendTo(p);
+        var close = $("<div style=\"top:" + (nTop + 10) + "px; left:" + (nLeft + nWidth - 35) + "px;\" data-ga-label=\"Close Gallery\" class=\"close\">+</div>").appendTo(p);
+        var leftArrow = $("<div class=\"left\" data-ga-label=\"Next Image\"></div>").appendTo(p);
+        var rightArrow = $("<div class=\"right\" data-ga-label=\"Previous Image\"></div>").appendTo(p);
+        var leftSection = $("<div class=\"left-section\" data-ga-label=\"Next Image\"></div>").appendTo(p);
+        var rightSection = $("<div class=\"right-section\" data-ga-label=\"Previous Image\"></div>").appendTo(p);
 
-        $(gallery).delay(500).animate({
+        $(gallery).animate({
             top: nTop,
             left: nLeft,
             width: nWidth,

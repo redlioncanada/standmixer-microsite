@@ -20,6 +20,7 @@ var MixerDotNav = (function (_Messenger) {
 		this.images = $(target).find('.mixer img');
 		this.element = $(target).find('.mixer-dot-nav');
 		this.parent = $(target).closest('.mixer-panel');
+		$(this.element).attr('data-ga-action', 'Swiped Attachment Type');
 		this.index = 0;
 		this._init();
 		$(window).resize(this._resize);
@@ -39,6 +40,8 @@ var MixerDotNav = (function (_Messenger) {
 				var el = i == 0 ? '<li class="selected"><div></div></li>' : '<li><div></div></li>';
 				$(self.element).append(el);
 				el = $(self.element).find('li').eq(i);
+				var label = $(_this.parent).find('.mobile-drawer-description .mobile-content').eq(i).attr('data-ga-label');
+				$(el).attr('data-ga-label', label);
 
 				var att = $(_this.images).eq(i).attr('data-att');
 				$(el).click(function () {
