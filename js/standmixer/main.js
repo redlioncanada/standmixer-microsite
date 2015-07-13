@@ -4,7 +4,7 @@ var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
 var mixerDotNav = undefined;
-var gaw = new gaWrapper({ testMode: true, prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: true });
+var gaw = new gaWrapper({ prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: true });
 
 if (isMobile) {
     //inject meta tags
@@ -296,7 +296,7 @@ $(document).ready(function () {
         var curId = parseInt($(img).attr("data-id"));
         var newId = direction ? curId + 1 : curId - 1;
 
-        if (newId > length) newId = 0;else if (newId < 0) newId = length;
+        if (newId > length - 1) newId = 0;else if (newId < 0) newId = length - 1;
 
         var curImg = $(p).find("ul img").eq(newId);
         var mod = direction ? 1 : -1;
@@ -399,9 +399,11 @@ $(document).ready(function () {
     //end expanded gallery image click
 
     //on load complete, hide overlay
-    Pace.on("done", function () {
-        $("#loading").fadeOut();
-    });
+    if (typeof Pace !== "undefined") {
+        Pace.on("done", function () {
+            $("#loading").fadeOut();
+        });
+    }
     //end load complete
 
     //on back-to-top click, go to top
