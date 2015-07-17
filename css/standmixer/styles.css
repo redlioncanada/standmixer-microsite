@@ -1,3 +1,7 @@
+.mobile .pace,
+.mobile .pace .pace-progress {
+  background-color: #fccd1f;
+}
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -36,10 +40,6 @@
   height: 100%;
   width: 100%;
   background: #fff;
-}
-.mobile .pace,
-.mobile .pace .pace-progress {
-  background-color: #fccd1f;
 }
 .pace.pace-inactive {
   display: none;
