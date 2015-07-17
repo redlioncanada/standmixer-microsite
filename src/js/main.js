@@ -391,12 +391,4 @@ $(document).ready(function() {
         });
     });
     //end anchor click
-
-    //on window resize, resize components
-    setTimeout(redraw,500);
-    $(window).resize(redraw);
-    function redraw() {
-
-    }
-    //end window resize
 });

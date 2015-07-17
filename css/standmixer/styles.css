@@ -37,6 +37,10 @@
   width: 100%;
   background: #fff;
 }
+.mobile .pace,
+.mobile .pace .pace-progress {
+  background-color: #fccd1f;
+}
 .pace.pace-inactive {
   display: none;
 }
@@ -1487,6 +1491,9 @@ body {
 .mobile #main-container .mobile-drawer-tips .mobile-title {
   top: 106px;
 }
+.mobile #main-container .mobile-drawer-tips .mobile-title:lang(fr) {
+  top: 85px;
+}
 .mobile #main-container .mobile-drawer-info .two-line {
   height: 52px !important;
 }
@@ -1517,6 +1524,9 @@ body {
 }
 .mobile #main-container .mobile-drawer-info .mobile-title {
   top: 305px;
+}
+.mobile #main-container .mobile-drawer-info .mobile-title:lang(fr) {
+  top: 326px;
 }
 .mobile #main-container .mobile-drawer-info .one .attachment {
   width: 90%;
@@ -1761,8 +1771,14 @@ body {
   .mobile #main-container .mobile-drawer-tips .mobile-title {
     top: 93px;
   }
+  .mobile #main-container .mobile-drawer-tips:lang(fr) .mobile-title {
+    top: 78px;
+  }
   .mobile #main-container .mobile-drawer-info .mobile-title {
     top: 268px;
+  }
+  .mobile #main-container .mobile-drawer-info:lang(fr) .mobile-title {
+    top: 281px;
   }
   .mobile #main-container .mobile-drawer-info .mobile-content > div {
     font-size: 0.9em;
