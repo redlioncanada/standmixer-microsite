@@ -24,15 +24,20 @@ $(document).ready(function() {
             id = $('.mixer-panel-1 .mixer .selected').index()+1;
             if (id > $('.mixer-panel-1 .mixer img').length-1) id = 0;
         }
-        if (!isMobile) mixerDotNav.Select(id);
-        //change mixer image
-        $('.mixer-panel-1 .mixer img').eq(id).fadeIn(400, function() {
-            let self = this;
-            $('.mixer-panel-1 .mixer .selected').fadeOut(500, function() {
-                $(this).removeClass('selected');
-                $(self).addClass('selected');
-            });
-        });
+        if (!isMobile) {
+	        mixerDotNav.Select(id);
+	        //change mixer image
+	        $('.mixer-panel-1 .mixer img').eq(id).fadeIn(400, function() {
+	            let self = this;
+	            $('.mixer-panel-1 .mixer .selected').fadeOut(500, function() {
+	                $(this).removeClass('selected');
+	                $(self).addClass('selected');
+	            });
+	        });
+	    } else {
+		    doMobileSwipe("left",$('.mixer-panel-1'));
+		    resetMixerInterval();
+	    }
     }
     //end first panel mixer change
 
@@ -161,7 +166,7 @@ $(document).ready(function() {
                 } else {
                     id = doMobileSwipe(d,this);
                 }
-                if (id >= 0 && id !== false) {
+                if (id > 0 && id !== false) {
                     console.log(id);
                     mixerDotNav.Select(id);
                 }
@@ -169,43 +174,6 @@ $(document).ready(function() {
             //end init hammerjs
         }
         //end init mixer navs
-
-        function doMobileSwipe(d,e) {
-            let newId = undefined;
-            let p = $(e).closest('.mixer-panel');
-            let mixerDiv = $(p).find('.mixer');
-            if ($(mixerDiv).hasClass('animating')) return -1;
-            let curImg = $(p).find('.mixer .selected');
-            let curId = $(curImg).index();
-            let numImages = $(p).find('.mixer img').length;
-
-            if (d == 'left') {
-                newId = curId+1;
-                if (newId > numImages-1) newId = 0;
-            } else if (d == 'right') {
-                newId = curId-1;
-                if (newId < 0) newId = numImages-1;
-            } else if (typeof d === 'number') {
-                if (d < 0 || d > numImages-1) return -1;
-                else newId = d;
-            }
-
-            let pWidth = $(p).width();
-            let newImg = $(p).find('.mixer img').eq(newId);
-            let mod = newId > curId ? 1 : -1;
-            
-            $(mixerDiv).addClass('animating');
-            newImg.css({'left':pWidth*mod,'display':'block'}).animate({'left':0}, 400);
-            curImg.animate({'left': -pWidth*mod}, 400, function() {
-                $(newImg).addClass('selected');
-                $(this).removeClass('selected').css('display', 'none');
-                $(mixerDiv).removeClass('animating');
-            });
-
-            $(p).find('.mobile-content').not('.mobile-content-'+(newId+1)).css('display', 'none').removeClass('selected');
-            $(p).find('.mobile-content-'+(newId+1)).css('display', 'block').addClass('selected');
-            return newId;
-        }
 
         //on drawer click, animate out
         $('.mobile-drawer').click(function() {
@@ -392,3 +360,42 @@ $(document).ready(function() {
     });
     //end anchor click
 });
+
+function doMobileSwipe(d,e,f) {
+    let newId = undefined;
+    let p = $(e).closest('.mixer-panel');
+    let mixerDiv = $(p).find('.mixer');
+    if ($(mixerDiv).hasClass('animating')) return -1;
+    let curImg = $(p).find('.mixer .selected');
+    let curId = $(curImg).index();
+    let numImages = $(p).find('.mixer img').length;
+
+    if (d == 'left') {
+        newId = curId+1;
+        if (newId > numImages-1) newId = 0;
+    } else if (d == 'right') {
+        newId = curId-1;
+        if (newId < 0) newId = numImages-1;
+    } else if (typeof d === 'number') {
+        if (d < 0 || d > numImages-1) return -1;
+        else newId = d;
+    }
+
+    let pWidth = $(p).width();
+    let newImg = $(p).find('.mixer img').eq(newId);
+    let mod = d == "left" ? 1 : -1;
+    
+    $(mixerDiv).addClass('animating');
+    newImg.css({'left':pWidth*mod,'display':'block'}).animate({'left':0}, 400);
+    curImg.animate({'left': -pWidth*mod}, 400, function() {
+        $(newImg).addClass('selected');
+        $(this).removeClass('selected').css('display', 'none');
+        $(mixerDiv).removeClass('animating');
+    });
+	
+	if (!p.hasClass('mixer-panel-1')) {
+	    $(p).find('.mobile-content').not('.mobile-content-'+(newId+1)).css('display', 'none').removeClass('selected');
+	    $(p).find('.mobile-content-'+(newId+1)).css('display', 'block').addClass('selected');
+    }
+    return newId;
+}

@@ -32,7 +32,7 @@ gulp.task("js", function () {
   return gulp.src("src/js/**/*.js")
     .pipe(b)
     .pipe(gulp.dest("js/"+folderName))
-    .pipe(gulp.dest("/Users/stepoole/Desktop/_upload/js/"+folderName))
+    //.pipe(gulp.dest("/Users/stepoole/Desktop/_upload/js/"+folderName))
     .pipe(gulp.dest("../javascript/"+folderName));
 });
 
@@ -41,6 +41,6 @@ gulp.task("css", function() {
 		.pipe(less())
 		.pipe(gulp.dest("css/"+folderName))
         .pipe(plugins.livereload())
-        .pipe(gulp.dest("/Users/stepoole/Desktop/_upload/css/"+folderName))
+        //.pipe(gulp.dest("/Users/stepoole/Desktop/_upload/css/"+folderName))
         .pipe(gulp.dest("../css/"+folderName));
 });
