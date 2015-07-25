@@ -26,6 +26,41 @@
 
 @hoverTime: 0.3s;
 
+
+/* ------- Matt's Changes -------- */
+.mixer-header {
+	strong {
+		margin-top: 20px;
+		display: inline-block;
+	}
+}
+
+.mobile-title {
+	&.mobile-tips {
+		height: 200px;
+		&.small {
+			height: 176px;
+		}
+	}
+	&.mobile-gallery {
+		height: 107px;
+		&.small {
+			height: 94px;
+		}
+	}
+}
+
+#return {
+	width: 100%;
+	
+	img {
+		max-width: 100%;
+	}
+}
+
+/* ----- End Matt's Changes ------- */
+
+
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -322,7 +357,7 @@ body {
       display: none;
       position: relative;
       font-size: 0.9em;
-      max-width: 280px;
+      max-width: 300px;
       margin: 125px 0 0 20px;
 
       > p {
@@ -505,6 +540,7 @@ body {
 
       li {
         margin-top: 8px;
+        list-style: none;
       }
 
       div {
@@ -628,7 +664,7 @@ body {
         .info {
           .two-line {
             height: 52px !important;
-            .price {margin-top: 12px;}
+//             .price {margin-top: 12px;}
           }
 
           > div:first-child {
@@ -700,7 +736,7 @@ body {
               width: 87%;
               float: left;
               font-size: 0.8em;
-              padding: 10px 20px;
+              padding: 0 20px;
             }
           }
         }
@@ -1344,17 +1380,16 @@ body {
       .mobile-drawer-info {
         .two-line {
           height: 52px !important;
-          .price {margin-top: 12px !important;}
           > div:not(.price) {padding-top: 44px !important;}
         }
 
         .mobile-content > div > div:nth-child(3) {
-          width: 263px;
           left: 0;
           position: relative;
           border-bottom: 1px solid white;
           padding: 22px 0 0 0;
         }
+        .two-line-line { padding-top: 40px !important; }
         .mobile-content > div {
           .title {float: left;}
           .price {
@@ -1365,7 +1400,7 @@ body {
           }
         }
         .mobile-content > p {
-          padding: 0 20px;
+          padding: 0 14px;
         }
         .mobile-title {top: 305px;}
         .mobile-title:lang(fr) {top: 326px;}
@@ -1383,8 +1418,7 @@ body {
         }
 
         .attachment.food-processor {
-          height: 70%;
-          width: initial;
+          width: 70%;
           margin: 9px 0 0 34px
         }
 
@@ -1426,7 +1460,7 @@ body {
             padding-top: 20px;
 
             li {
-              height: 102px;
+              height: 75px;
             }
             span {
               font-size: 0.8em;
@@ -1445,12 +1479,12 @@ body {
         .press > div:nth-child(2) {
           > img {
             float: left;
-            width: 47%;
+            width: 40%;
             margin-top: 33px;
           }
           > ul {
             float: right;
-            width: 50%;
+            width: 55%;
 
             li {height: 52px;}
             li span {

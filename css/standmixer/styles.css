@@ -1,3 +1,27 @@
+/* ------- Matt's Changes -------- */
+.mixer-header strong {
+  margin-top: 20px;
+  display: inline-block;
+}
+.mobile-title.mobile-tips {
+  height: 200px;
+}
+.mobile-title.mobile-tips.small {
+  height: 176px;
+}
+.mobile-title.mobile-gallery {
+  height: 107px;
+}
+.mobile-title.mobile-gallery.small {
+  height: 94px;
+}
+#return {
+  width: 100%;
+}
+#return img {
+  max-width: 100%;
+}
+/* ----- End Matt's Changes ------- */
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -358,7 +382,7 @@ body {
   display: none;
   position: relative;
   font-size: 0.9em;
-  max-width: 280px;
+  max-width: 300px;
   margin: 125px 0 0 20px;
 }
 #main-container .mixer-panel .copy > p {
@@ -516,6 +540,7 @@ body {
 }
 #main-container .mixer-panel .mixer-dot-nav li {
   margin-top: 8px;
+  list-style: none;
 }
 #main-container .mixer-panel .mixer-dot-nav div {
   border: 1px solid white;
@@ -625,9 +650,6 @@ body {
 #main-container .mixer-panel .infobox .content .info .two-line {
   height: 52px !important;
 }
-#main-container .mixer-panel .infobox .content .info .two-line .price {
-  margin-top: 12px;
-}
 #main-container .mixer-panel .infobox .content .info > div:first-child {
   height: 30px;
   border-bottom: 1px solid white;
@@ -689,7 +711,7 @@ body {
   width: 87%;
   float: left;
   font-size: 0.8em;
-  padding: 10px 20px;
+  padding: 0 20px;
 }
 #main-container .mixer-panel .infobox .content .tips > div > div {
   border-bottom: 1px solid white;
@@ -1497,18 +1519,17 @@ body {
 .mobile #main-container .mobile-drawer-info .two-line {
   height: 52px !important;
 }
-.mobile #main-container .mobile-drawer-info .two-line .price {
-  margin-top: 12px !important;
-}
 .mobile #main-container .mobile-drawer-info .two-line > div:not(.price) {
   padding-top: 44px !important;
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > div > div:nth-child(3) {
-  width: 263px;
   left: 0;
   position: relative;
   border-bottom: 1px solid white;
   padding: 22px 0 0 0;
+}
+.mobile #main-container .mobile-drawer-info .two-line-line {
+  padding-top: 40px !important;
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > div .title {
   float: left;
@@ -1520,7 +1541,7 @@ body {
   margin-top: 3px;
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > p {
-  padding: 0 20px;
+  padding: 0 14px;
 }
 .mobile #main-container .mobile-drawer-info .mobile-title {
   top: 305px;
@@ -1537,8 +1558,7 @@ body {
   margin: 78px 0 0 14px;
 }
 .mobile #main-container .mobile-drawer-info .attachment.food-processor {
-  height: 70%;
-  width: initial;
+  width: 70%;
   margin: 9px 0 0 34px;
 }
 .mobile #main-container .mobile-drawer-info .attachment.spiralizer {
@@ -1571,7 +1591,7 @@ body {
   padding-top: 20px;
 }
 .mobile #main-container .mobile-drawer-info .roller ul.one li {
-  height: 102px;
+  height: 75px;
 }
 .mobile #main-container .mobile-drawer-info .roller ul.one span {
   font-size: 0.8em;
@@ -1586,12 +1606,12 @@ body {
 }
 .mobile #main-container .mobile-drawer-info .press > div:nth-child(2) > img {
   float: left;
-  width: 47%;
+  width: 40%;
   margin-top: 33px;
 }
 .mobile #main-container .mobile-drawer-info .press > div:nth-child(2) > ul {
   float: right;
-  width: 50%;
+  width: 55%;
 }
 .mobile #main-container .mobile-drawer-info .press > div:nth-child(2) > ul li {
   height: 52px;

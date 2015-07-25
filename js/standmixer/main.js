@@ -247,11 +247,18 @@ $(document).ready(function () {
     }
 
     //on gallery arrow click, navigate
-    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".left,.left-section", function () {
+    $(".mobile-drawer-gallery").on("click", ".left,.left-section", function () {
         navGallery(this, 0);
     });
-    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".right,.right-section", function () {
+    $(".mobile-drawer-gallery").on("click", ".right,.right-section", function () {
         navGallery(this, 1);
+    });
+
+    $(".infobox .gallery").on("click", ".left,.left-section", function () {
+        navGallery(this, 1);
+    });
+    $(".infobox .gallery").on("click", ".right,.right-section", function () {
+        navGallery(this, 0);
     });
     function navGallery(self, direction) {
         var p = $(self).closest(".gallery");

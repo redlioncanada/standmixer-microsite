@@ -1,0 +1,246 @@
+#kitchenaid-header {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  position: relative;
+  height: 117px;
+  border-bottom: 2px solid #BBBBBB;
+}
+#kitchenaid-header .clear {
+  clear: both;
+  height: 0;
+}
+#kitchenaid-header #logo {
+  width: 1020px;
+  margin: 50px auto 0;
+}
+#kitchenaid-header .header-social-channels {
+  width: 1020px;
+  margin: -25px auto 0;
+  position: relative;
+}
+#kitchenaid-header .header-social-channels .ka_smHolder {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#kitchenaid-header .header-social-channels .ka_smHolder ul {
+  margin: 0;
+  padding: 0;
+}
+#kitchenaid-header .header-social-channels .ka_smHolder ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+#kitchenaid-header .header-social-channels .ka_smHolder ul li img {
+  height: 15px;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections {
+  margin: 42px auto 0;
+  height: 15px;
+  padding: 5px 0px 8px 12px;
+  width: 1020px;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary {
+  font-size: 114%;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin: 0 4.5% 0 0;
+  padding: 0 2px 4px;
+  display: inline-block;
+  position: relative;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary:hover {
+  border-bottom: 2px solid #CC0000;
+  color: #CC0000;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > a {
+  color: #333333;
+  text-decoration: none;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > a:hover {
+  color: #CC0000;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div {
+  display: none;
+  min-width: 180px;
+  background: white;
+  border: 2px solid #BBBBBB;
+  border-top: none;
+  z-index: 10;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div li {
+  color: #333333;
+  font-size: 90%;
+  font-weight: normal;
+  margin: 0;
+  padding: 5px 5%;
+  line-height: 130%;
+  text-transform: none;
+  text-align: left;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div li:hover {
+  background: #eaeaea;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div li:hover a {
+  color: #CC0000;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div li a {
+  color: #333333;
+  text-decoration: none;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div.majors {
+  width: 340px;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div.majors li {
+  float: left;
+  width: 35%;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary > div.majors .sidethingy {
+  float: right;
+  width: 35%;
+  border-left: 2px #bbb solid;
+  margin: 15px 20px 0 0;
+}
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary:hover > div {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 0;
+}
+#kitchenaid-header #topnav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #eee;
+  position: absolute;
+  height: 35px;
+}
+#kitchenaid-header #topnav a {
+  color: #333333;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  text-decoration: none;
+}
+#kitchenaid-header #topnav .container {
+  width: 1020px;
+  margin: 0 auto;
+  position: relative;
+}
+#kitchenaid-header #topnav .container #header_sub_nav_2 {
+  position: absolute;
+  left: 0;
+}
+#kitchenaid-header #topnav .container #header_sub_nav_1 {
+  position: absolute;
+  right: 140px;
+}
+#kitchenaid-header #topnav .container #header_sub_nav_1 a {
+  font-weight: bold;
+}
+#kitchenaid-header #topnav .container #header_search {
+  position: absolute;
+  right: 0;
+  top: 7px;
+}
+#kitchenaid-header #topnav .container #header_search input[type=text] {
+  border: 1px solid #DDDDDD;
+  width: 110px;
+  font-size: 100%;
+  color: #8F8F8F;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 110%;
+  margin: 0;
+  padding: 4px;
+}
+#kitchenaid-header #topnav .container #header_search button {
+  text-indent: -9999px;
+  width: 15px;
+  height: 15px;
+  background: url("http://www.kitchenaid.ca/images/global/icons/search-icon.jpg") top left no-repeat;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  cursor: pointer;
+  border: none;
+}
+#kitchenaid-header #topnav .container #header_sub_nav_2 ul,
+#kitchenaid-header #topnav .container #header_sub_nav_1 ul {
+  margin: 13px 0 0;
+  text-indent: 0;
+  padding: 0;
+}
+#kitchenaid-header #topnav .container #header_sub_nav_2 ul li,
+#kitchenaid-header #topnav .container #header_sub_nav_1 ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+#kitchenaid-header #topnav .container #header_sub_nav_2 ul li:first-child,
+#kitchenaid-header #topnav .container #header_sub_nav_1 ul li:first-child {
+  margin-left: 0;
+}
+#kitchenaid-footer {
+  border-top: 1px solid #BBBBBB;
+  padding-top: 20px;
+}
+#kitchenaid-footer #footer-nav-level-one {
+  width: 1020px;
+  margin: 0 auto;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+}
+#kitchenaid-footer #footer-nav-level-one ul {
+  width: 16.667%;
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#kitchenaid-footer #footer-nav-level-one ul li {
+  width: 100%;
+  margin: 3px 0;
+  float: left;
+  line-height: 130%;
+  font-size: 90%;
+}
+#kitchenaid-footer #footer-nav-level-one ul li a {
+  color: #333;
+  text-decoration: none;
+}
+#kitchenaid-footer #footer-nav-level-one ul li:hover a {
+  color: #CC0000;
+}
+#kitchenaid-footer #footer-nav-level-one ul .ka_smHolder ul {
+  width: 100%;
+}
+#kitchenaid-footer #footer-nav-level-one ul .ka_smHolder li {
+  display: inline-block;
+  margin: 0 12px 0 0;
+  width: auto;
+}
+#kitchenaid-footer #footer-nav-level-one ul .ka_smHolder li img {
+  height: 15px;
+}
+#kitchenaid-footer #footer-nav-level-one ul li.header {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+  padding: 0 0 5px 0;
+  border-bottom: 1px dotted #333333;
+  width: 85%;
+}
+#kitchenaid-footer p.footer-legal {
+  clear: both;
+  padding: 20px 0;
+  width: 1020px;
+  margin: 0 auto;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+}
