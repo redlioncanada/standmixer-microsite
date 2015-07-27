@@ -12,6 +12,14 @@ if (isMobile) {
 }
 
 $(document).ready(function () {
+    //
+    //
+    //on back-to-top click, go to top
+    $(".back-to-top").click(function () {
+        $("body,html").animate({ scrollTop: 0 }, "400");
+    });
+    //end back-to-top click
+    //
     //change the mixer on the first panel at a set interval
     var mixerTimeout = undefined;
     resetMixerInterval();
@@ -379,12 +387,6 @@ $(document).ready(function () {
         });
     }
     //end load complete
-
-    //on back-to-top click, go to top
-    $(".back-to-top").click(function () {
-        $("body").animate({ scrollTop: 0 }, "400");
-    });
-    //end back-to-top click
 
     //on anchor click, animate to the target location
     $("a[href*=#]").click(function (event) {
