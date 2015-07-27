@@ -4,7 +4,7 @@ var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
 var mixerDotNav = undefined;
-var gaw = new gaWrapper({ prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: true });
+var gaw = new gaWrapper({ prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: false });
 
 if (isMobile) {
     //inject meta tags
@@ -198,8 +198,8 @@ $(document).ready(function () {
                     } else {
                         id = doMobileSwipe(d, this);
                     }
-                    if (id > 0 && id !== false) {
-                        console.log(id);
+                    if (id >= 0 && id !== false) {
+                        //console.log(id);
                         mixerDotNav.Select(id);
                     }
                 });

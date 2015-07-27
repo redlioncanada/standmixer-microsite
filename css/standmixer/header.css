@@ -50,6 +50,9 @@
   display: inline-block;
   position: relative;
 }
+#kitchenaid-header #header-main-nav ul#primary-sections li.primary:lang(fr) {
+  margin: 0 1.5% 0 0;
+}
 #kitchenaid-header #header-main-nav ul#primary-sections li.primary:hover {
   border-bottom: 2px solid #CC0000;
   color: #CC0000;
