@@ -13,20 +13,38 @@
 .mobile-drawer-left .mobile-title.endless {
   height: 240px;
 }
+.mobile-drawer-left .mobile-title.endless:lang(fr) {
+  height: 275px;
+}
 .mobile-drawer-left .mobile-title.endless.small {
   height: 211px;
+}
+.mobile-drawer-left .mobile-title.endless.small:lang(fr) {
+  height: 227px;
 }
 .mobile-title.mobile-tips {
   height: 200px;
 }
+.mobile-title.mobile-tips:lang(fr) {
+  height: 242px;
+}
 .mobile-title.mobile-tips.small {
   height: 176px;
+}
+.mobile-title.mobile-tips.small:lang(fr) {
+  height: 204px;
 }
 .mobile-title.mobile-gallery {
   height: 107px;
 }
+.mobile-title.mobile-gallery:lang(fr) {
+  height: 86px;
+}
 .mobile-title.mobile-gallery.small {
   height: 94px;
+}
+.mobile-title.mobile-gallery.small:lang(fr) {
+  height: 79px;
 }
 #return {
   width: 100%;
@@ -1913,6 +1931,9 @@ body {
   width: 90%;
   height: 80%;
   padding-top: 20px;
+}
+.mobile #main-container .mobile-drawer-info .roller ul.one:lang(fr) {
+  height: 70%;
 }
 .mobile #main-container .mobile-drawer-info .roller ul.one li {
   height: 33%;

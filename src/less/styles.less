@@ -42,8 +42,14 @@
 		
 		&.endless {
 			height: 240px;
+			&:lang(fr) {
+				height: 275px
+			}
 			&.small {
 				height: 211px;
+				&:lang(fr) {
+					height: 227px;
+				}
 			}
 		}
 		
@@ -52,14 +58,26 @@
 .mobile-title {
 	&.mobile-tips {
 		height: 200px;
+		&:lang(fr) {
+			height: 242px;
+		}
 		&.small {
 			height: 176px;
+			&:lang(fr) {
+				height: 204px
+			}
 		}
 	}
 	&.mobile-gallery {
 		height: 107px;
+		&:lang(fr) {
+			height: 86px;
+		}
 		&.small {
 			height: 94px;
+			&:lang(fr) {
+				height: 79px;
+			}
 		}
 	}
 }
@@ -1785,6 +1803,10 @@ body {
 	width: 90%;
 	height: 80%;
 	padding-top: 20px;
+	
+	&:lang(fr) {
+		height: 70%;
+	}
 }
 
 .mobile #main-container .mobile-drawer-info .roller ul.one li {
