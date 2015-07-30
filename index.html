@@ -18,9 +18,26 @@
 	<meta name="twitter:image" content="http://standmixerattachments.ca/images/standmixer/Twitter.jpg" />
 	
 	<script type="text/javascript">
-	if (screen.width <= 699) {
-		document.location = "index_mobile.html";
-	}
+	  var standalone = window.navigator.standalone,
+        userAgent = window.navigator.userAgent.toLowerCase(),
+        safari = /safari/.test( userAgent ),
+        ios = /iphone|ipod|ipad/.test( userAgent ),
+        isAndroid = userAgent.indexOf("android") > -1;
+        //
+        if( (ios || isAndroid) && document.location != "http://torrent.wpc-stage.com/index_mobile.html" ) {
+            console.log("Mobile :" + document.location);
+            document.location = "index_mobile.html";
+            //if ( !standalone && safari ) {
+                //browser
+            //} else if ( standalone && !safari ) {
+                //standalone
+            //} else if ( !standalone && !safari ) {
+                //uiwebview
+        } else if ( !(ios || isAndroid) && document.location == "http://torrent.wpc-stage.com/index_mobile.html") {
+            //not iOS
+            console.log("Not Mobile");
+            document.location = "index.html"
+        };
 	</script>
 </head>
 

@@ -48,10 +48,26 @@
 }
 #return {
   width: 100%;
-  height: 12.3vw;
+  height: 47px;
+  border-bottom: 1px solid #999999;
 }
 #return img {
-  max-width: 100%;
+  width: 160px;
+  position: relative;
+  top: 8px;
+  left: 30px;
+  /* height: 46px; */
+  float: left;
+}
+#return p {
+  float: right;
+  position: relative;
+  text-decoration: underline;
+  right: 30px;
+  top: 12px;
+  font-family: sans-serif;
+  font-size: 9px;
+  color: #999999;
 }
 /* ----- End Matt's Changes ------- */
 .pace {
@@ -1673,7 +1689,7 @@ body {
 .mobile #main-container .mobile-drawer-info .grinder > div:nth-child(2) > div,
 .mobile #main-container .mobile-drawer-info .stuffer > div:nth-child(2) > div,
 .mobile #main-container .mobile-drawer-info .shredder > div:nth-child(2) > div {
-  padding-top: 13px;
+  padding-top: 9px;
   border-bottom: 1px solid white;
 }
 .mobile #main-container .mobile-drawer-info .grinder > div:nth-child(2) img,
