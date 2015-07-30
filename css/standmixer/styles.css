@@ -1552,7 +1552,7 @@ body {
   height: 52px !important;
 }
 .mobile #main-container .mobile-drawer-info .two-line > div:not(.price) {
-  padding-top: 44px !important;
+  padding-top: 45px !important;
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > div > div:nth-child(3) {
   left: 0;
@@ -1565,6 +1565,7 @@ body {
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > div .title {
   float: left;
+  width: 77%;
 }
 .mobile #main-container .mobile-drawer-info .mobile-content > div .price {
   float: right;
