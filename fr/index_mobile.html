@@ -6,7 +6,7 @@
 	<script src="/javascript/standmixer/lib/pace.js"></script>
 	<link rel="stylesheet" href="/css/standmixer/styles.css">
 	<meta property="og:title" content="Trouvez ton accessoire pour batteur sur socle"/>
-	<meta property="og:description" content="Grâce à un choix de 16 accessoires, vous serez étonné de tout ce que vous et votre batteur sur socle pouvez faire.  Découvrez les possibilités."/>
+<meta property="og:description" content="Grâce à un choix de 16 accessoires, vous serez étonné de tout ce que vous et votre batteur sur socle pouvez faire.  Découvrez les possibilités."/>
 	<meta property="og:image" content="http://standmixerattachments.ca/images/standmixer/FacebookFR.jpg" />
 	
 	<meta name="twitter:card" content="summary" />
@@ -15,16 +15,36 @@
 	<meta name="twitter:image" content="http://standmixerattachments.ca/images/standmixer/TwitterFR.jpg" />
 	
 	<script type="text/javascript">
-		if (screen.width > 699) {
-			document.location = "index.html";
-		}
+      var standalone = window.navigator.standalone,
+        userAgent = window.navigator.userAgent.toLowerCase(),
+        safari = /safari/.test( userAgent ),
+        ios = /iphone|ipod|ipad/.test( userAgent ),
+        isAndroid = userAgent.indexOf("android") > -1;
+        //
+        if( (ios || isAndroid) && document.location != "http://torrent.wpc-stage.com/fr/index_mobile.html" ) {
+            console.log("Mobile :" + document.location);
+            document.location = "index_mobile.html";
+            //if ( !standalone && safari ) {
+                //browser
+            //} else if ( standalone && !safari ) {
+                //standalone
+            //} else if ( !standalone && !safari ) {
+                //uiwebview
+        } else if ( !(ios || isAndroid) && document.location == "http://torrent.wpc-stage.com/fr/index_mobile.html") {
+            //not iOS
+            console.log("Not Mobile");
+            document.location = "index.html"
+        };
 	</script>
 
 </head>
 <body>
 
 <div id="return">
-	<a href="http://www.kitchenaid.ca/fr_CA/"><img src="/images/standmixer/back-to-home-fr.jpg" alt="retourner à kitchenaid.ca"></a>
+	<a href="http://www.kitchenaid.ca/fr_CA/">
+        <img src="/images/standmixer/KA-mobile-logo.png" alt="retourner à kitchenaid.ca">
+    <p>Retourner &agrave; kitchenaid.ca</p>
+    </a>
 </div>
 
 <div id="main-container">
@@ -71,7 +91,7 @@
 				<div class="mobile-content mobile-content-1 info selected roller">
 					<div class="two-line">
 						<p class="title">ENSEMBLE DE MACHINE<br/>&Agrave; P&Acirc;TES</p>
-						<div class="price">249.99 $</div>
+						<div class="price">249,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -83,25 +103,25 @@
 				<div class="mobile-content mobile-content-2 press">
 					<div>
 							<p class="title">PRESSE-P&Acirc;TES GOURMET</p>
-							<div class="price">249.99 $</div>
+							<div class="price">249,99 $</div>
 							<div></div>
 						</div>
 						<div>
 							<img class="feature" src="/images/standmixer/pasta-press.jpg"/>
 							<ul class="two">
-								<li><span><strong>Les Spaghetti</strong></span><img class="attachment spaghetti" src="/images/standmixer/a-spaghetti.png"/></li>
-								<li><span><strong>Les Bucatini</strong></span><img class="attachment bucatini" src="/images/standmixer/a-bucatini.png"/></li>
-								<li><span class="break"><strong>Gros<br/>Macaroni</strong></span><img class="attachment macaroni" src="/images/standmixer/a-largemacaroni.png"/></li>
-								<li><span><strong>Les Rigatoni</strong></span><img class="attachment rigatoni" src="/images/standmixer/a-rigatoni.png"/></li>
-								<li><span class="break"><strong>Petite<br/>Macaroni</strong></span><img class="attachment macaroni" src="/images/standmixer/a-smallmacaroni.png"/></li>
-								<li class="selected"><span><strong>Les Fusilli</strong></span><img class="attachment fusilli" src="/images/standmixer/a-fusilli.png"/></li>
+								<li><span><strong>Les spaghetti</strong></span><img class="attachment spaghetti" src="/images/standmixer/a-spaghetti.png"/></li>
+								<li><span><strong>Les bucatini</strong></span><img class="attachment bucatini" src="/images/standmixer/a-bucatini.png"/></li>
+								<li><span class="break"><strong>Gros<br/>macaroni</strong></span><img class="attachment macaroni" src="/images/standmixer/a-largemacaroni.png"/></li>
+								<li><span><strong>Les rigatoni</strong></span><img class="attachment rigatoni" src="/images/standmixer/a-rigatoni.png"/></li>
+								<li><span class="break"><strong>Petit<br/>macaroni</strong></span><img class="attachment macaroni" src="/images/standmixer/a-smallmacaroni.png"/></li>
+								<li class="selected"><span><strong>Les fusilli</strong></span><img class="attachment fusilli" src="/images/standmixer/a-fusilli.png"/></li>
 							</ul>
 						</div>
 				</div>
 				<div class="mobile-content mobile-content-3">
 					<div>
 						<p class="title">MACHINE &Agrave; RAVIOLIS</p>
-						<div class="price">249.99 $</div>
+						<div class="price">249,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -120,12 +140,12 @@
 						<div>
 							<p>CONSEIL DE MERYL, NOTRE EXPERTE KITCHENAID :</p>
 						</div>
-						<p>&laquo; Faites toujours passer la p&acirc;te &agrave; travers la presse dans la m&ecirc;me direction. Vous pouvez la plier pour lui donner la forme d&eacute;sir&eacute;e, mais pliez toujours dans la m&ecirc;me direction &raquo;. Si vous pr&eacute;parez des p&acirc;tes aromatis&eacute;es, m&eacute;langez d&rsquo;abord la pur&eacute;e de l&eacute;gumes avec l'&oelig;uf, puis m&eacute;langez &agrave; la farine afin d'obtenir un go&ucirc;t et une couleur uniformes. &raquo;</p>
+						<p>&laquo; Faites toujours passer la p&acirc;te &agrave; travers la presse dans la m&ecirc;me direction. Vous pouvez la plier pour lui donner la forme d&eacute;sir&eacute;e, mais pliez toujours dans la m&ecirc;me direction. &raquo; Si vous pr&eacute;parez des p&acirc;tes aromatis&eacute;es, m&eacute;langez d&rsquo;abord la pur&eacute;e de l&eacute;gumes avec l'&oelig;uf, puis m&eacute;langez &agrave; la farine afin d'obtenir un go&ucirc;t et une couleur uniformes. &raquo;</p>
 						<ul>
 							<li>ID&Eacute;AL POUR</li>
-							<li>Les Lasagnes et Raviolis</li>
-							<li>Les P&eacute;rogies, Wontons et P&acirc;tisseries</li>
-							<li>Les Fettuccines et Spaghetti</li>
+							<li>Les lasagnes et raviolis</li>
+							<li>Les p&eacute;rogies, wontons et p&acirc;tisseries</li>
+							<li>Les fettuccines et spaghetti</li>
 						</ul>
 					</div>
 				</div>
@@ -134,12 +154,12 @@
 						<div>
 							<p>CONSEIL DU CHEF JOHN CIRLLO :</p>
 						</div>
-						<p>&laquo; Assurez-vous que votre p&acirc;te n'est pas trop molle, sinon, elle pourrait coller. La temp&eacute;rature id&eacute;ale de cuisson des p&acirc;tes est de 212 &deg;F, ce qui correspond &agrave; une &eacute;bullition vive &raquo;.</p>
+						<p>&laquo; Assurez-vous que votre p&acirc;te n'est pas trop molle, sinon, elle pourrait coller. La temp&eacute;rature id&eacute;ale de cuisson des p&acirc;tes est de 212 &deg;F, ce qui correspond &agrave; une &eacute;bullition vive. &raquo;</p>
 						<ul>
 							<li>ID&Eacute;AL POUR</li>
-							<li>Les Macaroni</li>
-							<li>Les Spaghetti</li>
-							<li>Les Fusilli</li>
+							<li>Les fromage rap&eacute;</li>
+							<li>Les pizzas</li>
+							<li>Les noix de coco et les carottes pour les desserts</li>
 						</ul>
 					</div>
 				</div>
@@ -202,17 +222,17 @@
 				<div class="mobile-title small" data-ga-action="Selected Description Tab"><img src="/images/standmixer/mobile-description-small.png"/></div>
 				<div class="mobile-title small hidden"><img src="/images/standmixer/mobile-description-bold-small.png"/></div>
 				<div class="mobile-content mobile-content-1 selected" data-ga-label="Pasta Roller & Cutter Set">
-					<div class="mobile-copy"><p>ENSEMBLE DE MACHINE &Agrave; P&Acirc;TES</p><p>Mod&egrave;les #KPRA</p><div></div>Savourez des p&acirc;tes fra&icirc;ches dans le confort de chez vous gr&acirc;ce &agrave; cet ensemble d'accessoires pour batteur sur socle KitchenAid&reg;. La machine &agrave; p&acirc;tes vous permet de choisir l'&eacute;paisseur d&eacute;sir&eacute;e de vos p&acirc;tes. Vous pouvez alors couper les p&acirc;tes vous-m&ecirc;me et cr&eacute;er des pappardelle &eacute;paisses, des carr&eacute;s pour raviolis ou encore faire passer les feuilles dans le coupe-fettuccine ou spaghetti pour des p&acirc;tes de parfaitement uniformes. Cet ensemble de 3 pi&egrave;ces en m&eacute;tal contient une presse pour p&acirc;te et un couteau pour fettucine. Il comprend une brosse de nettoyage en bois. 
+					<div class="mobile-copy"><p>ENSEMBLE DE MACHINE &Agrave; P&Acirc;TES</p><p>Mod&egrave;le #KPRA</p><div></div>Savourez des p&acirc;tes fra&icirc;ches dans le confort de chez vous gr&acirc;ce &agrave; cet ensemble d'accessoires pour batteur sur socle KitchenAid<sup>&reg;</sup>. La machine &agrave; p&acirc;tes vous permet de choisir l'&eacute;paisseur d&eacute;sir&eacute;e de vos p&acirc;tes. Vous pouvez alors couper les p&acirc;tes vous-m&ecirc;me et cr&eacute;er des pappardelle &eacute;paisses, des carr&eacute;s pour raviolis ou encore faire passer les feuilles dans le coupe-fettuccine ou spaghetti pour des p&acirc;tes de parfaitement uniformes. Cet ensemble de 3 pi&egrave;ces en m&eacute;tal contient une presse pour p&acirc;te et un couteau pour fettucine. Il comprend une brosse de nettoyage en bois. 
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/countertop-appliances-1/countertop-appliances-2/stand-mixer-attachments-3/-[KPRA]-2101074/KPRA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
 				<div class="mobile-content mobile-content-2" data-ga-label="Gourmet Pasta Press">
-					<div class="mobile-copy"><p>PRESSE-P&Acirc;TES GOURMET</p><p>Mod&egrave;les #KPEXTA</p><div></div>Transformez votre cuisine en trattoria gr&acirc;ce &agrave; cette presse pour p&acirc;tes s'attachant directement &agrave; votre batteur sur socle KitchenAid&reg;. Avec six plaques interchangeables, vous avez le choix de r&eacute;aliser des spaghettis ou des bucatinis frais, mais aussi des p&acirc;tes plus courtes comme des rigatonis, des fusillis et des gros ou petits macaronis.
+					<div class="mobile-copy"><p>PRESSE-P&Acirc;TES GOURMET</p><p>Mod&egrave;le #KPEXTA</p><div></div>Transformez votre cuisine en trattoria gr&acirc;ce &agrave; cette presse pour p&acirc;tes s'attachant directement &agrave; votre batteur sur socle KitchenAid<sup>&reg;</sup>. Avec six plaques interchangeables, vous avez le choix de r&eacute;aliser des spaghettis ou des bucatinis frais, mais aussi des p&acirc;tes plus courtes comme des rigatonis, des fusillis et des gros ou petits macaronis.
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/countertop-appliances-1/countertop-appliances-2/stand-mixer-attachments-3/-[KPEXTA]-2101072/KPEXTA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
 				<div class="mobile-content mobile-content-3" data-ga-label="Ravioli Maker">
-					<div class="mobile-copy"><p>MACHINE &Agrave; RAVIOLIS</p><p>Mod&egrave;les #KRAV</p><div></div>Utilisez la puissance de votre batteur sur socle KitchenAid&reg; pour savourer des p&acirc;tes fra&icirc;ches dans le confort de chez-vous. Cette machine &agrave; raviolis vous permet d'ins&eacute;rer manuellement les feuilles de p&acirc;tes fra&icirc;ches dans la tr&eacute;mie et de proc&eacute;der au remplissage des alv&eacute;oles avec les ingr&eacute;dients de votre choix. Utilisation recommand&eacute;e avec la machine &agrave; p&acirc;tes KitchenAid&reg;. Comprend une pelle de garniture et une brosse de nettoyage.
+					<div class="mobile-copy"><p>MACHINE &Agrave; RAVIOLIS</p><p>Mod&egrave;le #KRAV</p><div></div>Utilisez la puissance de votre batteur sur socle KitchenAid<sup>&reg;</sup> pour savourer des p&acirc;tes fra&icirc;ches dans le confort de chez-vous. Cette machine &agrave; raviolis vous permet d'ins&eacute;rer manuellement les feuilles de p&acirc;tes fra&icirc;ches dans la tr&eacute;mie et de proc&eacute;der au remplissage des alv&eacute;oles avec les ingr&eacute;dients de votre choix. Utilisation recommand&eacute;e avec la machine &agrave; p&acirc;tes KitchenAid<sup>&reg;</sup>. Comprend une pelle de garniture et une brosse de nettoyage.
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/countertop-appliances-1/countertop-appliances-2/stand-mixer-attachments-3/-[KRAV]-2101080/KRAV/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
@@ -237,7 +257,7 @@
 				<div class="mobile-content mobile-content-1 selected">
 					<div>
 						<p class="title">ROBOT CULINAIRE</p>
-						<div class="price">279.99 $</div>
+						<div class="price">279,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -247,20 +267,20 @@
 				<div class="mobile-content mobile-content-2 shredder">
 					<div>
 						<p class="title">BLOC-R&Acirc;PEUR/&Eacute;MINCEUR</p>
-						<div class="price">99.99 $</div>
+						<div class="price">99,99 $</div>
 						<div></div>
 					</div>
 					<div>
 						<img class="attachment" src="/images/standmixer/a-roto1.jpg"/>
 						<div></div>
 					</div>
-					<p>&Eacute;galement offert dans l'ensemble<br>d'accessoires gourmet - 199.99 $</p>
+					<p>&Eacute;galement offert dans l'ensemble<br>d'accessoires gourmet - 199,99 $</p>
 					<img src="/images/standmixer/a-roto2.jpg"/>
 				</div>
 				<div class="mobile-content mobile-content-3">
 					<div>
 						<p class="title">D&Eacute;COUPEUR EN SPIRALES </p>
-						<div class="price">199.99 $</div>
+						<div class="price">199,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -269,8 +289,8 @@
 				</div>
 				<div class="mobile-content mobile-content-4 strainer">
 					<div class="two-line">
-						<p class="title">BROYEUR D'ALIMENTS<br/>ET PI&Egrave;CES </p>
-						<div class="price">199.99 $</div>
+						<p class="title">BROYEUR D'ALIMENTS ET PRESSE-FRUITS</p>
+						<div class="price">199,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -289,13 +309,13 @@
 						<div>
 							<p>CONSEIL DE CARMEL, EXPERTE KITCHENAID :</p>
 						</div>
-						<p>&laquo;Pour une salsa faite maison, les tomates Roma fermes sont celles qui se tranchent le mieux. Parfois, je blanchis les tomates tr&egrave;s bri&egrave;vement, pas suffisamment pour les cuire, mais juste assez pour pouvoir les peler facilement.&raquo;</p>
-						<ul>
-							<li>ID&Eacute;AL POUR</li>
-							<li>Les lasagnes et raviolis</li>
-							<li>Les p&eacute;rogies, wontons et p&acirc;tisseries</li>
-							<li>Les fettuccines et spaghetti</li>
-						</ul>
+						<p>&laquo; Pour une salsa faite maison, les tomates Roma fermes sont celles qui se tranchent le mieux. Parfois, je blanchis les tomates tr&egrave;s bri&egrave;vement, pas suffisamment pour les cuire, mais juste assez pour pouvoir les peler facilement. &raquo;</p>
+							<ul>
+								<li>ID&Eacute;AL POUR</li>
+								<li>Couper en cubes les oignons et les poivrons</li>
+								<li>R&acirc;per le fromage</li>
+								<li>Couper en juliennes pour les pommes de terre risol&eacute;es</li>
+							</ul>
 					</div>
 				</div>
 				<div class="mobile-content mobile-content-2">
@@ -303,12 +323,12 @@
 						<div>
 							<p>CONSEIL DU CHEF JOHN CIRLLO :</p>
 						</div>
-						<p>&laquo; Assurez-vous que votre p&acirc;te n'est pas trop molle, sinon, elle pourrait coller. La temp&eacute;rature id&eacute;ale de cuisson des p&acirc;tes est de 212 &deg;F, ce qui correspond &agrave; une &eacute;bullition vive &raquo;.</p>
+						<p>&laquo; R&acirc;pez et &eacute;mincez pour deux ou plusieurs recettes &agrave; la fois. Par exemple, si vous r&acirc;pez des carottes pour confectionner un g&acirc;teau, vous pouvez en m&ecirc;me temps r&acirc;per du chou pour une salade ou &eacute;mincer des pommes de terre pour le d&icirc;ner. Vous effectuez ainsi plus d'une t&acirc;che et nettoyez une seule fois. &raquo;</p>
 						<ul>
 							<li>ID&Eacute;AL POUR</li>
-							<li>Les macaroni</li>
-							<li>Les spaghetti</li>
-							<li>Les fusilli</li>
+							<li>Les fromage rap&eacute;</li>
+							<li>Les pizzas</li>
+							<li>Les noix de coco et les carottes pour les desserts</li>
 						</ul>
 					</div>
 				</div>
@@ -317,7 +337,7 @@
 						<div>
 							<p>CONSEIL DE LAURA, EXPERTE KITCHENAID :</p>
 						</div>
-						<p>&laquo; Je vous recommande fortement d'essayer des courgettes, ou des courges coup&eacute;es en spirale, saut&eacute;es rapidement &agrave; la po&ecirc;le avec de l'ail et de l'huile puis recouvertes d'une sauce pour p&acirc;tes faite maison et de parmesan. C'est tout simplement d&eacute;licieux! &raquo;.</p>
+						<p>&laquo; Je vous recommande fortement d'essayer des courgettes, ou des courges coup&eacute;es en spirale, saut&eacute;es rapidement &agrave; la po&ecirc;le avec de l'ail et de l'huile puis recouvertes d'une sauce pour p&acirc;tes faite maison et de parmesan. C'est tout simplement d&eacute;licieux! &raquo;</p>
 						<ul>
 							<li>ID&Eacute;AL POUR</li>
 							<li>Les pommes tranch&eacute;es pour une tarte</li>
@@ -397,23 +417,23 @@
 				<div class="mobile-title small" data-ga-action="Selected Description Tab"><img src="/images/standmixer/mobile-description-small.png"/></div>
 				<div class="mobile-title small hidden"><img src="/images/standmixer/mobile-description-bold-small.png"/></div>
 				<div class="mobile-content mobile-content-1 selected" data-ga-label="Food Processor">
-					<div class="mobile-copy"><p>ROBOT CULINAIRE</p><p>Mod&egrave;les #KSM2FPA</p><div></div>Mettez votre batteur sur socle KitchenAid&reg; au travail. L'accessoire robot culinaire se branche tout simplement &agrave; la prise d'accessoires de votre robot culinaire et vous permet de couper en d&eacute;s, trancher, r&acirc;per et couper en julienne vos fruits, l&eacute;gumes et fromages durs pr&eacute;f&eacute;r&eacute;s. Gr&acirc;ce au syst&egrave;me ExactSlice&trade; &agrave; 6 r&eacute;glages vous pourrez trancher facilement de fin &agrave; &eacute;pais en glissant simplement le levier de tranchage externe. Comprend un disque d&eacute;chiqueteur, un disque trancheur, un disque pour juliennes, un disque de tranchage en d&eacute;s, une brosse de nettoyage et un &eacute;tui de rangement. 
+					<div class="mobile-copy"><p>ROBOT CULINAIRE</p><p>Mod&egrave;le #KSM2FPA</p><div></div>Mettez votre batteur sur socle KitchenAid<sup>&reg;</sup> au travail. L'accessoire robot culinaire se branche tout simplement &agrave; la prise d'accessoires de votre robot culinaire et vous permet de couper en d&eacute;s, trancher, r&acirc;per et couper en julienne vos fruits, l&eacute;gumes et fromages durs pr&eacute;f&eacute;r&eacute;s. Gr&acirc;ce au syst&egrave;me ExactSlice&trade; &agrave; 6 r&eacute;glages vous pourrez trancher facilement de fin &agrave; &eacute;pais en glissant simplement le levier de tranchage externe. Comprend un disque d&eacute;chiqueteur, un disque trancheur, un disque pour juliennes, un disque de tranchage en d&eacute;s, une brosse de nettoyage et un &eacute;tui de rangement. 
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/countertop-appliances-1/countertop-appliances-2/stand-mixer-attachments-3/-[KSM2FPA]-2104378/KSM2FPA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 
 				</div>
 				<div class="mobile-content mobile-content-2" data-ga-label="Roto Slicer/Shredder">
-					<div class="mobile-copy"><p>BLOC-RÂPEUR/ÉMINCEUR</p><p>Mod&egrave;les #RVSA</p><div></div>Utilisez la puissance de votre batteur sur socle KitchenAid® pour cet accessoire polyvalent. Ce bloc râpeur/éminceur accélère le broyage des fromages pour les pâtes ou la pizza, le tranchage des légumes pour sautés ou le râpage des carottes et choux pour les salades. Comprend 2 éminceurs et deux blocs-râpeurs.
+					<div class="mobile-copy"><p>BLOC-R&Acirc;PEUR/&Eacute;MINCEUR</p><p>Mod&egrave;le #RVSA</p><div></div>Utilisez la puissance de votre batteur sur socle KitchenAid<sup>&reg;</sup> pour cet accessoire polyvalent. Ce bloc r&acirc;peur/&eacute;minceur acc&eacute;l&egrave;re le broyage des fromages pour les p&acirc;tes ou la pizza, le tranchage des l&eacute;gumes pour les saut&eacute;s ou le r&acirc;page des carottes et choux pour les salades. Comprend 2 &eacute;minceurs et deux blocs-r&acirc;peurs.
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/-[RVSA]-2101785/RVSA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
 				<div class="mobile-content mobile-content-3" data-ga-label="Spiralizer">
-					<div class="mobile-copy"><p>D&Eacute;COUPEUR EN SPIRALES </p><p>Mod&egrave;les #KSM1APC</p><div></div>Que vous recherchiez des fa&ccedil;ons de manger sainement ou des id&eacute;es originales pour explorer la cr&eacute;ativit&eacute; culinaire, le nouvel accessoire de batteur sur socle KitchenAid&reg; pour d&eacute;couper en spirale est destin&eacute; &agrave; devenir l'outil pr&eacute;f&eacute;r&eacute; des cuisiniers aventureux. Le d&eacute;coupeur en spirales pour batteur sur socle KitchenAid&reg; comprend cinq lames et offre neuf combinaisons pour d&eacute;couper en spirale, trancher, peler et enlever les trognons. Il  est fabriqu&eacute; en m&eacute;tal durable et comprend un &eacute;tui de rangement pratique pour l'unit&eacute; et ses accessoires qui sont lavables au lave-vaisselle. 
+					<div class="mobile-copy"><p>D&Eacute;COUPEUR EN SPIRALES </p><p>Mod&egrave;le #KSM1APC</p><div></div>Que vous recherchiez des fa&ccedil;ons de manger sainement ou des id&eacute;es originales pour explorer la cr&eacute;ativit&eacute; culinaire, le nouvel accessoire de batteur sur socle KitchenAid<sup>&reg;</sup> pour d&eacute;couper en spirale est destin&eacute; &agrave; devenir l'outil pr&eacute;f&eacute;r&eacute; des cuisiniers aventureux. Le d&eacute;coupeur en spirales pour batteur sur socle KitchenAid<sup>&reg;</sup> comprend cinq lames et offre neuf combinaisons pour d&eacute;couper en spirale, trancher, peler et enlever les trognons. Il  est fabriqu&eacute; en m&eacute;tal durable et comprend un &eacute;tui de rangement pratique pour l'unit&eacute; et ses accessoires qui sont lavables au lave-vaisselle. 
 					<!--<p class="cta"><a href="" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>-->
 					</div>
 				</div>
 				<div class="mobile-content mobile-content-4" data-ga-label="Strainer & Grinder">
-					<div class="mobile-copy"><p>BROYEUR D'ALIMENTS ET PI&Egrave;CES </p><p>Mod&egrave;les #FVSFGA</p><div></div>Cet outil polyvalent s'attache &agrave; votre batteur sur socle KitchenAid&reg; et utilise la puissance de son moteur pour r&eacute;duire les fruits et l&eacute;gumes en pur&eacute;e avec une incroyable facilit&eacute;. La r&acirc;pe rotative enl&egrave;ve la pelure des fruits et l&eacute;gumes et la presse, en combinaison avec le broyeur d'aliments, les r&eacute;duits en une pur&eacute;e fine. Comprend une plaque de broyage fin et une plaque de broyage grossier, ainsi qu'un poussoir pour les aliments. 
+					<div class="mobile-copy"><p>BROYEUR D'ALIMENTS ET PRESSE-FRUITS </p><p>Mod&egrave;le #FVSFGA</p><div></div>&laquo; Cet outil polyvalent s'attache &agrave; votre batteur sur socle KitchenAid<sup>&reg;</sup> et utilise la puissance de son moteur pour r&eacute;duire les fruits et l&eacute;gumes en pur&eacute;e avec une incroyable facilit&eacute;.  La r&acirc;pe rotative enl&egrave;ve la pelure des fruits et l&eacute; tandis que la presse, en combinaison avec le broyeur d'aliments, les r&eacute;duit en une pur&eacute;e fine. Comprend une plaque de broyage fin et une plaque de broyage grossier, ainsi qu'un poussoir pour les aliments. &raquo; 
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/-[FVSFGA]-2100182/FVSFGA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
@@ -439,14 +459,14 @@
 				<div class="mobile-content mobile-content-1 selected grinder">
 					<div>
 						<p class="title">BROYEUR D'ALIMENTS</p>
-						<div class="price">89.99 $</div>
+						<div class="price">89,99 $</div>
 						<div></div>
 					</div>
 					<div>
 						<img class="attachment" src="/images/standmixer/a-grinder1.jpg"/>
 						<div></div>
 					</div>
-					<p>&Eacute;galement offert dans l'ensemble <br/>d'accessoires gourmet - 199.99 $</p>
+					<p>&Eacute;galement offert dans l'ensemble <br/>d'accessoires gourmet - 199,99 $</p>
 					<img src="/images/standmixer/a-grinder2.jpg"/>
 				</div>
 				<div class="mobile-content mobile-content-2 stuffer">
@@ -459,7 +479,7 @@
 						<img class="attachment" src="/images/standmixer/a-grinder0.jpg"/>
 						<div></div>
 					</div>
-					<p>&Eacute;galement offert dans l'ensemble <br/>d'accessoires gourmet - 199.99 $</p>
+					<p>&Eacute;galement offert dans l'ensemble <br/>d'accessoires gourmet - 199,99 $</p>
 					<img src="/images/standmixer/a-grinder2.jpg"/>
 				</div>
 			</div>
@@ -527,12 +547,12 @@
 				<div class="mobile-title small" data-ga-action="Selected Description Tab"><img src="/images/standmixer/mobile-description-small.png"/></div>
 				<div class="mobile-title small hidden"><img src="/images/standmixer/mobile-description-bold-small.png"/></div>
 				<div class="mobile-content mobile-content-1 selected" data-ga-label="Food Grinder">
-					<div class="mobile-copy"><p>BROYEUR D'ALIMENTS</p><p>Mod&egrave;les #FGA</p><div></div>Transformez votre batteur sur socle KitchenAid&reg; en broyeur d'aliments en utilisant la puissance de son moteur. La plaque de broyage grossier est id&eacute;ale pour broyer les viandes crues &agrave; utiliser dans les hamburgers ou pains de viande et pr&eacute;parer de d&eacute;licieuses salsas maison. La plaque de broyage fin permet de broyer rapidement les fromages durs ou de faire de la chapelure.
+					<div class="mobile-copy"><p>BROYEUR D'ALIMENTS</p><p>Mod&egrave;le #FGA</p><div></div>Transformez votre batteur sur socle KitchenAid<sup>&reg;</sup> en broyeur d'aliments en utilisant la puissance de son moteur. La plaque de broyage grossier est id&eacute;ale pour broyer les viandes crues &agrave; utiliser dans les hamburgers ou pains de viande et pr&eacute;parer de d&eacute;licieuses salsas maison. La plaque de broyage fin permet de broyer rapidement les fromages durs ou de faire de la chapelure.
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/-[FGA]-2100179/FGA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
 				<div class="mobile-content mobile-content-2" data-ga-label="Sausage Stuffer">
-					<div class="mobile-copy"><p>POUSSOIR &Agrave; SAUCISSES</p><p>Mod&egrave;les #SSA</p><div></div>Cet accessoire, s'attache au broyeur d'aliments KitchenAid&reg; (vendu s&eacute;par&eacute;ment) et vous permet de cr&eacute;er de savoureuses saucisses maison en utilisant la puissance de votre batteur sur socle KitchenAid&reg;. Combinez votre choix d'ingr&eacute;dients et passez-les au broyeur dans la goulotte de 3/8 po pour les petits chapelets de saucisses ou dans la goulotte de 5/8 po pour les saucisses italiennes.
+					<div class="mobile-copy"><p>POUSSOIR &Agrave; SAUCISSES</p><p>Mod&egrave;le #SSA</p><div></div>Cet accessoire s'attache au broyeur d'aliments KitchenAid<sup>&reg;</sup> (vendu s&eacute;par&eacute;ment) et vous permet de cr&eacute;er de savoureuses saucisses maison en utilisant la puissance de votre batteur sur socle KitchenAid<sup>&reg;</sup>. Combinez votre choix d'ingr&eacute;dients et passez-les au broyeur dans la goulotte de 3/8 po pour les petits chapelets de saucisses ou dans la goulotte de 5/8 po pour les saucisses italiennes.
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/-[SSA]-2101788/SSA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
@@ -556,7 +576,7 @@
 				<div class="mobile-content mobile-content-1 selected">
 					<div>
 						<p class="title">PRESSE-AGRUMES</p>
-						<div class="price">49.99 $</div>
+						<div class="price">49,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -566,7 +586,7 @@
 				<div class="mobile-content mobile-content-2">
 					<div class="two-line">
 						<p class="title">EXTRACTEUR DE JUS<br/>ET DE SAUCE</p>
-						<div class="price">249.99 $</div>
+						<div class="price">249,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -585,7 +605,7 @@
 						<div>
 							<p>CONSEIL DE LA CHEF ANNA OLSON:</p>
 						</div>
-						<p>&laquo; Durant le printemps et l'&eacute;t&eacute;, j'ai toujours des jus d'agrumes fra&icirc;chement press&eacute;s &agrave; port&eacute;e de main. Un jus de citron frais est le secret  'une bonne tarte au citron meringu&eacute;e. J'utilise aussi du jus de citron ou de citron vert comme base pour mes vinaigrettes (le go&ucirc;t est beaucoup plus doux que le vinaigre). &raquo;</p>
+						<p>&laquo; Durant le printemps et l'&eacute;t&eacute;, j'ai toujours des jus d'agrumes fra&icirc;chement press&eacute;s &agrave; port&eacute;e de main. Un jus de citron frais est le secret  d'une bonne tarte au citron meringu&eacute;e. J'utilise aussi du jus de citron ou de citron vert comme base pour mes vinaigrettes (le go&ucirc;t est beaucoup plus doux que le vinaigre). &raquo;</p>
 						<ul>
 							<li>ID&Eacute;AL POUR</li>
 							<li>Les jus frais</li>
@@ -600,13 +620,13 @@
 						<div>
 							<p>CONSEIL DE CARMEL, EXPERTE KITCHENAID :</p>
 						</div>
-						<p>Gardez la pulpe et ajoutez-la &agrave; des p&acirc;tisseries, sauces pour p&acirc;tes ou pains de viande. Si le jus contient des fruits et l&eacute;gumes, j&rsquo;extrais d'abord le jus des l&eacute;gumes puis je place la pulpe restante dans un sac en plastique et je la cong&egrave;le pour une utilisation ult&eacute;rieure. J&rsquo;extrais ensuite le jus des fruits et je conserve la pulpe dans un sac s&eacute;par&eacute;. Les fruits et l&eacute;gumes sont ainsi s&eacute;par&eacute;s et pr&ecirc;ts pour des utilisations vari&eacute;es.</p>
-						<ul>
-							<li>ID&Eacute;AL POUR</li>
-							<li>Les jus</li>
-							<li>Les gel&eacute;es et confitures</li>
-							<li>Les compotes de fruits</li>
-						</ul>
+						<p>&laquo; R&acirc;pez et &eacute;mincez pour deux ou plusieurs recettes &agrave; la fois.  Par exemple, si vous r&acirc;pez des carottes pour confectionner un g&acirc;teau, vous pouvez en m&ecirc;me temps r&acirc;per du chou pour une salade ou &eacute;mincer des pommes de terre pour le d&icirc;ner.  Vous effectuez ainsi plus d'une t&acirc;che et nettoyez une seule fois. &raquo;</p>
+							<ul>
+								<li>ID&Eacute;AL POUR</li>
+								<li>Les fromage rap&eacute;</li>
+							<li>Les pizzas</li>
+							<li>Les noix de coco et les carottes pour les desserts</li>
+							</ul>
 					</div>
 				</div>
 			</div>
@@ -644,12 +664,12 @@
 				<div class="mobile-title small" data-ga-action="Selected Description Tab"><img src="/images/standmixer/mobile-description-small.png"/></div>
 				<div class="mobile-title small hidden"><img src="/images/standmixer/mobile-description-bold-small.png"/></div>
 				<div class="mobile-content mobile-content-1 selected" data-ga-label="Citrus Juicer">
-					<div class="mobile-copy"><p>PRESSE-AGRUMES</p><p>Mod&egrave;les #JE</p><div></div>Utilisez la puissance de votre batteur sur socle KitchenAid&reg; pour pr&eacute;parer rapidement et facilement des jus d'agrumes. Id&eacute;al pour de grandes quantit&eacute;s d'agrumes, tenez les fruits dans votre main et cet accessoire extrait rapidement leur jus, directement dans un pichet ou une tasse &agrave; mesurer. Un tamis int&eacute;gr&eacute; retient la pulpe et les p&eacute;pins.
+					<div class="mobile-copy"><p>PRESSE-AGRUMES</p><p>Mod&egrave;le #JE</p><div></div>Utilisez la puissance de votre batteur sur socle KitchenAid<sup>&reg;</sup> pour pr&eacute;parer rapidement et facilement des jus d'agrumes. Id&eacute;al pour de grandes quantit&eacute;s d'agrumes, tenez les fruits dans votre main et cet accessoire extrait rapidement leur jus, directement dans un pichet ou une tasse &agrave; mesurer. Un tamis int&eacute;gr&eacute; retient la pulpe et les p&eacute;pins.
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/-[JE]-2100206/JE/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
 				<div class="mobile-content mobile-content-2" data-ga-label="Juicer and Sauce Attachment">
-					<div class="mobile-copy"><p>EXTRACTEUR DE JUS ET DE SAUCE</p><p>Mod&egrave;les #KSM1JA</p><div></div>Faites provision de fruits et l&eacute;gumes en vue d'une utilisation quotidienne de l'extracteur de jus et de sauce KitchenAid&reg; qui se branche directement sur votre batteur sur socle KitchenAid&reg;. Cet accessoire est un extracteur de jus &agrave; rotation lente qui commence par couper les fruits ou l&eacute;gumes tendres, fermes ou feuillus puis en extrait un jus riche en nutriments. Trois tamis &agrave; pulpe procurent des options infinies pour une extraction de jus &agrave; haute ou basse teneur en pulpe, des sauces et confitures. Comprend un tamis &agrave; pulpe faible, un tamis &agrave; sauce, un tamis &agrave; pulpe &eacute;lev&eacute;e, un contenant pour pulpe, un pichet avec couvercle et une brosse de nettoyage. 
+					<div class="mobile-copy"><p>EXTRACTEUR DE JUS ET DE SAUCE</p><p>Mod&egrave;le #KSM1JA</p><div></div>Faites provision de fruits et l&eacute;gumes en vue d'une utilisation quotidienne de l'extracteur de jus et de sauce KitchenAid<sup>&reg;</sup> qui se branche directement sur votre batteur sur socle KitchenAid<sup>&reg;</sup>. Cet accessoire est un extracteur de jus &agrave; rotation lente qui commence par couper les fruits ou l&eacute;gumes tendres, fermes ou feuillus puis en extrait un jus riche en nutriments. Trois tamis &agrave; pulpe procurent des options infinies pour une extraction de jus &agrave; haute ou basse teneur en pulpe, des sauces et confitures. Comprend un tamis &agrave; pulpe faible, un tamis &agrave; sauce, un tamis &agrave; pulpe &eacute;lev&eacute;e, un contenant pour pulpe, un pichet avec couvercle et une brosse de nettoyage. 
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/-[KSM1JA]-2104370/KSM1JA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
@@ -673,7 +693,7 @@
 				<div class="mobile-content mobile-content-1 selected">
 					<div>
 						<p class="title">MOULIN &Agrave; GRAINS</p>
-						<div class="price">199.99 $</div>
+						<div class="price">199,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -724,7 +744,7 @@
 				<div class="mobile-title small" data-ga-action="Selected Description Tab"><img src="/images/standmixer/mobile-description-small.png"/></div>
 				<div class="mobile-title small hidden"><img src="/images/standmixer/mobile-description-bold-small.png"/></div>
 				<div class="mobile-content mobile-content-1 selected" data-ga-label="Grain Mill Attachment">
-					<div class="mobile-copy"><p>MOULIN &Agrave; GRAIN</p><p>Mod&egrave;les #KGM</p><div></div>Cet accessoire en m&eacute;tal moud le bl&eacute;, l'avoine, le ma&iuml;s, le riz et d'autres grains &agrave; faible teneur en humidit&eacute; et en huile. Utilisez des grains fra&icirc;chement moulus pour ajouter un go&ucirc;t et une texture riches &agrave; vos confections.  Lorsque vous cuisinez avec de la farine moulue &agrave; la maison, vous obtenez tous les bienfaits des grains naturels. La texture peut varier de &laquo; concass&eacute;e &raquo; &agrave; extra-fine. Comprend une brosse de nettoyage.
+					<div class="mobile-copy"><p>MOULIN &Agrave; GRAIN</p><p>Mod&egrave;le #KGM</p><div></div>&laquo; Cet accessoire en m&eacute;tal moud le bl&eacute;, l'avoine, le ma&iuml;s, le riz et d'autres grains &agrave; faible teneur en humidit&eacute; et en huile. Utilisez des grains fra&icirc;chement moulus pour ajouter un go&ucirc;t et une texture riches &agrave; vos confections.  Lorsque vous cuisinez avec de la farine moulue &agrave; la maison, vous obtenez tous les bienfaits des grains naturels. La texture peut varier de &laquo; concass&eacute;e &raquo; &agrave; extra-fine. Comprend une brosse de nettoyage. &raquo;
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/countertop-appliances-1/countertop-appliances-2/stand-mixer-attachments-3/-[KGM]-2100814/KGM/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
@@ -746,7 +766,7 @@
 				<div class="mobile-content mobile-content-1 selected">
 					<div>
 						<p class="title">SORBETI&Egrave;RE</p>
-						<div class="price">149.99 $</div>
+						<div class="price">149,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -756,7 +776,7 @@
 				<div class="mobile-content mobile-content-2">
 					<div class="two-line">
 						<p class="title">BOL M&Eacute;LANGEUR<br/>&Agrave; CHALEUR PR&Eacute;CISE</p>
-						<div class="price">329.99 $</div>
+						<div class="price">329,99 $</div>
 						<div></div>
 					</div>
 					<ul class="one">
@@ -839,12 +859,12 @@
 				<div class="mobile-title small" data-ga-action="Selected Description Tab"><img src="/images/standmixer/mobile-description-small.png"/></div>
 				<div class="mobile-title small hidden"><img src="/images/standmixer/mobile-description-bold-small.png"/></div>
 				<div class="mobile-content mobile-content-1 selected" data-ga-label="Ice Cream Maker">
-					<div class="mobile-copy"><p>SORBETI&Egrave;RE</p><p>Mod&egrave;les #KICA0WH</p><div></div>Gr&acirc;ce &agrave; cet accessoire, vous pouvez cr&eacute;er jusqu'&agrave; 2 pintes du dessert glac&eacute; de votre choix! Laissez-vous inspirer, choisissez votre parfum favori et en moins de 30 minutes, obtenez un sorbet d&eacute;licieux, une glace &agrave; l'italienne succulente ou une cr&egrave;me glac&eacute;e onctueuse classique. (Convient &agrave; tous les batteurs sur socle, &agrave; l'exception des mod&egrave;les  KSM6573C et KSM7. Pour ces mod&egrave;les, commander KAICA).
+					<div class="mobile-copy"><p>SORBETI&Egrave;RE</p><p>Mod&egrave;le #KICA0WH</p><div></div>Gr&acirc;ce &agrave; cet accessoire, vous pouvez cr&eacute;er jusqu'&agrave; 2 pintes du dessert glac&eacute; de votre choix! Laissez-vous inspirer, choisissez votre parfum favori et en moins de 30 minutes, obtenez un sorbet d&eacute;licieux, une glace &agrave; l'italienne succulente ou une cr&egrave;me glac&eacute;e onctueuse classique. (Convient &agrave; tous les batteurs sur socle, &agrave; l'exception des mod&egrave;le  KSM6573C et KSM7. Pour ces mod&egrave;le, commander KAICA).
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/countertop-appliances-1/countertop-appliances-2/stand-mixer-attachments-3/-[KICA0WH]-2100969/KICA0WH/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
 				<div class="mobile-content mobile-content-2" data-ga-label="Precise Heat Mixing Bowl">
-					<div class="mobile-copy"><p>BOL M&Eacute;LANGEUR &Agrave; CHALEUR PR&Eacute;CISE</p><p>Mod&egrave;les #KSM1CBT</p><div></div>Le bol m&eacute;langeur &agrave; chaleur pr&eacute;cise KitchenAid&reg; est id&eacute;al pour le chocolat, le pain et le fromage. Il est utile pour temp&eacute;rer le chocolat, faire lever le pain, pr&eacute;parer des fondues, des soupes, des yaourts et plus. (compatible avec tous les mod&egrave;les de batteur sur socle &agrave; t&ecirc;te relevable et peut aussi fonctionner seul). 
+					<div class="mobile-copy"><p>BOL M&Eacute;LANGEUR &Agrave; CHALEUR PR&Eacute;CISE</p><p>Mod&egrave;le #KSM1CBT</p><div></div>Le bol m&eacute;langeur &agrave; chaleur pr&eacute;cise KitchenAid<sup>&reg;</sup> est id&eacute;al pour le chocolat, le pain et le fromage. Il est utile pour temp&eacute;rer le chocolat, faire lever le pain, pr&eacute;parer des fondues, des soupes, des yaourts et plus. (compatible avec tous les mod&egrave;le de batteur sur socle &agrave; t&ecirc;te relevable et peut aussi fonctionner seul). 
 					<p class="cta"><a href="http://www.kitchenaid.ca/en_CA/shop/countertop-appliances-1/countertop-appliances-2/stand-mixer-attachments-3/-[KAICA]-2100238/KAICA/" data-ga-action="Clicked Specifications Tab">TOUCHEZ POUR ACHETER</a></p>
 					</div>
 				</div>
