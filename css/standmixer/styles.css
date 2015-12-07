@@ -955,21 +955,21 @@ body {
   width: 420px;
 }
 #main-container .mixer-panel-3 {
-  background-color: #802550;
+  background-color: #822551;
 }
 #main-container .mixer-panel-3 .infobox > div {
-  background-color: #802550;
+  background-color: #822551;
 }
 #main-container .mixer-panel-3 .infobox .infomenu li {
-  background-color: #802550;
+  background-color: #822551;
 }
 #main-container .mixer-panel-3 .infobox .infomenu li div {
-  background-color: #802550;
+  background-color: #822551;
 }
 #main-container .mixer-panel-3 .infobox .content .gallery .close,
 #main-container .mixer-panel-3 .mobile-drawer-gallery .mobile-content .close {
-  border: 2px solid #802550;
-  color: #802550;
+  border: 2px solid #822551;
+  color: #822551;
 }
 #main-container .mixer-panel-3 .infobox .content .gallery .left,
 #main-container .mixer-panel-3 .infobox .content .gallery .right,
@@ -988,7 +988,7 @@ body {
 }
 #main-container .mixer-panel-3 .make-button:hover,
 #main-container .mixer-panel-3 .make-button.selected {
-  color: #802550;
+  color: #822551;
 }
 #main-container .mixer-panel-3 .cta-button:hover {
   color: #c25689;
@@ -996,7 +996,7 @@ body {
 }
 #main-container .mixer-panel-3 .mobile-title,
 #main-container .mixer-panel-3 .mobile-content {
-  background-color: #802550;
+  background-color: #822551;
 }
 #main-container .mixer-panel-3 .social .fb:hover {
   background-position: -106px 0px;
@@ -1594,6 +1594,10 @@ body {
 }
 .mobile #main-container .mobile-drawer-info .mobile-title {
   top: 305px;
+  height: 74px;
+}
+.mobile #main-container .mobile-drawer-info .mobile-title.small {
+  height: 69px;
 }
 .mobile #main-container .mobile-drawer-info .mobile-title:lang(fr) {
   top: 326px;
