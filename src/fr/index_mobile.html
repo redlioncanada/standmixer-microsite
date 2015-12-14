@@ -1,8 +1,9 @@
+<!-- @if output='local' -->
 <!doctype html>
 
 <html lang="fr">
 <head>
-
+<!-- @endif -->
 	<script src="/javascript/standmixer/lib/pace.js"></script>
 	<link rel="stylesheet" href="/css/standmixer/styles.css">
 	<meta property="og:title" content="Trouvez ton accessoire pour batteur sur socle"/>
@@ -19,14 +20,14 @@
 			document.location = "index.html";
 		}
 	</script>
-
+<!-- @if output='local' -->
 </head>
 <body>
 
 <div id="return">
 	<a href="http://www.kitchenaid.ca/fr_CA/"><img src="/images/standmixer/back-to-home-fr.jpg" alt="retourner à kitchenaid.ca"></a>
 </div>
-
+<!-- @endif -->
 <div id="main-container">
 	<div id="loading"></div>
 	<div class="mixer-panel mixer-panel-1" data-id="1">
@@ -916,5 +917,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+<!-- @if output='local' -->
 </body>
 </html>
+<!-- @endif -->

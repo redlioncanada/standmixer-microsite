@@ -9,6 +9,7 @@ var gulp = require("gulp"),
     reload = require('gulp-livereload'),
     plugins = require('gulp-load-plugins')(),
     sourcemaps = require('gulp-sourcemaps'),
+    preprocess = require('gulp-preprocess');
     babeloptions = {
         compact: false
     };
@@ -21,8 +22,13 @@ gulp.task("default", function() {
 });
 
 gulp.task("html", function() {
+    gulp.src("src/**/*.html")
+        .pipe(preprocess({context: {output: 'live'}}))
+        .pipe(gulp.dest("cuat"));
+
     return gulp.src("src/**/*.html")
         .pipe(gulp.dest(""))
+        .pipe(preprocess({context: {output: 'local'}}))
         .pipe(plugins.livereload());
 });
 

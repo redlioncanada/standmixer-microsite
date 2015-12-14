@@ -1,9 +1,11 @@
+<!-- @if output='local' -->
 <!doctype html>
 
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- @endif -->
 	<script src="/javascript/standmixer/lib/pace.js"></script>
 	<link rel="stylesheet" href="/css/standmixer/styles.css">
 	<link rel="stylesheet" href="/css/standmixer/header.css">
@@ -21,10 +23,11 @@
 		document.location = "index_mobile.html";
 	}
 	</script>
+<!-- @if output='local' -->
 </head>
 
 <body>
-	<div id="kitchenaid-header">
+<div id="kitchenaid-header">
 	<div class="clear">&nbsp;</div>
 	<div id="logo" class="fr">
 		<a href="/en_CA" title="KitchenAid"><img itemprop="logo" src="http://www.kitchenaid.ca/wcs/images/img_logo.png" alt="KitchenAid"></a>
@@ -176,7 +179,7 @@
 	    </ul>
 	</div>
 </div>
-
+<!-- @endif -->
 <div id="main-container">
 	<div id="loading"></div>
 	<div class="mixer-panel mixer-panel-1" data-id="1">

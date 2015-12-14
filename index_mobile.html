@@ -1,3 +1,4 @@
+<!-- @if output='local' -->
 <!doctype html>
 
 <html lang="en">
@@ -5,6 +6,7 @@
 	<meta charset="utf-8">
 	<script src="/javascript/standmixer/lib/pace.js"></script>
 	<title>Stand Mixer Attachments by KitchenAid</title>
+<!-- @endif -->
 	<link rel="stylesheet" href="/css/standmixer/styles.css">
 	<meta property="og:title" content="Find Your Stand Mixer Attachment"/>
 	<meta property="og:description" content="With 16 attachments to choose from, you'll be amazed at what you and your Stand Mixer can do. Explore the possibilities."/>
@@ -20,13 +22,14 @@
 		document.location = "index.html";
 	}
 	</script>
+<!-- @if output='local' -->
 </head>
 <body>
 
 <div id="return">
 	<a href="http://www.kitchenaid.ca/en_CA/"><img src="/images/standmixer/back-to-home.jpg" alt="Return to kitchenaid.ca"></a>
 </div>
-
+<!-- @endif -->
 <div id="main-container">
 	<div id="loading"></div>
 	<div class="mixer-panel mixer-panel-1" data-id="1">
@@ -899,7 +902,7 @@
   //facebook
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '715146251929853',
+      appId      : '845657115529944',
       xfbml      : true,
       version    : 'v2.3'
     });
@@ -913,5 +916,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+<!-- @if output='local' -->
 </body>
 </html>
+<!-- @endif -->
