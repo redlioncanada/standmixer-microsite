@@ -9,6 +9,7 @@ var gulp = require("gulp"),
     reload = require('gulp-livereload'),
     plugins = require('gulp-load-plugins')(),
     sourcemaps = require('gulp-sourcemaps'),
+    preprocess = require('gulp-preprocess');
     babeloptions = {
         compact: false
     };
@@ -21,8 +22,13 @@ gulp.task("default", function() {
 });
 
 gulp.task("html", function() {
+    gulp.src("src/**/*.html")
+        .pipe(preprocess({context: {output: 'live'}}))
+        .pipe(gulp.dest("cuat"));
+
     return gulp.src("src/**/*.html")
         .pipe(gulp.dest(""))
+        .pipe(preprocess({context: {output: 'local'}}))
         .pipe(plugins.livereload());
 });
 
@@ -32,7 +38,7 @@ gulp.task("js", function () {
   return gulp.src("src/js/**/*.js")
     .pipe(b)
     .pipe(gulp.dest("js/"+folderName))
-    .pipe(gulp.dest("/Users/stepoole/Desktop/_upload/js/"+folderName))
+    //.pipe(gulp.dest("/Users/stepoole/Desktop/_upload/js/"+folderName))
     .pipe(gulp.dest("../javascript/"+folderName));
 });
 
@@ -41,6 +47,6 @@ gulp.task("css", function() {
 		.pipe(less())
 		.pipe(gulp.dest("css/"+folderName))
         .pipe(plugins.livereload())
-        .pipe(gulp.dest("/Users/stepoole/Desktop/_upload/css/"+folderName))
+        //.pipe(gulp.dest("/Users/stepoole/Desktop/_upload/css/"+folderName))
         .pipe(gulp.dest("../css/"+folderName));
 });

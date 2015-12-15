@@ -33,10 +33,15 @@ class MixerDotNav extends Messenger {
 
 	Select(id) {
 		let self = this;
-		if (id > self.images.length-1 || self.index == id) return;
 		$(self.element).find('.selected').removeClass('selected');
-		$(self.element).find('li').eq(id).addClass('selected');
-		self.index = id;
+		if (id >= self.images.length) {
+			self.index = 0;
+		} else if (id < 0) {
+			self.index = self.images.length - 1;
+		} else {
+			self.index = id;
+		}
+		$(self.element).find('li').eq(self.index).addClass('selected');
 	}
 
 	_resize() {

@@ -1,0 +1,298 @@
+@mainwidth: 1020px;
+@red: #CC0000;
+
+#kitchenaid-header {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	position: relative;
+	height: 117px;
+	border-bottom: 2px solid #BBBBBB;
+	
+	.clear {
+		clear: both;
+		height: 0;
+	}
+	
+	#logo {
+		width: @mainwidth;
+		margin: 50px auto 0;
+	}
+	
+	.header-social-channels {
+		width: @mainwidth;
+		margin: -25px auto 0;
+		position: relative;
+		
+		.ka_smHolder {
+			position: absolute;
+			right: 0;
+			top: 0;
+			
+			ul {
+				margin: 0;
+				padding: 0;
+				li {
+					display: inline-block;
+					margin-left: 10px;
+					img {
+						height: 15px;
+					}
+				}
+			}
+		}
+	}
+	
+	#header-main-nav {
+		ul#primary-sections {
+			margin: 42px auto 0;
+		    height: 15px;
+		    padding: 5px 0px 8px 12px;
+		    width: @mainwidth;
+		    li.primary {
+			    font-size: 114%;
+			    text-align: center;
+			    text-transform: uppercase;
+			    cursor: pointer;
+			    margin: 0 4.5% 0 0;
+				padding: 0 2px 4px;
+			    display: inline-block;
+			    position: relative;
+			    
+			    &:lang(fr) {
+				    margin: 0 1.5% 0 0;
+			    }
+			    
+			    &:hover {
+				    border-bottom: 2px solid #CC0000;
+				    color: #CC0000;
+			    }
+			    
+			    > a {
+				    color: #333333;
+				    text-decoration: none;
+				    
+				    &:hover {
+					    color: #CC0000;
+				    }
+			    }
+			    
+			    > div {
+				    display: none;
+					min-width: 180px;
+					background: white;
+					border: 2px solid #BBBBBB;
+					border-top: none;
+					z-index: 10;
+					
+					ul {
+						list-style: none;
+						margin: 0;
+						padding: 0;
+					}
+					
+					li {
+						color: #333333;
+					    font-size: 90%;
+					    font-weight: normal;
+					    margin: 0;
+					    padding: 5px 5%;
+					    line-height: 130%;
+					    text-transform: none;
+					    text-align: left;
+					    
+					    &:hover {
+						    background: #eaeaea;
+						    
+						    a {
+							    color: #CC0000;
+						    }
+					    }
+					    
+					    a {
+						    color: #333333;
+						    text-decoration: none;
+						}
+					}
+					
+					&.majors {
+						width: 340px;
+						
+						li {
+							float: left;
+							width: 35%;
+						}
+						
+						.sidethingy {
+							float: right;
+							width: 35%;
+						    border-left: 2px #bbb solid;
+						    margin: 15px 20px 0 0;
+						}
+					}
+			    }
+			    
+			    
+			    &:hover > div {
+					display: block;
+					position: absolute;
+					top: 20px;
+					left: 0;
+				}
+		    }
+		}
+	}
+	
+	#topnav {
+		top: 0;
+		left: 0;
+		width: 100%;
+		background: #eee;
+		position: absolute;
+		height: 35px;
+		
+		a {
+			color: #333333;
+			text-transform: uppercase;
+			font-weight: normal;
+			font-family: Helvetica, Arial, sans-serif;
+			font-size: 10px;
+			text-decoration: none;
+		}
+		
+		.container {
+			width: @mainwidth;
+			margin: 0 auto;
+			position: relative;
+			
+			#header_sub_nav_2 {
+				position: absolute;
+				left: 0;
+			}
+			
+			#header_sub_nav_1 {
+				position: absolute;
+				right: 140px;
+				
+				a {
+					font-weight: bold;
+				}
+			}
+			
+			#header_search {
+				position: absolute;
+				right: 0;
+				top: 7px;
+				input[type=text] {
+					border: 1px solid #DDDDDD;
+					width: 110px;
+					font-size: 100%;
+					color: #8F8F8F;
+				    font-family: Helvetica, Arial, sans-serif;
+				    font-size: 110%;
+				    margin: 0;
+				    padding: 4px;
+				}
+				button {
+					text-indent: -9999px;
+				    width: 15px;
+				    height: 15px;
+				    background: url("http://www.kitchenaid.ca/images/global/icons/search-icon.jpg") top left no-repeat;
+				    position: absolute;
+				    top: 3px;
+				    right: 5px;
+				    cursor: pointer;
+				    border: none;
+				}
+			}
+			
+			#header_sub_nav_2, #header_sub_nav_1 {
+				ul {
+					margin: 13px 0 0;
+					text-indent: 0;
+					padding: 0;
+					li {
+						display: inline-block;
+						margin: 0 10px;
+						
+						&:first-child {
+							margin-left: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#kitchenaid-footer {
+	border-top: 1px solid #BBBBBB;
+	padding-top: 20px;
+	
+	#footer-nav-level-one {
+		width: @mainwidth;
+		margin: 0 auto;
+		font-family: Helvetica, Arial, sans-serif;
+		font-size: 10px;
+		
+		ul {
+			width: 16.667%;
+		    float: left;
+	    	margin: 0;
+		    padding: 0;
+		    list-style: none;
+		    
+		    li {
+			    width: 100%;
+			    margin: 3px 0;
+			    float: left;
+			    line-height: 130%;
+			    font-size: 90%;
+			    
+			    a {
+				    color: #333;
+				    text-decoration: none;
+			    }
+			    
+			    &:hover {
+				    a {
+					    color: #CC0000;
+				    }
+			    }
+		    }
+		    
+		    .ka_smHolder {
+		    	ul {
+			    	width: 100%;
+		    	}
+		    	li {
+					display: inline-block;
+					margin: 0 12px 0 0;
+					width: auto;
+					
+					img {
+						height: 15px;
+					}
+				}
+			}
+		    
+		    li.header {
+		        text-transform: uppercase;
+			    font-weight: bold;
+			    margin: 10px 0 5px 0;
+			    padding: 0 0 5px 0;
+			    border-bottom: 1px dotted #333333;
+			    width: 85%;
+		    }
+		}
+	}
+	
+	p.footer-legal {
+		clear: both;
+		padding: 20px 0;
+		width: @mainwidth;
+		margin: 0 auto;
+		font-family: Helvetica, Arial, sans-serif;
+		font-size: 10px;
+	}
+	
+}

@@ -4,7 +4,7 @@ var isMobile = Modernizr.mobile;
 var isPhone = Modernizr.phone;
 var isTablet = Modernizr.tablet;
 var mixerDotNav = undefined;
-var gaw = new gaWrapper({ prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: true });
+var gaw = new gaWrapper({ prefix: isMobile ? "Mobile-SMA" : "SMA", verbose: false });
 
 if (isMobile) {
     //inject meta tags
@@ -12,6 +12,14 @@ if (isMobile) {
 }
 
 $(document).ready(function () {
+    //
+    //
+    //on back-to-top click, go to top
+    $(".back-to-top").click(function () {
+        $("body,html").animate({ scrollTop: 0 }, "400");
+    });
+    //end back-to-top click
+    //
     //change the mixer on the first panel at a set interval
     var mixerTimeout = undefined;
     resetMixerInterval();
@@ -26,15 +34,20 @@ $(document).ready(function () {
             id = $(".mixer-panel-1 .mixer .selected").index() + 1;
             if (id > $(".mixer-panel-1 .mixer img").length - 1) id = 0;
         }
-        if (!isMobile) mixerDotNav.Select(id);
-        //change mixer image
-        $(".mixer-panel-1 .mixer img").eq(id).fadeIn(400, function () {
-            var self = this;
-            $(".mixer-panel-1 .mixer .selected").fadeOut(500, function () {
-                $(this).removeClass("selected");
-                $(self).addClass("selected");
+        if (!isMobile) {
+            mixerDotNav.Select(id);
+            //change mixer image
+            $(".mixer-panel-1 .mixer img").eq(id).fadeIn(400, function () {
+                var self = this;
+                $(".mixer-panel-1 .mixer .selected").fadeOut(500, function () {
+                    $(this).removeClass("selected");
+                    $(self).addClass("selected");
+                });
             });
-        });
+        } else {
+            doMobileSwipe("left", $(".mixer-panel-1"));
+            resetMixerInterval();
+        }
     }
     //end first panel mixer change
 
@@ -129,45 +142,6 @@ $(document).ready(function () {
         var i;
 
         (function () {
-            var doMobileSwipe =
-            //end init mixer navs
-
-            function (d, e) {
-                var newId = undefined;
-                var p = $(e).closest(".mixer-panel");
-                var mixerDiv = $(p).find(".mixer");
-                if ($(mixerDiv).hasClass("animating")) return -1;
-                var curImg = $(p).find(".mixer .selected");
-                var curId = $(curImg).index();
-                var numImages = $(p).find(".mixer img").length;
-
-                if (d == "left") {
-                    newId = curId + 1;
-                    if (newId > numImages - 1) newId = 0;
-                } else if (d == "right") {
-                    newId = curId - 1;
-                    if (newId < 0) newId = numImages - 1;
-                } else if (typeof d === "number") {
-                    if (d < 0 || d > numImages - 1) return -1;else newId = d;
-                }
-
-                var pWidth = $(p).width();
-                var newImg = $(p).find(".mixer img").eq(newId);
-                var mod = newId > curId ? 1 : -1;
-
-                $(mixerDiv).addClass("animating");
-                newImg.css({ left: pWidth * mod, display: "block" }).animate({ left: 0 }, 400);
-                curImg.animate({ left: -pWidth * mod }, 400, function () {
-                    $(newImg).addClass("selected");
-                    $(this).removeClass("selected").css("display", "none");
-                    $(mixerDiv).removeClass("animating");
-                });
-
-                $(p).find(".mobile-content").not(".mobile-content-" + (newId + 1)).css("display", "none").removeClass("selected");
-                $(p).find(".mobile-content-" + (newId + 1)).css("display", "block").addClass("selected");
-                return newId;
-            };
-
             var closeLeftDrawer =
             //end not drawer click
 
@@ -233,7 +207,7 @@ $(document).ready(function () {
                         id = doMobileSwipe(d, this);
                     }
                     if (id >= 0 && id !== false) {
-                        console.log(id);
+                        //console.log(id);
                         mixerDotNav.Select(id);
                     }
                 });
@@ -244,6 +218,7 @@ $(document).ready(function () {
             for (i = 1; i <= 7; i++) {
                 _loop();
             }
+            //end init mixer navs
 
             //on drawer click, animate out
             $(".mobile-drawer").click(function () {
@@ -280,11 +255,18 @@ $(document).ready(function () {
     }
 
     //on gallery arrow click, navigate
-    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".left,.left-section", function () {
+    $(".mobile-drawer-gallery").on("click", ".left,.left-section", function () {
         navGallery(this, 0);
     });
-    $(".infobox .gallery, .mobile-drawer-gallery").on("click", ".right,.right-section", function () {
+    $(".mobile-drawer-gallery").on("click", ".right,.right-section", function () {
         navGallery(this, 1);
+    });
+
+    $(".infobox .gallery").on("click", ".left,.left-section", function () {
+        navGallery(this, 1);
+    });
+    $(".infobox .gallery").on("click", ".right,.right-section", function () {
+        navGallery(this, 0);
     });
     function navGallery(self, direction) {
         var p = $(self).closest(".gallery");
@@ -406,12 +388,6 @@ $(document).ready(function () {
     }
     //end load complete
 
-    //on back-to-top click, go to top
-    $(".back-to-top").click(function () {
-        $("body").animate({ scrollTop: 0 }, "400");
-    });
-    //end back-to-top click
-
     //on anchor click, animate to the target location
     $("a[href*=#]").click(function (event) {
         var hash = $(this).attr("href");
@@ -424,10 +400,45 @@ $(document).ready(function () {
         });
     });
     //end anchor click
-
-    //on window resize, resize components
-    setTimeout(redraw, 500);
-    $(window).resize(redraw);
-    function redraw() {}
-    //end window resize
 });
+
+function doMobileSwipe(d, e, f) {
+    var newId = undefined;
+    var p = $(e).closest(".mixer-panel");
+    var mixerDiv = $(p).find(".mixer");
+    if ($(mixerDiv).hasClass("animating")) {
+        return -1;
+    }var curImg = $(p).find(".mixer .selected");
+    var curId = $(curImg).index();
+    var numImages = $(p).find(".mixer img").length;
+
+    if (d == "left") {
+        newId = curId + 1;
+        if (newId > numImages - 1) newId = 0;
+    } else if (d == "right") {
+        newId = curId - 1;
+        if (newId < 0) newId = numImages - 1;
+    } else if (typeof d === "number") {
+        if (d < 0 || d > numImages - 1) {
+            return -1;
+        } else newId = d;
+    }
+
+    var pWidth = $(p).width();
+    var newImg = $(p).find(".mixer img").eq(newId);
+    var mod = d == "left" ? 1 : -1;
+
+    $(mixerDiv).addClass("animating");
+    newImg.css({ left: pWidth * mod, display: "block" }).animate({ left: 0 }, 400);
+    curImg.animate({ left: -pWidth * mod }, 400, function () {
+        $(newImg).addClass("selected");
+        $(this).removeClass("selected").css("display", "none");
+        $(mixerDiv).removeClass("animating");
+    });
+
+    if (!p.hasClass("mixer-panel-1")) {
+        $(p).find(".mobile-content").not(".mobile-content-" + (newId + 1)).css("display", "none").removeClass("selected");
+        $(p).find(".mobile-content-" + (newId + 1)).css("display", "block").addClass("selected");
+    }
+    return newId;
+}
